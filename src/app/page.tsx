@@ -11,6 +11,7 @@ import { PricingFactors } from "@/components/sections/PricingFactors";
 import { Faq } from "@/components/sections/Faq";
 import { Reviews } from "@/components/sections/Reviews";
 import { Gallery } from "@/components/sections/Gallery";
+import { WhatsAppSection } from "@/components/sections/WhatsAppSection";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { JsonLd } from "@/components/JsonLd";
 
@@ -19,6 +20,7 @@ import { guides } from "@/config/guides";
 import { absoluteUrl } from "@/config/site";
 import { faqSchema, type FaqItem } from "@/lib/schema";
 import { defaultWhatsAppMessage } from "@/lib/messages";
+import { generalInfoMessage } from "@/lib/contact";
 
 const city = business.primaryCity;
 
@@ -30,8 +32,9 @@ const city = business.primaryCity;
  * Bu ayrım, iki sayfanın aynı sorguda birbirini yemesini (cannibalization) önler.
  *
  * Bölüm ritmi: OFF-WHITE (hero) → DARK (güven bandı) → WHITE (hizmetler)
- * → OFF-WHITE (süreç) → DARK (neden biz) → WHITE (fiyat) → OFF-WHITE (bölgeler)
- * → WHITE (SSS) → OFF-WHITE (rehber) → DARK (kapanış CTA)
+ * → OFF-WHITE (süreç) → DARK (neden biz) → WHITE (fiyat)
+ * → OFF-WHITE (WhatsApp) → WHITE (bölgeler) → OFF-WHITE (SSS)
+ * → WHITE (rehber) → DARK (kapanış CTA)
  */
 export const metadata: Metadata = {
   title: `${city} Nakliyat ve Evden Eve Taşıma | ${business.name}`,
@@ -183,7 +186,9 @@ export default function HomePage() {
         />
       </Section>
 
-      <Section tone="light" labelledBy="bolge-baslik">
+      <WhatsAppSection message={generalInfoMessage} location="home_whatsapp_section" />
+
+      <Section tone="white" labelledBy="bolge-baslik">
         <SectionHeading
           id="bolge-baslik"
           eyebrow="Hizmet bölgeleri"
@@ -196,7 +201,7 @@ export default function HomePage() {
           {business.serviceAreas.map((a) => (
             <span
               key={a.slug}
-              className="rounded-[10px] border border-line bg-white px-5 py-2.5 text-[14px] font-semibold text-ink-900"
+              className="rounded-[10px] border border-line bg-surface px-5 py-2.5 text-[14px] font-semibold text-ink-900"
             >
               {a.name}
             </span>
@@ -214,7 +219,7 @@ export default function HomePage() {
         <Reviews />
       </Section>
 
-      <Section tone="white" labelledBy="sss-baslik">
+      <Section tone="light" labelledBy="sss-baslik">
         <SectionHeading
           id="sss-baslik"
           eyebrow="Sık sorulanlar"
@@ -223,7 +228,7 @@ export default function HomePage() {
         <Faq items={faqItems} />
       </Section>
 
-      <Section tone="light" labelledBy="rehber-baslik">
+      <Section tone="white" labelledBy="rehber-baslik">
         <SectionHeading
           id="rehber-baslik"
           eyebrow="Rehber"

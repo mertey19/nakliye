@@ -46,17 +46,17 @@ npm run seo:audit -- http://localhost:3000
 
 ## ⚠️ YAYINA ALMADAN ÖNCE DOLDURULMASI ZORUNLU
 
-Site şu an **doğrulanmamış hiçbir bilgi içermiyor**. Telefon ve WhatsApp
-girilmediği için ilgili butonlar **otomatik gizleniyor** ve tek dönüşüm yolu
-teklif formu. Bu haliyle yayına alınırsa dönüşümün büyük kısmı kaybedilir.
+Site **doğrulanmamış hiçbir bilgi içermiyor**. Telefon ve WhatsApp girildi
+(0546 419 90 07); arama ve WhatsApp CTA'ları aktif. Aşağıdaki alanlar hâlâ boş
+ve dolana kadar ilgili bölümler **otomatik gizli** kalır.
 
 Tümü tek dosyada: **`src/config/business.ts`**
 
 | Alan                             | Durum      | Etkisi                                                                     |
 | -------------------------------- | ---------- | -------------------------------------------------------------------------- |
-| `phone` + `phoneDisplay`         | **BOŞ** 🔴 | "Hemen Ara" butonları, header telefonu ve mobil dock'taki "Ara" gizli.      |
-| `whatsapp`                       | **BOŞ** 🔴 | Tüm WhatsApp butonları gizli. Teklif formu WhatsApp yerine e-postaya düşer. |
-| `email`                          | BOŞ 🟠     | E-posta satırı gizli. Telefon+WhatsApp yoksa form hiçbir kanala gidemez.    |
+| `phone` + `phoneDisplay`         | ✅ DOLU    | `+905464199007` / `0546 419 90 07` — arama CTA'ları aktif.                  |
+| `whatsapp`                       | ✅ DOLU    | `905464199007` — tüm WhatsApp CTA'ları ve teklif formu WhatsApp'a bağlı.    |
+| `email`                          | BOŞ 🟡     | E-posta satırı gizli. WhatsApp aktif olduğu için form akışı etkilenmiyor.   |
 | `address.street` / `.district`   | BOŞ 🟠     | Adres bloğu ve JSON-LD `streetAddress` üretilmiyor.                         |
 | `coordinates`                    | BOŞ 🟠     | JSON-LD `geo` üretilmiyor.                                                  |
 | `openingHours`                   | BOŞ 🟠     | Çalışma saatleri bölümü ve `openingHoursSpecification` yok.                 |

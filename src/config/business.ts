@@ -60,16 +60,16 @@ export const business = {
    * E.164 biçiminde telefon. Örn: "+905321234567"
    * BOŞ -> tüm "Hemen Ara" butonları ve tel: linkleri otomatik gizlenir.
    */
-  phone: "",
+  phone: "+905464199007",
   /** Ekranda görünen biçim. Örn: "0532 123 45 67" */
-  phoneDisplay: "",
+  phoneDisplay: "0546 419 90 07",
 
   /**
    * WhatsApp numarası, sadece rakam + ülke kodu. Örn: "905321234567"
    * BOŞ -> tüm WhatsApp butonları otomatik gizlenir, teklif formu yerine
    *        alternatif akışa düşer.
    */
-  whatsapp: "",
+  whatsapp: "905464199007",
 
   /** BOŞ -> e-posta satırı gizlenir. */
   email: "",

@@ -10,6 +10,7 @@ import {
 } from "../src/lib/schema";
 import { services } from "../src/config/services";
 import { business } from "../src/config/business";
+import { hasPhone } from "../src/lib/business";
 import { siteUrl } from "../src/config/site";
 
 test("MovingCompany şeması doğrulanmış alanlarla üretilir", () => {
@@ -32,7 +33,17 @@ test("doğrulanmamış alanlar JSON-LD'ye SIZMAZ", () => {
     undefined,
     "uydurma çalışma saati üretilemez",
   );
-  assert.equal(node.telephone, undefined, "telefon yokken telephone alanı olmamalı");
+  // telephone koşullu: config'te numara VARSA yayınlanır, YOKSA hiç üretilmez.
+  // Asıl kural "uydurulmaz", "hiç olmaz" değil.
+  if (hasPhone) {
+    assert.equal(
+      node.telephone,
+      business.phone,
+      "numara girildiğinde JSON-LD config'teki numarayı birebir yayınlamalı",
+    );
+  } else {
+    assert.equal(node.telephone, undefined, "telefon yokken telephone alanı olmamalı");
+  }
 });
 
 test("adres yalnızca doğrulanmış parçaları içerir", () => {
