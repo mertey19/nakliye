@@ -330,10 +330,33 @@ veya Vercel'de sorunsuz çalışır.
 
 **Vercel:**
 
-1. Repoyu bağlayın.
-2. Environment Variables: `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_GA_ID`, (varsa) `NEXT_PUBLIC_GSC_VERIFICATION`.
-3. Alan adını ekleyin, www → non-www yönlendirmesini Vercel Domains ekranından açın.
-4. Deploy sonrası: `/sitemap.xml` ve `/robots.txt` adreslerini tarayıcıda açıp doğrulayın.
+1. Repoyu bağlayın. Ek ayar gerekmez; `next build` olduğu gibi çalışır.
+2. **Environment Variables → `NEXT_PUBLIC_SITE_URL`** (Production + Preview).
+   Sonunda `/` olmadan, gerçek alan adınız: `https://alanadiniz.com`
+3. İsteğe bağlı: `NEXT_PUBLIC_GA_ID`, `NEXT_PUBLIC_GSC_VERIFICATION`.
+4. Alan adını ekleyin, www → non-www yönlendirmesini Vercel Domains ekranından açın.
+5. Deploy sonrası: `/sitemap.xml` ve `/robots.txt` adreslerini tarayıcıda açıp
+   `<loc>` değerlerinin gerçek alan adınızı gösterdiğini doğrulayın.
+
+### `NEXT_PUBLIC_SITE_URL` girilmezse ne olur?
+
+Derleme **başarısız olmaz** — önizleme dağıtımları çalışsın diye bilinçli olarak
+kırmıyoruz. Bunun yerine kanonik adres şu sırayla çözülür:
+
+| Sıra | Kaynak | Sonuç |
+| --- | --- | --- |
+| 1 | `NEXT_PUBLIC_SITE_URL` | İstenen durum. |
+| 2 | `VERCEL_PROJECT_PRODUCTION_URL` | Vercel otomatik verir. Site en azından **kendi** adresine canonical verir; yanlış bir alan adına işaret etmez. |
+| 3 | Yer tutucu | Yalnızca yerel geliştirme. Derleme log'una uyarı basılır. |
+
+Derleme log'unda şu satırı görüyorsanız env değişkeni eksiktir:
+
+```
+[site] NEXT_PUBLIC_SITE_URL tanımlı değil. Kanonik adres ...
+```
+
+Bu sessiz bir SEO hatasıdır: dağıtım yeşil görünür ama Google'a yanlış URL'ler
+bildirilir. Domain'i bağlar bağlamaz bu değişkeni girip yeniden dağıtın.
 
 ---
 

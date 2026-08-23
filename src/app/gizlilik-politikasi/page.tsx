@@ -6,7 +6,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
 
 import { business } from "@/config/business";
-import { absoluteUrl, site } from "@/config/site";
+import { absoluteUrl } from "@/config/site";
 import { breadcrumbSchema, type Crumb } from "@/lib/schema";
 import { hasEmail, hasPhone, phoneLabel } from "@/lib/business";
 
@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/gizlilik-politikasi") },
   robots: { index: true, follow: true },
 };
+
+/** GA4 kurulu mu? Metin buna göre değişir; uydurma beyanda bulunulmaz. */
+const analyticsEnabled = (process.env.NEXT_PUBLIC_GA_ID ?? "").trim().length > 0;
 
 const crumbs: Crumb[] = [
   { name: "Ana Sayfa", path: "/" },
@@ -61,7 +64,7 @@ export default function GizlilikPolitikasiPage() {
             </p>
 
             <h2>Çerezler ve ölçümleme</h2>
-            {site.gaId ? (
+            {analyticsEnabled ? (
               <>
                 <p>
                   Sitede ziyaret istatistiklerini görmek için Google Analytics 4
