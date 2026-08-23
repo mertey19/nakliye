@@ -1,0 +1,274 @@
+@import "tailwindcss";
+
+/* ==================================================================
+   KANSU CAN NAKLİYE — MARKA TASARIM SİSTEMİ
+   ==================================================================
+   Marka kimliği: SİYAH / BEYAZ / METALİK GRİ.
+   Referans: firmanın kendi aracındaki siyah gövde + beyaz tipografi +
+   altındaki koyu bilgi bandı. Site, aracın dijital uzantısı gibi durmalı.
+
+   Renk sisteminde aksan rengi YOKTUR. Vurgu; kontrast, tipografi ve
+   yüzey geçişleriyle kurulur. Tek istisna WhatsApp yeşilidir ve sadece
+   doğrudan WhatsApp aksiyonunda kullanılır — sisteme yayılmaz.
+
+   Hiyerarşi: DÖNÜŞÜM > SEO > GÜVEN > PERFORMANS > GÖRSEL > ANİMASYON
+================================================================== */
+@theme {
+  /* --- Marka çekirdeği --- */
+  --color-ink-900: #13181c; /* Black      — navbar, footer, koyu bölüm, CTA */
+  --color-ink-800: #18191b; /* Charcoal   — koyu yüzey, ana metin */
+  --color-ink-700: #3c4247; /* Dark Gray  — gövde metni, hover yüzeyi */
+  --color-ink-600: #30353a; /* CTA hover  */
+  --color-ink-500: #51565a; /* Metal Gray — ikincil metin, ikon, kenarlık */
+  --color-ink-300: #d3d4d5; /* Light Gray — ayraç, koyu zeminde metin */
+
+  --color-line: #d3d4d5;
+  --color-line-soft: #e3e3e3;
+  --color-surface: #f4f4f3; /* Off White — sayfanın ana açık zemini */
+  --color-card-dark: #1c2226; /* Koyu bölümlerdeki kart */
+
+  /* Sadece WhatsApp aksiyonu için. Başka hiçbir yerde kullanılmaz. */
+  --color-wa-500: #25d366;
+  --color-wa-600: #1da851;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* Keskin ama hafif yuvarlatılmış: premium, pill değil. */
+  --radius-card: 12px;
+  --radius-cta: 10px;
+}
+
+:root {
+  color-scheme: light;
+  /* Ölçülen bar yüksekliği 69px; 2px pay bırakılır. */
+  --dock-height: 71px;
+  --header-height: 72px;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-surface);
+  color: var(--color-ink-800);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (max-width: 767px) {
+  body {
+    padding-bottom: calc(var(--dock-height) + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ------------------------------------------------------------------
+   TİPOGRAFİ — güçlü başlık, sıkı harf aralığı
+------------------------------------------------------------------ */
+h1,
+h2,
+h3 {
+  letter-spacing: -0.03em;
+}
+
+.headline {
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+
+.eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* ------------------------------------------------------------------
+   ODAK HALKASI — açık zeminde siyah, koyu zeminde beyaz
+------------------------------------------------------------------ */
+:where(a, button, input, select, textarea, summary):focus-visible {
+  outline: 3px solid var(--color-ink-900);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.section-dark :where(a, button, input, select, textarea, summary):focus-visible,
+.site-header[data-scrolled="true"] :where(a, button, summary):focus-visible {
+  outline-color: #ffffff;
+}
+
+/* ------------------------------------------------------------------
+   NAVBAR — açıkta başlar, scroll sonrası koyuya döner
+------------------------------------------------------------------ */
+.site-header {
+  background: rgba(244, 244, 243, 0.9);
+  border-bottom: 1px solid var(--color-line);
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+@supports (backdrop-filter: blur(8px)) {
+  .site-header {
+    backdrop-filter: blur(10px);
+  }
+}
+
+.site-header .brand-name {
+  color: var(--color-ink-900);
+}
+.site-header .brand-sub {
+  color: var(--color-ink-500);
+}
+.site-header .nav-link {
+  color: var(--color-ink-700);
+}
+.site-header .nav-link:hover {
+  color: var(--color-ink-900);
+}
+.site-header .header-phone-label {
+  color: var(--color-ink-500);
+}
+.site-header .header-phone-number {
+  color: var(--color-ink-900);
+}
+.site-header .icon-btn {
+  color: var(--color-ink-900);
+  border-color: var(--color-line);
+}
+
+.site-header[data-scrolled="true"] {
+  background: rgba(19, 24, 28, 0.95);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+.site-header[data-scrolled="true"] .brand-name {
+  color: #ffffff;
+}
+.site-header[data-scrolled="true"] .brand-sub {
+  color: var(--color-ink-300);
+}
+.site-header[data-scrolled="true"] .nav-link {
+  color: var(--color-ink-300);
+}
+.site-header[data-scrolled="true"] .nav-link:hover {
+  color: #ffffff;
+}
+.site-header[data-scrolled="true"] .header-phone-label {
+  color: var(--color-ink-300);
+}
+.site-header[data-scrolled="true"] .header-phone-number {
+  color: #ffffff;
+}
+.site-header[data-scrolled="true"] .icon-btn {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.22);
+}
+/* Scroll sonrası koyu navbar üzerinde birincil CTA ters çevrilir */
+.site-header[data-scrolled="true"] .header-cta {
+  background: #ffffff;
+  color: var(--color-ink-900);
+}
+.site-header[data-scrolled="true"] .header-cta:hover {
+  background: var(--color-ink-300);
+}
+
+/* ------------------------------------------------------------------
+   GÖRSEL İŞLEME — fotoğraf site temasına otursun, ama gerçek kalsın
+------------------------------------------------------------------ */
+.photo {
+  filter: saturate(0.85) contrast(1.03);
+  transition: transform 0.4s ease;
+}
+.photo-zoom:hover .photo {
+  transform: scale(1.02);
+}
+
+/* ------------------------------------------------------------------
+   UZUN İÇERİK TİPOGRAFİSİ
+------------------------------------------------------------------ */
+.prose-tr {
+  color: var(--color-ink-700);
+  line-height: 1.75;
+}
+.prose-tr p {
+  margin-block: 1rem;
+}
+.prose-tr h2 {
+  color: var(--color-ink-900);
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-top: 2.75rem;
+  margin-bottom: 0.75rem;
+  scroll-margin-top: 96px;
+}
+.prose-tr h3 {
+  color: var(--color-ink-900);
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+.prose-tr ul,
+.prose-tr ol {
+  margin-block: 1rem;
+  padding-inline-start: 1.35rem;
+}
+.prose-tr ul {
+  list-style: disc;
+}
+.prose-tr ol {
+  list-style: decimal;
+}
+.prose-tr li {
+  margin-block: 0.4rem;
+}
+.prose-tr li::marker {
+  color: var(--color-ink-500);
+}
+.prose-tr a {
+  color: var(--color-ink-900);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  font-weight: 600;
+}
+.prose-tr a:hover {
+  color: var(--color-ink-500);
+}
+.prose-tr strong {
+  color: var(--color-ink-900);
+}
+
+.section-dark .prose-tr {
+  color: var(--color-ink-300);
+}
+.section-dark .prose-tr h2,
+.section-dark .prose-tr h3,
+.section-dark .prose-tr strong {
+  color: #ffffff;
+}
+.section-dark .prose-tr a {
+  color: #ffffff;
+}
+
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}

@@ -1,0 +1,7 @@
+# Depoda satır sonu daima LF; checkout'ta platforma bırakılır.
+* text=auto eol=lf
+*.png binary
+*.webp binary
+*.jpg binary
+*.ico binary
+*.woff2 binary
