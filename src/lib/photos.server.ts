@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 
-import { photos, heroPhoto, type Photo } from "@/config/photos";
+import { photos, promoPhotos, heroPhoto, type Photo } from "@/config/photos";
 import { readImageSize } from "./image-size";
 
 /**
@@ -57,6 +57,13 @@ export const availablePhotos: ResolvedPhoto[] = resolvedGallery.filter(
   (p): p is ResolvedPhoto => p !== null,
 );
 
+const resolvedPromo = promoPhotos.map(resolve);
+
+/** Tanıtım görselleri — "İşlerimizden"den ayrı tutulur (gerçek iş fotoğrafı değil). */
+export const availablePromoPhotos: ResolvedPhoto[] = resolvedPromo.filter(
+  (p): p is ResolvedPhoto => p !== null,
+);
+
 /** Hero görseli — dosya yoksa null; hero marka plakasına düşer. */
 export const availableHeroPhoto: ResolvedPhoto | null = heroPhoto
   ? resolve(heroPhoto)
@@ -68,5 +75,6 @@ export const availableHeroPhoto: ResolvedPhoto | null = heroPhoto
  */
 export const missingPhotoFiles: string[] = [
   ...photos.filter((_, i) => resolvedGallery[i] === null).map((p) => p.src),
+  ...promoPhotos.filter((_, i) => resolvedPromo[i] === null).map((p) => p.src),
   ...(heroPhoto && !availableHeroPhoto ? [heroPhoto.src] : []),
 ];

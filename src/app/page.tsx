@@ -11,6 +11,7 @@ import { PricingFactors } from "@/components/sections/PricingFactors";
 import { Faq } from "@/components/sections/Faq";
 import { Reviews } from "@/components/sections/Reviews";
 import { Gallery } from "@/components/sections/Gallery";
+import { PromoStrip } from "@/components/sections/PromoStrip";
 import { WhatsAppSection } from "@/components/sections/WhatsAppSection";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { JsonLd } from "@/components/JsonLd";
@@ -34,7 +35,7 @@ const city = business.primaryCity;
  * Bölüm ritmi: OFF-WHITE (hero) → DARK (güven bandı) → WHITE (hizmetler)
  * → OFF-WHITE (süreç) → DARK (neden biz) → WHITE (fiyat)
  * → OFF-WHITE (WhatsApp) → WHITE (bölgeler) → OFF-WHITE (galeri)
- * → WHITE (SSS) → OFF-WHITE (rehber) → DARK (kapanış CTA)
+ * → WHITE (tanıtım) → OFF-WHITE (SSS) → WHITE (rehber) → DARK (kapanış CTA)
  */
 export const metadata: Metadata = {
   title: `${city} Nakliyat ve Evden Eve Taşıma | ${business.name}`,
@@ -222,7 +223,12 @@ export default function HomePage() {
         <Reviews />
       </Section>
 
-      <Section tone="white" labelledBy="sss-baslik">
+      {/* Tanıtım grafikleri — gerçek iş fotoğraflarından AYRI başlık altında. */}
+      <Section tone="white" labelledBy="tanitim-baslik">
+        <PromoStrip />
+      </Section>
+
+      <Section tone="light" labelledBy="sss-baslik">
         <SectionHeading
           id="sss-baslik"
           eyebrow="Sık sorulanlar"
@@ -231,7 +237,7 @@ export default function HomePage() {
         <Faq items={faqItems} />
       </Section>
 
-      <Section tone="light" labelledBy="rehber-baslik">
+      <Section tone="white" labelledBy="rehber-baslik">
         <SectionHeading
           id="rehber-baslik"
           eyebrow="Rehber"

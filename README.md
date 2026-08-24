@@ -76,7 +76,7 @@ Tümü tek dosyada: **`src/config/business.ts`**
 | `legalName`                      | BOŞ 🟡     | Footer'da ticari unvan gösterilmiyor.                                       |
 | `foundedYear`, `completedJobs`, `teamSize`, `hasTransportInsurance`, `licenseNumber`, `priceRange` | `null` / boş | **Bilinçli olarak boş.** Doğrulanmadan doldurulmamalı. |
 | `config/reviews.ts`              | BOŞ 🟠     | Yorum bölümü gizli, `aggregateRating`/`review` şeması üretilmiyor.          |
-| `config/photos.ts`               | ✅ 2 GÖRSEL | Hero: araç fotoğrafı. Galeri: ekip fotoğrafı. Yeni fotoğraf eklemek için aşağıya bakın. |
+| `config/photos.ts`               | ✅ 5 GÖRSEL | Hero + 1 gerçek iş fotoğrafı + 3 tanıtım görseli. Ayrım için aşağıya bakın. |
 | `NEXT_PUBLIC_SITE_URL`           | Varsayılan 🔴 | Kanonik URL'ler ve sitemap `https://kansucannakliye.com` varsayıyor.      |
 | `NEXT_PUBLIC_GA_ID`              | BOŞ 🟠     | Hiçbir dönüşüm ölçülmüyor.                                                  |
 
@@ -247,6 +247,22 @@ Geliştirme modunda (`npm run dev`) listede olup dosyası bulunmayan görseller
 sayfanın altındaki uyarı kutusunda listelenir.
 
 > Stok fotoğraf kullanılmaz. Galeri yalnızca firmanın gerçek işini gösterir.
+
+### İki ayrı görsel listesi — neden?
+
+`config/photos.ts` içinde iki liste var ve **karıştırılmamalıdır**:
+
+| Liste | Sitedeki başlık | İçerik |
+| --- | --- | --- |
+| `photos` | **İşlerimizden** | Gerçekten tamamlanmış işlerin fotoğrafları |
+| `promoPhotos` | **Tanıtım Görsellerimiz** | Pazarlama grafikleri (afiş/poster, kompozit görseller) |
+
+Tanıtım grafikleri tamamlanmış iş fotoğrafı değildir. "İşlerimizden" altında
+gösterilirlerse ziyaretçi bunları sizin yaptığınız taşıma sanır; gerçek ekiple
+karşılaşınca güven tam da kazanılması gereken anda kırılır. Ayrıca bu tür
+görsellerin `alt` metni, bir tanıtım grafiği olduğunu belirtir.
+
+`tests/photos.test.ts` iki listenin karışmasını ve alt metni kuralını kilitler.
 
 ## Tasarım sistemi
 
@@ -518,7 +534,8 @@ Bu proje aşağıdakileri bilinçli olarak **yapmaz**; sonradan da eklenmemeli:
 - Renkli gradient, mavi/turuncu/kırmızı lojistik teması, mor SaaS teması
 - Her yerde glassmorphism, neon, aşırı gölge, dev yuvarlak floating balon
 - Sürekli zıplayan veya yanıp sönen dikkat çekme efektleri
-- Stok fotoğrafın firmanın gerçek işi gibi gösterilmesi
+- Stok/üretilmiş görselin firmanın gerçek işi gibi gösterilmesi
+- Sahip olunmayan araç sayısını ima eden filo görselleri
 
 ---
 

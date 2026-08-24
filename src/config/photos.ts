@@ -36,6 +36,39 @@ export const photos: Photo[] = [
 ];
 
 /**
+ * TANITIM GÖRSELLERİ
+ * ==================
+ * Firmanın kendi pazarlama grafikleri (afiş/poster). Bunlar TAMAMLANMIŞ İŞ
+ * FOTOĞRAFI DEĞİLDİR; kompozit/üretilmiş görsellerdir. Bu yüzden bilinçli
+ * olarak `photos` listesinden AYRI tutulur ve sitede "İşlerimizden" değil,
+ * "Tanıtım Görsellerimiz" başlığı altında gösterilir.
+ *
+ * Sebep: ziyaretçi bir görseli "sizin yaptığınız taşıma" sanıp gerçekte
+ * farklısıyla karşılaşırsa güven, tam da kazanılması gereken anda kırılır.
+ * Etiketi doğru koymak hem dürüst hem de uzun vadede daha çok dönüşüm getirir.
+ *
+ * alt metni, görselin bir tanıtım grafiği olduğunu belirtir — ekran okuyucu
+ * kullanan ziyaretçi de neye baktığını bilir.
+ */
+export const promoPhotos: Photo[] = [
+  {
+    src: "/images/tanitim-arac.webp",
+    alt: "Kansu Can Nakliye tanıtım görseli: firma aracı ile ev, ofis ve şehirler arası taşıma hizmetleri",
+    caption: "Ev · Ofis · Şehirler arası",
+  },
+  {
+    src: "/images/tanitim-yukleme.webp",
+    alt: "Kansu Can Nakliye tanıtım görseli: üniformalı ekip kutuları araca yüklerken",
+    caption: "Paketleme ve yükleme",
+  },
+  {
+    src: "/images/tanitim-teslimat.webp",
+    alt: "Kansu Can Nakliye tanıtım görseli: ekip üyesi ev önünde müşteriyle el sıkışırken",
+    caption: "Evden eve taşıma",
+  },
+];
+
+/**
  * HERO FOTOĞRAFI — ana sayfa ve hizmet sayfalarının üst bölümünde kullanılır.
  *
  * `null` bırakılırsa ya da dosya bulunamazsa hero'da STOK GÖRSEL KULLANILMAZ;
