@@ -1,42 +1,47 @@
 /**
  * GERÇEK İŞ FOTOĞRAFLARI
  * ======================
- * Dizi BOŞ olduğu sürece galeri bölümü GÖRÜNMEZ.
- * Buraya SADECE firmaya ait gerçek fotoğraflar eklenir. Stok fotoğraf kullanılmaz.
+ * Buraya SADECE firmaya ait gerçek görseller girilir. Stok fotoğraf kullanılmaz.
  *
- * Dosyalar /public/images/ altına konur. Önerilen adlandırma:
- *   kansu-can-nakliye-arac.webp
- *   kansu-can-nakliye-ekip.webp
- *   evden-eve-nakliyat.webp
- *   esya-paketleme.webp
+ * ÖNEMLİ: Bu dosya yalnızca "hangi görseller olmalı" listesidir. Dosya
+ * `public/` altında GERÇEKTEN yoksa ilgili görsel sitede GÖSTERİLMEZ
+ * (bkz. src/lib/photos.server.ts). Böylece dosya eklenmeden kırık görsel
+ * yayınlanmaz; dosyayı klasöre bırakmak yayına almak için yeterlidir.
  *
- * alt metni fotoğrafta GERÇEKTEN ne varsa onu anlatmalı; anahtar kelime doldurulmaz.
+ * Dosyalar `public/images/` altına konur. En/boy oranı serbesttir; kartlar
+ * sabit oranlı kutu kullandığı için hangi ölçüde olursa olsun CLS oluşmaz.
+ *
+ * alt metni fotoğrafta GERÇEKTEN ne varsa onu anlatır; anahtar kelime
+ * doldurulmaz.
  */
 export type Photo = {
-  /** /images/... ile başlayan yol */
+  /** /images/... ile başlayan yol (public/ köküne göre) */
   src: string;
   /** Fotoğrafta gerçekten görüneni anlatan alt metni */
   alt: string;
-  width: number;
-  height: number;
-  /** Opsiyonel kısa açıklama */
+  /** Opsiyonel kısa açıklama (galeride kartın altında görünür) */
   caption?: string;
 };
 
-export const photos: Photo[] = [];
+/**
+ * "İşlerimizden" galerisi.
+ * Dosya eklendikçe bu listeye satır eklenir.
+ */
+export const photos: Photo[] = [
+  {
+    src: "/images/kansu-can-nakliye-ekip.webp",
+    alt: "Kansu Can Nakliye ekibi, taşıma aracının önünde el sıkışırken",
+    caption: "Teslimat sonrası — Mersin",
+  },
+];
 
 /**
- * HERO FOTOĞRAFI — firmanın kendi aracının/işinin fotoğrafı.
- * null olduğu sürece hero'da STOK GÖRSEL KULLANILMAZ; yerine marka plakası
- * (koyu panel) gösterilir. Gerçek fotoğraf eklendiğinde hero otomatik olarak
- * iki sütunlu görselli düzene geçer.
+ * HERO FOTOĞRAFI — ana sayfa ve hizmet sayfalarının üst bölümünde kullanılır.
  *
- * Örnek:
- *   export const heroPhoto: Photo | null = {
- *     src: "/images/kansu-can-nakliye-arac.webp",
- *     alt: "Kansu Can Nakliye taşıma aracı",
- *     width: 1200,
- *     height: 900,
- *   };
+ * `null` bırakılırsa ya da dosya bulunamazsa hero'da STOK GÖRSEL KULLANILMAZ;
+ * yerine koyu marka plakası gösterilir.
  */
-export const heroPhoto: Photo | null = null;
+export const heroPhoto: Photo | null = {
+  src: "/images/kansu-can-nakliye-arac.webp",
+  alt: "Kansu Can Nakliye taşıma aracı, üzerinde firma logosu ve iletişim bilgileri",
+};

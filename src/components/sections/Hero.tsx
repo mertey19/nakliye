@@ -4,7 +4,7 @@ import { Container } from "../Container";
 import { CtaGroup } from "../cta/ConversionButtons";
 import { hasDirectContact } from "@/lib/business";
 import { business } from "@/config/business";
-import { heroPhoto } from "@/config/photos";
+import { availableHeroPhoto } from "@/lib/photos.server";
 
 /**
  * HERO — ilk 5 saniye testi:
@@ -79,16 +79,18 @@ export function Hero({
             )}
           </div>
 
-          {heroPhoto ? (
+          {availableHeroPhoto ? (
+            /* Ölçü dosyadan okunduğu için görsel kendi oranında, kırpılmadan
+               render edilir ve yer önceden ayrıldığından CLS oluşmaz. */
             <figure className="photo-zoom overflow-hidden rounded-card border border-line bg-white">
               <Image
-                src={heroPhoto.src}
-                alt={heroPhoto.alt}
-                width={heroPhoto.width}
-                height={heroPhoto.height}
+                src={availableHeroPhoto.src}
+                alt={availableHeroPhoto.alt}
+                width={availableHeroPhoto.width}
+                height={availableHeroPhoto.height}
                 priority
                 sizes="(max-width: 1024px) 100vw, 46vw"
-                className="photo h-auto w-full object-cover"
+                className="photo h-auto w-full"
               />
             </figure>
           ) : (

@@ -72,7 +72,7 @@ export const business = {
   whatsapp: "905464199007",
 
   /** BOŞ -> e-posta satırı gizlenir. */
-  email: "",
+  email: "kansucannakliyat@gmail.com",
 
   /**
    * Fiziksel adres. street VE district dolu değilse adres bloğu, harita ve
@@ -101,7 +101,7 @@ export const business = {
   /** Google Maps embed src (place/embed URL). BOŞ -> harita gömülmez. */
   googleMapsEmbedUrl: "",
 
-  instagram: "",
+  instagram: "https://www.instagram.com/kansucan_nakliye33/",
   facebook: "",
 
   /**

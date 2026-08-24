@@ -56,19 +56,20 @@ Tümü tek dosyada: **`src/config/business.ts`**
 | -------------------------------- | ---------- | -------------------------------------------------------------------------- |
 | `phone` + `phoneDisplay`         | ✅ DOLU    | `+905464199007` / `0546 419 90 07` — arama CTA'ları aktif.                  |
 | `whatsapp`                       | ✅ DOLU    | `905464199007` — tüm WhatsApp CTA'ları ve teklif formu WhatsApp'a bağlı.    |
-| `email`                          | BOŞ 🟡     | E-posta satırı gizli. WhatsApp aktif olduğu için form akışı etkilenmiyor.   |
+| `email`                          | ✅ DOLU    | `kansucannakliyat@gmail.com`                                                |
 | `address.street` / `.district`   | BOŞ 🟠     | Adres bloğu ve JSON-LD `streetAddress` üretilmiyor.                         |
 | `coordinates`                    | BOŞ 🟠     | JSON-LD `geo` üretilmiyor.                                                  |
 | `openingHours`                   | BOŞ 🟠     | Çalışma saatleri bölümü ve `openingHoursSpecification` yok.                 |
 | `googleBusinessProfileUrl`       | BOŞ 🟠     | GBP bağlantısı ve `sameAs` sinyali yok.                                     |
 | `googleMapsDirectionsUrl`        | BOŞ 🟠     | "Yol Tarifi Al" butonu gizli.                                               |
 | `googleMapsEmbedUrl`             | BOŞ 🟡     | İletişim sayfasında harita yerine metin gösteriliyor.                       |
-| `instagram` / `facebook`         | BOŞ 🟡     | Sosyal bağlantılar ve `sameAs` yok.                                         |
+| `instagram`                      | ✅ DOLU    | `kansucan_nakliye33` — footer, iletişim ve JSON-LD `sameAs` içinde.          |
+| `facebook`                       | BOŞ 🟡     | Varsa eklenir; yoksa bağlantı gösterilmez.                                  |
 | `serviceAreas`                   | Varsayılan 🟠 | Mersin merkez 4 ilçe listeli. **Hizmet verilmeyen ilçe varsa SİLİN**, merkez dışına da gidiliyorsa EKLEYİN. |
 | `legalName`                      | BOŞ 🟡     | Footer'da ticari unvan gösterilmiyor.                                       |
 | `foundedYear`, `completedJobs`, `teamSize`, `hasTransportInsurance`, `licenseNumber`, `priceRange` | `null` / boş | **Bilinçli olarak boş.** Doğrulanmadan doldurulmamalı. |
 | `config/reviews.ts`              | BOŞ 🟠     | Yorum bölümü gizli, `aggregateRating`/`review` şeması üretilmiyor.          |
-| `config/photos.ts`               | BOŞ 🟠     | Galeri gizli. **Gerçek firma fotoğrafı en güçlü güven sinyalidir.**         |
+| `config/photos.ts`               | ✅ 2 GÖRSEL | Hero: araç fotoğrafı. Galeri: ekip fotoğrafı. Yeni fotoğraf eklemek için aşağıya bakın. |
 | `NEXT_PUBLIC_SITE_URL`           | Varsayılan 🔴 | Kanonik URL'ler ve sitemap `https://kansucannakliye.com` varsayıyor.      |
 | `NEXT_PUBLIC_GA_ID`              | BOŞ 🟠     | Hiçbir dönüşüm ölçülmüyor.                                                  |
 
@@ -209,6 +210,33 @@ eklenir. Böylece "bu teklif Google organikten mi, Ads'ten mi, Instagram'dan mı
 geldi?" sorusu GA4'ten cevaplanır. Bu parametreler **kanonik URL'lere girmez**.
 
 ---
+
+## Fotoğraf ekleme
+
+Yeni bir iş fotoğrafı yayınlamak için **kod bilmeye gerek yok**:
+
+1. Görseli `public/images/` klasörüne kopyalayın (tercihen `.webp`, 400 KB altı).
+2. `src/config/photos.ts` içindeki `photos` dizisine bir satır ekleyin:
+
+```ts
+{
+  src: "/images/dosya-adi.webp",
+  alt: "Fotoğrafta gerçekten ne görünüyorsa onun tarifi",
+  caption: "Kısa açıklama (opsiyonel)",
+},
+```
+
+Ölçü yazmanız **gerekmez** — genişlik ve yükseklik derleme sırasında dosyanın
+kendisinden okunur (`src/lib/image-size.ts`). Bu sayede:
+
+* fotoğraf değişse bile düzen kayması (CLS) oluşmaz,
+* dikey/yatay fark etmez, görsel kırpılmadan yerleşir,
+* **dosya klasörde yoksa görsel sitede hiç gösterilmez** — kırık görsel yayınlanmaz.
+
+Geliştirme modunda (`npm run dev`) listede olup dosyası bulunmayan görseller
+sayfanın altındaki uyarı kutusunda listelenir.
+
+> Stok fotoğraf kullanılmaz. Galeri yalnızca firmanın gerçek işini gösterir.
 
 ## Tasarım sistemi
 

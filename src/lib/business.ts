@@ -104,7 +104,7 @@ export function missingBusinessData(): string[] {
   if (!hasDirections)
     missing.push("business.googleMapsDirectionsUrl — yol tarifi linki");
   if (!hasCoordinates) missing.push("business.coordinates — enlem/boylam");
-  if (!hasPhotos) missing.push("config/photos.ts — gerçek iş fotoğrafları");
+  if (!hasPhotos) missing.push("config/photos.ts — gerçek iş fotoğrafı listesi boş");
   if (!hasReviews) missing.push("config/reviews.ts — gerçek müşteri yorumları");
   if (!process.env.NEXT_PUBLIC_SITE_URL)
     missing.push("NEXT_PUBLIC_SITE_URL — kanonik alan adı (.env.local)");

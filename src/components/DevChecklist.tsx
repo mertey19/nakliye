@@ -1,4 +1,5 @@
 import { missingBusinessData } from "@/lib/business";
+import { missingPhotoFiles } from "@/lib/photos.server";
 
 /**
  * SADECE geliştirme ortamında görünür. Üretimde hiç render edilmez.
@@ -6,7 +7,12 @@ import { missingBusinessData } from "@/lib/business";
  */
 export function DevChecklist() {
   if (process.env.NODE_ENV === "production") return null;
-  const missing = missingBusinessData();
+  const missing = [
+    ...missingBusinessData(),
+    ...missingPhotoFiles.map(
+      (src) => `public${src} — görsel listede var ama DOSYA YOK (bölüm gizli)`,
+    ),
+  ];
   if (missing.length === 0) return null;
 
   return (

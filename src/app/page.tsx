@@ -33,8 +33,8 @@ const city = business.primaryCity;
  *
  * Bölüm ritmi: OFF-WHITE (hero) → DARK (güven bandı) → WHITE (hizmetler)
  * → OFF-WHITE (süreç) → DARK (neden biz) → WHITE (fiyat)
- * → OFF-WHITE (WhatsApp) → WHITE (bölgeler) → OFF-WHITE (SSS)
- * → WHITE (rehber) → DARK (kapanış CTA)
+ * → OFF-WHITE (WhatsApp) → WHITE (bölgeler) → OFF-WHITE (galeri)
+ * → WHITE (SSS) → OFF-WHITE (rehber) → DARK (kapanış CTA)
  */
 export const metadata: Metadata = {
   title: `${city} Nakliyat ve Evden Eve Taşıma | ${business.name}`,
@@ -214,12 +214,15 @@ export default function HomePage() {
           Hizmet bölgeleri ve taşıma koşulları
           <span aria-hidden="true">→</span>
         </Link>
+      </Section>
 
+      {/* Gerçek iş fotoğrafları — dosya yoksa bölüm hiç render edilmez. */}
+      <Section tone="light" labelledBy="galeri-baslik">
         <Gallery />
         <Reviews />
       </Section>
 
-      <Section tone="light" labelledBy="sss-baslik">
+      <Section tone="white" labelledBy="sss-baslik">
         <SectionHeading
           id="sss-baslik"
           eyebrow="Sık sorulanlar"
@@ -228,7 +231,7 @@ export default function HomePage() {
         <Faq items={faqItems} />
       </Section>
 
-      <Section tone="white" labelledBy="rehber-baslik">
+      <Section tone="light" labelledBy="rehber-baslik">
         <SectionHeading
           id="rehber-baslik"
           eyebrow="Rehber"
