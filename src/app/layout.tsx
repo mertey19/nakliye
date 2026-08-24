@@ -7,6 +7,7 @@ import { Footer } from "@/components/Footer";
 import { MobileStickyContactBar } from "@/components/contact/MobileStickyContactBar";
 import { FloatingContactDock } from "@/components/contact/FloatingContactDock";
 import { Analytics } from "@/components/Analytics";
+import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
 import { DevChecklist } from "@/components/DevChecklist";
 import { JsonLd } from "@/components/JsonLd";
 import { movingCompanySchema } from "@/lib/schema";
@@ -74,6 +75,7 @@ export default function RootLayout({
         {/* Yerel işletme varlığı — her sayfada tek kez. */}
         <JsonLd data={movingCompanySchema()} />
         <Analytics />
+        <VercelAnalytics />
       </body>
     </html>
   );
