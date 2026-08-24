@@ -30,7 +30,7 @@ export type Photo = {
 export const photos: Photo[] = [
   {
     src: "/images/kansu-can-nakliye-ekip.webp",
-    alt: "Kansu Can Nakliye ekibi, taşıma aracının önünde el sıkışırken",
+    alt: "Kansu Can Nakliyat ekibi, taşıma aracının önünde el sıkışırken",
     caption: "Teslimat sonrası — Mersin",
   },
 ];
@@ -53,17 +53,17 @@ export const photos: Photo[] = [
 export const promoPhotos: Photo[] = [
   {
     src: "/images/tanitim-arac.webp",
-    alt: "Kansu Can Nakliye tanıtım görseli: firma aracı ile ev, ofis ve şehirler arası taşıma hizmetleri",
+    alt: "Kansu Can Nakliyat tanıtım görseli: firma aracı ile ev, ofis ve şehirler arası taşıma hizmetleri",
     caption: "Ev · Ofis · Şehirler arası",
   },
   {
     src: "/images/tanitim-yukleme.webp",
-    alt: "Kansu Can Nakliye tanıtım görseli: üniformalı ekip kutuları araca yüklerken",
+    alt: "Kansu Can Nakliyat tanıtım görseli: üniformalı ekip kutuları araca yüklerken",
     caption: "Paketleme ve yükleme",
   },
   {
     src: "/images/tanitim-teslimat.webp",
-    alt: "Kansu Can Nakliye tanıtım görseli: ekip üyesi ev önünde müşteriyle el sıkışırken",
+    alt: "Kansu Can Nakliyat tanıtım görseli: ekip üyesi ev önünde müşteriyle el sıkışırken",
     caption: "Evden eve taşıma",
   },
 ];
@@ -76,5 +76,5 @@ export const promoPhotos: Photo[] = [
  */
 export const heroPhoto: Photo | null = {
   src: "/images/kansu-can-nakliye-arac.webp",
-  alt: "Kansu Can Nakliye taşıma aracı, üzerinde firma logosu ve iletişim bilgileri",
+  alt: "Kansu Can Nakliyat taşıma aracı, üzerinde firma logosu ve iletişim bilgileri",
 };

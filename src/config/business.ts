@@ -94,27 +94,33 @@ export const business = {
    * JSON-LD "address" alanı gizlenir.
    */
   address: {
-    street: "",
-    district: "",
+    street: "Çiftlikköy, 3201. Sk. No:15",
+    district: "Yenişehir",
     city: "Mersin",
-    postalCode: "",
+    postalCode: "33150",
     countryCode: "TR",
   } satisfies PostalAddress,
 
   /** { lat, lng } — sadece gerçek konum. BOŞ -> JSON-LD "geo" üretilmez. */
-  coordinates: null as { lat: number; lng: number } | null,
+  coordinates: { lat: 36.7680863, lng: 34.5484853 } as {
+    lat: number;
+    lng: number;
+  } | null,
 
   /** BOŞ dizi -> çalışma saatleri bölümü ve JSON-LD openingHours üretilmez. */
   openingHours: [] as OpeningHour[],
 
   /** Google İşletme Profili linki. BOŞ -> ilgili CTA'lar gizlenir. */
-  googleBusinessProfileUrl: "",
+  googleBusinessProfileUrl:
+    "https://www.google.com/maps?cid=12748944597433871515",
   /** "Yol Tarifi Al" için Google Maps linki. BOŞ -> buton gizlenir. */
-  googleMapsDirectionsUrl: "",
+  googleMapsDirectionsUrl:
+    "https://www.google.com/maps/dir/?api=1&destination=36.7680863%2C34.5484853&travelmode=driving",
   /** Yorum bırakma linki. BOŞ -> gizlenir. */
   googleReviewUrl: "",
   /** Google Maps embed src (place/embed URL). BOŞ -> harita gömülmez. */
-  googleMapsEmbedUrl: "",
+  googleMapsEmbedUrl:
+    "https://www.google.com/maps?q=Kansucan%20Nakliye%2C%20%C3%87iftlikk%C3%B6y%2C%203201.%20Sk.%20No%3A15%2C%2033150%20Yeni%C5%9Fehir%2FMersin&output=embed",
 
   instagram: "https://www.instagram.com/kansucan_nakliye33/",
   facebook: "",

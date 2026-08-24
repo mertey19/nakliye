@@ -25,7 +25,9 @@ const nextConfig: NextConfig = {
     // Eski site URL'leri buraya tek tek 301 olarak eklenir (README "301 Yönlendirmeler").
     // Toplu "hepsi -> /" yönlendirmesi YAPILMAZ.
     return [
-      { source: "/index.html", destination: "/", permanent: true },
+      // /hizmetler diye bir sayfa hiç olmadı; ancak Türkçe sitelerde çok
+      // yaygın bir tahmin-URL'i olduğu için 404 yerine ana ticari sayfaya
+      // yönlendiriliyor. Eski siteden gelen gerçek URL'ler de buraya eklenir.
       { source: "/hizmetler", destination: "/evden-eve-nakliyat", permanent: true },
     ];
   },

@@ -7,10 +7,11 @@ import {
   movingCompanySchema,
   serviceSchema,
   articleSchema,
+  webSiteSchema,
 } from "../src/lib/schema";
 import { services } from "../src/config/services";
 import { business } from "../src/config/business";
-import { hasPhone } from "../src/lib/business";
+import { hasAddress, hasPhone } from "../src/lib/business";
 import { siteUrl } from "../src/config/site";
 
 test("MovingCompany şeması doğrulanmış alanlarla üretilir", () => {
@@ -27,7 +28,11 @@ test("doğrulanmamış alanlar JSON-LD'ye SIZMAZ", () => {
   assert.equal(node.aggregateRating, undefined, "sahte puan üretilemez");
   assert.equal(node.review, undefined, "sahte yorum üretilemez");
   assert.equal(node.priceRange, undefined, "doğrulanmamış fiyat aralığı üretilemez");
-  assert.equal(node.geo, undefined, "uydurma koordinat üretilemez");
+  assert.deepEqual(node.geo, {
+    "@type": "GeoCoordinates",
+    latitude: 36.7680863,
+    longitude: 34.5484853,
+  });
   assert.equal(
     node.openingHoursSpecification,
     undefined,
@@ -46,16 +51,29 @@ test("doğrulanmamış alanlar JSON-LD'ye SIZMAZ", () => {
   }
 });
 
-test("adres yalnızca doğrulanmış parçaları içerir", () => {
+test("adres doğrulanmış parçaları birebir ve doğru alanlarda içerir", () => {
   const node = movingCompanySchema() as Record<string, unknown>;
   const address = node.address as Record<string, unknown>;
-  assert.equal(address.addressLocality, business.primaryCity);
   assert.equal(address.addressCountry, "TR");
-  assert.equal(
-    address.streetAddress,
-    undefined,
-    "açık adres girilmeden streetAddress üretilmemeli",
-  );
+
+  if (hasAddress) {
+    // TÜRKİYE EŞLEMESİ: addressLocality = İLÇE, addressRegion = İL.
+    // Ters yazılırsa Google işletmeyi yanlış idari birimle eşleştirir.
+    assert.equal(address.streetAddress, business.address.street);
+    assert.equal(address.addressLocality, business.address.district);
+    assert.equal(address.addressRegion, business.address.city);
+    assert.equal(address.postalCode, business.address.postalCode);
+    assert.notEqual(
+      address.addressLocality,
+      address.addressRegion,
+      "ilçe ile il aynı değere ayarlanmış",
+    );
+  } else {
+    // Sokak/ilçe doğrulanmadıysa yalnızca il yayınlanır, uydurma alan olmaz.
+    assert.equal(address.addressLocality, business.primaryCity);
+    assert.equal(address.streetAddress, undefined);
+    assert.equal(address.postalCode, undefined);
+  }
 });
 
 test("her hizmet için Service şeması sayfa URL'siyle eşleşir", () => {
@@ -118,4 +136,29 @@ test("JSON-LD serileştirilebilir (undefined/döngü yok)", () => {
   for (const node of all) {
     assert.doesNotThrow(() => JSON.stringify(node));
   }
+});
+
+test("işletme şeması logo ve gerçek görsel taşır", () => {
+  const node = movingCompanySchema() as Record<string, unknown>;
+  assert.ok(
+    typeof node.logo === "string" && node.logo.startsWith(siteUrl),
+    "logo mutlak URL olmalı",
+  );
+  const images = node.image as string[];
+  assert.ok(Array.isArray(images) && images.length > 0, "en az bir görsel olmalı");
+  for (const img of images) {
+    assert.ok(img.startsWith(siteUrl), `görsel mutlak URL değil: ${img}`);
+    assert.ok(img.includes("/images/"), `beklenmeyen görsel yolu: ${img}`);
+  }
+});
+
+test("WebSite düğümü işletmeyle çelişmez, ona bağlanır", () => {
+  const site = webSiteSchema() as Record<string, unknown>;
+  assert.equal(site["@type"], "WebSite");
+  assert.equal(site.url, siteUrl);
+  assert.deepEqual(site.publisher, { "@id": `${siteUrl}/#business` });
+  // Aynı @id iki farklı entity'ye verilmemeli
+  assert.notEqual(site["@id"], `${siteUrl}/#business`);
+  // Olmayan site içi arama bildirilmemeli
+  assert.equal(site.potentialAction, undefined);
 });

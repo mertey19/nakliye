@@ -5,6 +5,10 @@ import { business } from "../src/config/business";
 import {
   formatTrPhone,
   hasAddress,
+  hasCoordinates,
+  hasDirections,
+  hasGbp,
+  hasMapEmbed,
   hasPhone,
   hasReviews,
   hasWhatsApp,
@@ -47,8 +51,20 @@ test("doğrulanmamış alanlar boş bırakılmış (uydurma veri yok)", () => {
   assert.equal(business.teamSize, null, "ekip sayısı uydurulmamalı");
   assert.equal(business.hasTransportInsurance, null, "sigorta iddiası uydurulmamalı");
   assert.equal(business.priceRange, "", "fiyat aralığı uydurulmamalı");
-  assert.equal(business.coordinates, null, "koordinat uydurulmamalı");
+  assert.equal(business.coordinates?.lat, 36.7680863);
+  assert.equal(business.coordinates?.lng, 34.5484853);
   assert.equal(hasReviews, false, "yorum dizisi boşken yorum gösterilmemeli");
+});
+
+test("doğrulanmış Google konumu, harita ve yol tarifi eksiksiz", () => {
+  assert.equal(hasAddress, true);
+  assert.equal(hasCoordinates, true);
+  assert.equal(hasDirections, true);
+  assert.equal(hasMapEmbed, true);
+  assert.equal(hasGbp, true);
+  assert.match(business.googleBusinessProfileUrl, /google\.com\/maps/);
+  assert.match(business.googleMapsDirectionsUrl, /\/maps\/dir\//);
+  assert.match(business.googleMapsEmbedUrl, /output=embed/);
 });
 
 test("eksik iş bilgisi kontrol listesi telefon/adres eksiğini bildirir", () => {

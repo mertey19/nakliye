@@ -44,6 +44,18 @@ export const guides: GuideDef[] = [
     readingMinutes: 5,
   },
   {
+    slug: "asansorsuz-ev-nasil-tasinir",
+    title: `Asansörsüz Ev Nasıl Taşınır? | ${business.name}`,
+    h1: "Asansörsüz Ev Nasıl Taşınır?",
+    description:
+      "Asansörsüz binada taşınma süreci nasıl planlanır, hangi eşyalar merdivenden çıkmaz, süre ve maliyet ne kadar artar? Taşınmadan önce bilmeniz gereken pratik bilgiler.",
+    summary:
+      "Asansör yoksa taşıma nasıl planlanır, hangi eşyalar sorun çıkarır, süre ne kadar uzar?",
+    updated: "2026-08-24",
+    ctaServiceSlug: "evden-eve-nakliyat",
+    readingMinutes: 6,
+  },
+  {
     slug: "esyalar-nasil-paketlenir",
     title: `Eşyalar Nasıl Paketlenir? | ${business.name}`,
     h1: "Eşyalar Nasıl Paketlenir?",

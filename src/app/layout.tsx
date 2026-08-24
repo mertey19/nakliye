@@ -10,7 +10,7 @@ import { Analytics } from "@/components/Analytics";
 import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
 import { DevChecklist } from "@/components/DevChecklist";
 import { JsonLd } from "@/components/JsonLd";
-import { movingCompanySchema } from "@/lib/schema";
+import { movingCompanySchema, webSiteSchema } from "@/lib/schema";
 import { business } from "@/config/business";
 import { site, siteUrl } from "@/config/site";
 
@@ -73,7 +73,7 @@ export default function RootLayout({
         <DevChecklist />
 
         {/* Yerel işletme varlığı — her sayfada tek kez. */}
-        <JsonLd data={movingCompanySchema()} />
+        <JsonLd data={[movingCompanySchema(), webSiteSchema()]} />
         <Analytics />
         <VercelAnalytics />
       </body>

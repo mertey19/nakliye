@@ -1,5 +1,6 @@
 import { business } from "@/config/business";
 import { reviews } from "@/config/reviews";
+import { photos, heroPhoto } from "@/config/photos";
 import { siteUrl, absoluteUrl } from "@/config/site";
 import type { ServiceDef } from "@/config/services";
 import {
@@ -27,21 +28,30 @@ export function movingCompanySchema(): Json {
     "@id": ORGANIZATION_ID,
     name: business.name,
     url: siteUrl,
-    // Şehir doğrulanmış bilgi; sokak/ilçe doğrulanana kadar sadece il yayınlanır.
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: business.address.city,
-      addressCountry: business.address.countryCode,
-      ...(hasAddress
-        ? {
-            streetAddress: business.address.street,
-            addressRegion: business.address.district,
-            ...(business.address.postalCode
-              ? { postalCode: business.address.postalCode }
-              : {}),
-          }
-        : {}),
-    },
+    /**
+     * Türkiye adres yapısında schema.org eşlemesi:
+     *   addressLocality = İLÇE  (Yenişehir)
+     *   addressRegion   = İL    (Mersin)
+     * Bu ikisi ters yazılırsa Google işletmeyi yanlış idari birimle eşler.
+     *
+     * Sokak/ilçe doğrulanana kadar yalnızca il yayınlanır; uydurma alan yok.
+     */
+    address: hasAddress
+      ? {
+          "@type": "PostalAddress",
+          streetAddress: business.address.street,
+          addressLocality: business.address.district,
+          addressRegion: business.address.city,
+          addressCountry: business.address.countryCode,
+          ...(business.address.postalCode
+            ? { postalCode: business.address.postalCode }
+            : {}),
+        }
+      : {
+          "@type": "PostalAddress",
+          addressLocality: business.address.city,
+          addressCountry: business.address.countryCode,
+        },
     areaServed: [
       { "@type": "City", name: business.primaryCity },
       ...business.serviceAreas.map((a) => ({
@@ -50,6 +60,14 @@ export function movingCompanySchema(): Json {
       })),
     ],
     knowsLanguage: "tr",
+    // Marka görseli ve iş görseli — Google'ın işletmeyi tanıması ve
+    // GBP kaydıyla eşleştirmesi için. İkisi de gerçek dosya.
+    logo: absoluteUrl("/icon.svg"),
+    // heroPhoto null olabilir; sadece tanımlıysa eklenir (uydurma URL yok).
+    image: [
+      ...(heroPhoto ? [absoluteUrl(heroPhoto.src)] : []),
+      ...photos.map((p) => absoluteUrl(p.src)),
+    ],
   };
 
   // Aynı işletmenin ikinci yazımı — Google iki adı tek varlıkta birleştirsin.
@@ -175,5 +193,28 @@ export function articleSchema(input: {
     author: { "@id": ORGANIZATION_ID },
     publisher: { "@id": ORGANIZATION_ID },
     mainEntityOfPage: absoluteUrl(input.path),
+  };
+}
+
+export const WEBSITE_ID = `${siteUrl}/#website`;
+
+/**
+ * WebSite düğümü.
+ * İşletme entity'siyle ÇELİŞMEZ: ayrı bir işletme tanımlamaz, siteyi
+ * işletmeye `publisher` ile bağlar. Böylece Google "bu site şu işletmeye
+ * ait" ilişkisini açıkça görür.
+ *
+ * SearchAction EKLENMEDİ: sitede site içi arama yok, olmayan bir özelliği
+ * bildirmek yanlış olur.
+ */
+export function webSiteSchema(): Json {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": WEBSITE_ID,
+    url: siteUrl,
+    name: business.name,
+    inLanguage: "tr-TR",
+    publisher: { "@id": ORGANIZATION_ID },
   };
 }

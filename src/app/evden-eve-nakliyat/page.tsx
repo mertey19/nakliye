@@ -289,6 +289,19 @@ export default function EvdenEveNakliyatPage() {
             </li>
             <li>
               <Link
+                href="/rehber/asansorsuz-ev-nasil-tasinir"
+                className="block rounded-card border border-line-soft bg-white p-5 hover:border-ink-500"
+              >
+                <span className="font-bold text-ink-900">
+                  Asansörsüz Ev Nasıl Taşınır?
+                </span>
+                <span className="mt-1 block text-[15px] text-ink-500">
+                  Kat, merdiven ve ölçü planlaması.
+                </span>
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="/hizmet-bolgeleri"
                 className="block rounded-card border border-line-soft bg-white p-5 hover:border-ink-500"
               >

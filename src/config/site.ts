@@ -17,7 +17,9 @@ import { business } from "./business";
  * tarayıcı paketinde `undefined` olur ve sunucu/istemci değerleri ayrışır.
  */
 
-const PLACEHOLDER_SITE_URL = "https://kansucannakliye.com";
+// Gerçek kanonik alan adı. NOT: araç kaplamasında yazan .com adresi
+// KAYITLI DEĞİL; canlı site .com.tr üzerinde.
+const PLACEHOLDER_SITE_URL = "https://www.kansucannakliye.com.tr";
 
 function resolveSiteUrl(): { url: string; source: "env" | "vercel" | "placeholder" } {
   const explicit = process.env.NEXT_PUBLIC_SITE_URL?.trim();

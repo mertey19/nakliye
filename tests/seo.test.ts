@@ -138,3 +138,36 @@ test("hizmet özetleri ve kapsam maddeleri boş değil", () => {
     assert.ok(s.highlights.length >= 3, `${s.slug} için yeterli kapsam maddesi yok`);
   }
 });
+
+test("sitemap lastmod GERÇEK içerik tarihi — derleme tarihi değil", () => {
+  const today = new Date().toISOString().slice(0, 10);
+  const dates = indexableRoutes.map((r) => r.lastModified);
+
+  for (const d of dates) {
+    assert.match(d, /^\d{4}-\d{2}-\d{2}$/, `geçersiz tarih biçimi: ${d}`);
+    assert.ok(
+      !Number.isNaN(Date.parse(d)),
+      `ayrıştırılamayan tarih: ${d}`,
+    );
+    assert.ok(d <= today, `gelecek tarihli lastmod: ${d}`);
+  }
+
+  // Asıl koruma: her sayfa "bugün" damgalanmışsa tarih derlemeden geliyordur.
+  // Google böyle bir sitemap'in lastmod sinyalini tamamen yok sayar.
+  const allToday = dates.every((d) => d === today);
+  assert.ok(
+    !allToday,
+    "tüm sayfalar bugünün tarihini taşıyor — lastmod derleme tarihinden üretiliyor olabilir",
+  );
+});
+
+test("rehber sayfalarının sitemap tarihi, sayfada görünen güncelleme tarihiyle aynı", () => {
+  for (const g of guides) {
+    const route = indexableRoutes.find((r) => r.path === `/rehber/${g.slug}`);
+    assert.equal(
+      route?.lastModified,
+      g.updated,
+      `${g.slug}: sitemap tarihi sayfadaki tarihten farklı`,
+    );
+  }
+});

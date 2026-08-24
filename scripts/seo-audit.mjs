@@ -24,6 +24,7 @@ const routes = [
   "/hakkimizda",
   "/rehber",
   "/rehber/ev-tasirken-yapilmasi-gerekenler",
+  "/rehber/asansorsuz-ev-nasil-tasinir",
   "/rehber/nakliye-firmasi-secerken",
   "/rehber/esyalar-nasil-paketlenir",
   "/gizlilik-politikasi",
@@ -143,7 +144,9 @@ for (const route of routes) {
 }
 
 function canonicalBase() {
-  return (process.env.NEXT_PUBLIC_SITE_URL || "https://kansucannakliye.com").replace(
+  return (
+    process.env.NEXT_PUBLIC_SITE_URL || "https://www.kansucannakliye.com.tr"
+  ).replace(
     /\/+$/,
     "",
   );

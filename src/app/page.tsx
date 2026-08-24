@@ -14,6 +14,7 @@ import { Gallery } from "@/components/sections/Gallery";
 import { PromoStrip } from "@/components/sections/PromoStrip";
 import { WhatsAppSection } from "@/components/sections/WhatsAppSection";
 import { CtaBand } from "@/components/sections/CtaBand";
+import { HomeLocation } from "@/components/sections/HomeLocation";
 import { JsonLd } from "@/components/JsonLd";
 
 import { business } from "@/config/business";
@@ -215,6 +216,7 @@ export default function HomePage() {
           Hizmet bölgeleri ve taşıma koşulları
           <span aria-hidden="true">→</span>
         </Link>
+        <HomeLocation />
       </Section>
 
       {/* Gerçek iş fotoğrafları — dosya yoksa bölüm hiç render edilmez. */}

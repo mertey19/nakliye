@@ -55,14 +55,7 @@ export const hasAddress: boolean =
   business.address.district.trim().length > 0;
 
 export const addressOneLine: string = hasAddress
-  ? [
-      business.address.street,
-      business.address.district,
-      business.address.postalCode,
-      business.address.city,
-    ]
-      .filter((p) => p.trim().length > 0)
-      .join(", ")
+  ? `${business.address.street}, ${business.address.postalCode ? `${business.address.postalCode} ` : ""}${business.address.district}/${business.address.city}`
   : "";
 
 export const hasCoordinates: boolean = business.coordinates !== null;

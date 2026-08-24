@@ -64,12 +64,12 @@ Tümü tek dosyada: **`src/config/business.ts`**
 | `phone` + `phoneDisplay`         | ✅ DOLU    | `+905464199007` / `0546 419 90 07` — arama CTA'ları aktif.                  |
 | `whatsapp`                       | ✅ DOLU    | `905464199007` — tüm WhatsApp CTA'ları ve teklif formu WhatsApp'a bağlı.    |
 | `email`                          | ✅ DOLU    | `kansucannakliyat@gmail.com`                                                |
-| `address.street` / `.district`   | BOŞ 🟠     | Adres bloğu ve JSON-LD `streetAddress` üretilmiyor.                         |
-| `coordinates`                    | BOŞ 🟠     | JSON-LD `geo` üretilmiyor.                                                  |
+| `address.street` / `.district`   | ✅ DOLU    | Google İşletme Profiliyle aynı açık adres yayınlanıyor.                     |
+| `coordinates`                    | ✅ DOLU    | Doğrulanmış Google Haritalar konumu JSON-LD `geo` içinde yayınlanıyor.       |
 | `openingHours`                   | BOŞ 🟠     | Çalışma saatleri bölümü ve `openingHoursSpecification` yok.                 |
-| `googleBusinessProfileUrl`       | BOŞ 🟠     | GBP bağlantısı ve `sameAs` sinyali yok.                                     |
-| `googleMapsDirectionsUrl`        | BOŞ 🟠     | "Yol Tarifi Al" butonu gizli.                                               |
-| `googleMapsEmbedUrl`             | BOŞ 🟡     | İletişim sayfasında harita yerine metin gösteriliyor.                       |
+| `googleBusinessProfileUrl`       | ✅ DOLU    | GBP bağlantısı ve `sameAs` sinyali etkin.                                   |
+| `googleMapsDirectionsUrl`        | ✅ DOLU    | "Yol Tarifi Al" butonu Google Haritalar rotasını açıyor.                    |
+| `googleMapsEmbedUrl`             | ✅ DOLU    | Ana sayfa ve iletişim sayfasında işletme konumu gösteriliyor.                |
 | `instagram`                      | ✅ DOLU    | `kansucan_nakliye33` — footer, iletişim ve JSON-LD `sameAs` içinde.          |
 | `facebook`                       | BOŞ 🟡     | Varsa eklenir; yoksa bağlantı gösterilmez.                                  |
 | `serviceAreas`                   | Varsayılan 🟠 | Mersin merkez 4 ilçe listeli. **Hizmet verilmeyen ilçe varsa SİLİN**, merkez dışına da gidiliyorsa EKLEYİN. |

@@ -68,10 +68,17 @@ const faqItems: FaqItem[] = [
   },
 ];
 
-const checklistItems = [
+const checklistItems: {
+  title: string;
+  text: string;
+  href?: string;
+  hrefLabel?: string;
+}[] = [
   {
     title: "Kat ve asansör",
     text: "Kaçıncı kattasınız, asansör var mı ve eşyalar asansöre sığıyor mu? Asansörsüz kat, işçilik ve süreyi doğrudan etkiler.",
+    href: "/rehber/asansorsuz-ev-nasil-tasinir",
+    hrefLabel: "Asansörsüz ev taşıma rehberi",
   },
   {
     title: "Araç yaklaşımı",
@@ -143,6 +150,14 @@ export default function HizmetBolgeleriPage() {
                 <p className="mt-2 text-[15px] leading-relaxed text-ink-500">
                   {c.text}
                 </p>
+                {c.href && (
+                  <Link
+                    href={c.href}
+                    className="mt-3 inline-block py-1 text-[14px] font-bold text-ink-900 underline decoration-1 underline-offset-4 transition-colors hover:text-ink-500"
+                  >
+                    {c.hrefLabel} →
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
