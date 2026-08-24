@@ -52,6 +52,8 @@ export function movingCompanySchema(): Json {
     knowsLanguage: "tr",
   };
 
+  // Aynı işletmenin ikinci yazımı — Google iki adı tek varlıkta birleştirsin.
+  if (business.alternateName) node.alternateName = business.alternateName;
   if (business.legalName) node.legalName = business.legalName;
   if (hasPhone) node.telephone = business.phone;
   if (business.email) node.email = business.email;

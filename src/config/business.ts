@@ -47,8 +47,23 @@ export type ServiceArea = {
 };
 
 export const business = {
-  /** Google İşletme Profili'ndeki isimle birebir aynı olmalı. */
-  name: "Kansu Can Nakliye",
+  /**
+   * Google İşletme Profili'ndeki isimle BİREBİR aynı olmalı.
+   * DOĞRULANDI: GBP kaydında "Kansu Can Nakliyat" yazıyor.
+   */
+  name: "Kansu Can Nakliyat",
+
+  /**
+   * Firmanın görünür olduğu ikinci yazım.
+   * Araç kaplamasında, afişte ve Instagram'da "Kansu Can Nakliye" geçiyor;
+   * alan adı da kansucannakliye.com. Aynı işletmeye ait bu yazım JSON-LD'de
+   * `alternateName` olarak bildirilir ki Google iki adı tek işletme olarak
+   * eşleştirsin ve "kansu can nakliye" aramasında da site çıksın.
+   *
+   * İki yazımdan biri tamamen terk edilirse burası boşaltılmalıdır.
+   */
+  alternateName: "Kansu Can Nakliye",
+
   /** Ticari unvan (varsa). Bilinmiyorsa boş bırakın; footer'da gizlenir. */
   legalName: "",
 

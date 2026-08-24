@@ -22,7 +22,7 @@ export default function OpengraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#0b2440",
+          background: "#13181c",
           padding: "72px 80px",
           color: "#ffffff",
         }}
@@ -30,9 +30,9 @@ export default function OpengraphImage() {
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div
             style={{
-              fontSize: 26,
-              letterSpacing: 6,
-              color: "#fbbf24",
+              fontSize: 24,
+              letterSpacing: 7,
+              color: "#d3d4d5",
               fontWeight: 700,
             }}
           >
@@ -64,11 +64,11 @@ export default function OpengraphImage() {
                 key={label}
                 style={{
                   display: "flex",
-                  border: "2px solid #1b5e9e",
+                  border: "1px solid #51565a",
                   borderRadius: 999,
                   padding: "10px 22px",
                   fontSize: 25,
-                  color: "#d7e7f7",
+                  color: "#d3d4d5",
                 }}
               >
                 {label}
@@ -76,7 +76,7 @@ export default function OpengraphImage() {
             ))}
           </div>
           {hasPhone && (
-            <div style={{ display: "flex", fontSize: 34, fontWeight: 700, color: "#fbbf24" }}>
+            <div style={{ display: "flex", fontSize: 34, fontWeight: 700, color: "#ffffff" }}>
               {phoneLabel}
             </div>
           )}

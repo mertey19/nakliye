@@ -46,9 +46,16 @@ npm run seo:audit -- http://localhost:3000
 
 ## ⚠️ YAYINA ALMADAN ÖNCE DOLDURULMASI ZORUNLU
 
-Site **doğrulanmamış hiçbir bilgi içermiyor**. Telefon ve WhatsApp girildi
-(0546 419 90 07); arama ve WhatsApp CTA'ları aktif. Aşağıdaki alanlar hâlâ boş
-ve dolana kadar ilgili bölümler **otomatik gizli** kalır.
+Site **doğrulanmamış hiçbir bilgi içermiyor**. Telefon, WhatsApp, e-posta,
+Instagram ve gerçek fotoğraflar girildi. Aşağıdaki alanlar hâlâ boş ve dolana
+kadar ilgili bölümler **otomatik gizli** kalır.
+
+> **Firma adı:** Google İşletme Profili'ndeki yazım esas alındı →
+> **Kansu Can Nakliyat**. Araç kaplaması, afiş, Instagram ve alan adı
+> "Kansu Can Nakliye" yazımını kullanıyor; bu ikinci yazım JSON-LD'de
+> `alternateName` olarak bildiriliyor ki Google iki adı tek işletme sayabilsin.
+> Kalıcı çözüm için ikisinden birinde birleşilmesi gerekir (bkz. GBP kontrol
+> listesi).
 
 Tümü tek dosyada: **`src/config/business.ts`**
 

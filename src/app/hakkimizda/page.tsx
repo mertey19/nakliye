@@ -22,7 +22,7 @@ const city = business.primaryCity;
  * bu bilgiler config/business.ts'ye girildiğinde buraya eklenmelidir.
  */
 export const metadata: Metadata = {
-  title: `Hakkımızda | ${business.name} — ${city} Nakliyat`,
+  title: `Hakkımızda — ${city}'de Taşımacılık | ${business.name}`,
   description: `${business.name} nasıl çalışır? ${city}'de evden eve nakliyat, ofis taşıma ve paketleme hizmetlerinde izlediğimiz yöntem, fiyatlandırma yaklaşımımız ve söz verdiğimiz sınırlar.`,
   alternates: { canonical: absoluteUrl("/hakkimizda") },
   openGraph: {

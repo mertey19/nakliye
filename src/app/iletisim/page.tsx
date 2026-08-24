@@ -48,7 +48,7 @@ const DAY_TR: Record<string, string> = {
  * Profili ile birebir aynı kaynaktan gelir.
  */
 export const metadata: Metadata = {
-  title: `İletişim | ${business.name} — ${city} Nakliyat`,
+  title: `İletişim ve Telefon | ${business.name}`,
   description: `${business.name} iletişim bilgileri. ${city} içi ve şehirler arası taşıma için telefon, WhatsApp veya teklif formu üzerinden ulaşın.`,
   alternates: { canonical: absoluteUrl("/iletisim") },
   openGraph: {
