@@ -300,8 +300,36 @@ yerine koyu marka plakası gösterilir.
 
 ## Google Search Console kurulumu
 
-1. **Mülk ekleme** — Domain (DNS) mülkü tercih edin; www/non-www ve http/https varyantlarını tek yerde toplar.
-2. **Doğrulama** — DNS TXT kaydı önerilir. HTML meta ile doğrulayacaksanız `NEXT_PUBLIC_GSC_VERIFICATION` değişkenine doğrulama kodunu yazın; `<head>` içine otomatik eklenir.
+### Doğrulama durumu
+
+HTML dosya yöntemi kullanıldı ve dosya repoda hazır:
+
+```
+public/googlef1d5a46ab1e079ef.html
+→ https://kansucannakliye.com/googlef1d5a46ab1e079ef.html
+```
+
+`tests/verification.test.ts` bu dosyanın varlığını ve içeriğini kilitler.
+**Silmeyin:** Google dosyayı periyodik olarak yeniden kontrol eder; kaybolursa
+doğrulama düşer ve mülkün tüm geçmiş verisine erişim kapanır.
+
+> **Sıra önemli:** dosya ancak alan adı Vercel'e bağlandıktan ve dağıtım
+> yapıldıktan sonra erişilebilir olur. Domain bağlanmadan "Doğrula"ya
+> basarsanız başarısız olur.
+
+**Mülk tipi:** HTML dosya yöntemi yalnızca *URL öneki* mülkünü doğrular
+(`https://kansucannakliye.com/`). İleride `www`, `http` ve olası alt alan
+adlarını tek çatıda toplamak isterseniz ayrıca bir **Domain (DNS)** mülkü
+ekleyip DNS TXT kaydıyla doğrulayın — ikisi bir arada kullanılabilir.
+
+Alternatif olarak HTML meta etiketi yöntemi de destekleniyor:
+`NEXT_PUBLIC_GSC_VERIFICATION` değişkenine kodu yazarsanız `<head>` içine
+otomatik eklenir.
+
+### Kurulum adımları
+
+1. **Mülk ekleme** — Search Console'da URL öneki mülkü olarak `https://kansucannakliye.com` ekleyin.
+2. **Doğrulama** — "HTML dosyası" yöntemini seçip **Doğrula**'ya basın (dosya yayında hazır).
 3. **Sitemap gönderimi** — Sitemaps → `https://ALANADI/sitemap.xml`
 4. **URL denetimi** — Ana sayfa ve `/evden-eve-nakliyat` için "Canlı URL'yi test et" → "Dizine ekleme iste".
 5. **Zengin sonuç kontrolü** — [Rich Results Test](https://search.google.com/test/rich-results) ile `/evden-eve-nakliyat` (Service + FAQ + Breadcrumb) ve ana sayfa (MovingCompany + FAQ) doğrulanmalı.
