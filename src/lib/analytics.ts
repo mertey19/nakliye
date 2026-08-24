@@ -24,7 +24,9 @@ export type ConversionEvent =
   | "floating_quote_click"
   | "sticky_mobile_phone_click"
   | "sticky_mobile_whatsapp_click"
-  | "sticky_mobile_quote_click";
+  | "sticky_mobile_quote_click"
+  // Sosyal medya (dışa giden tıklama)
+  | "instagram_click";
 
 export type EventParams = {
   /** CTA'nın sayfadaki yeri: "header" | "hero" | "sticky_dock" | "footer" | ... */

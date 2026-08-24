@@ -197,6 +197,9 @@ Sayfa içi CTA ve form:
 `quote_form_step_1` · `quote_form_step_2` · `quote_form_submit` ·
 `quote_form_success` · `quote_form_error` · `directions_click` · `service_view`
 
+Sosyal:
+`instagram_click` (header'daki Instagram bağlantısı — dışa giden tıklama)
+
 Kalıcı CTA sistemi (masaüstü dock ve mobil bar ayrı ölçülür):
 `floating_phone_click` · `floating_whatsapp_click` · `floating_quote_click` ·
 `sticky_mobile_phone_click` · `sticky_mobile_whatsapp_click` ·
@@ -264,6 +267,16 @@ kendi aracının dijital uzantısı gibi durması.
 | White | `#FFFFFF` | Kart, koyu zeminde birincil CTA |
 | Card (dark) | `#1C2226` | Koyu bölümlerdeki kartlar |
 | WhatsApp | `#25D366` | **Sadece** WhatsApp ikonunda. Sisteme yayılmaz. |
+
+**Sosyal ikonlar tek renktir.** Instagram'ın renkli gradienti bilinçli olarak
+kullanılmadı: sistemde aksan rengi yok ve gradient premium duruşu düşürür.
+Glif tek renkte de anında tanınıyor. Header'daki Instagram butonu `.icon-btn`
+sınıfını kullandığı için scroll ile koyulaşan header'da otomatik beyaza döner.
+
+**Header ikon hiyerarşisi:** telefon `.icon-btn-primary` (dolu yüzey),
+Instagram ve menü `.icon-btn` (outline). Dönüşüm aksiyonu görsel olarak önde
+kalır. Instagram üst barda 360px–767px ve 768px+ aralıklarında tek kez görünür;
+320px altında üst bardan düşer, mobil menü panelindeki satır devrede kalır.
 
 Tokenlar `src/app/globals.css` içinde `@theme` bloğunda tanımlı; Tailwind
 sınıfları (`bg-ink-900`, `text-ink-500`, `border-line-soft` …) buradan türer.

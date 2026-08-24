@@ -152,6 +152,12 @@ h3 {
   color: var(--color-ink-900);
   border-color: var(--color-line);
 }
+/* Birincil ikon butonu (telefon): dolu yüzey, dönüşümde önde kalsın. */
+.site-header .icon-btn-primary {
+  background: var(--color-ink-900);
+  border-color: var(--color-ink-900);
+  color: #ffffff;
+}
 
 .site-header[data-scrolled="true"] {
   background: rgba(19, 24, 28, 0.95);
@@ -178,6 +184,11 @@ h3 {
 .site-header[data-scrolled="true"] .icon-btn {
   color: #ffffff;
   border-color: rgba(255, 255, 255, 0.22);
+}
+.site-header[data-scrolled="true"] .icon-btn-primary {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: var(--color-ink-900);
 }
 /* Scroll sonrası koyu navbar üzerinde birincil CTA ters çevrilir */
 .site-header[data-scrolled="true"] .header-cta {

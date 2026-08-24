@@ -7,6 +7,7 @@ import { hasPhone } from "@/lib/business";
 import { business } from "@/config/business";
 import { formatPhoneForDisplay, formatPhoneForTel } from "@/lib/contact";
 import { PhoneIcon } from "./cta/ConversionButtons";
+import { InstagramLink, InstagramGlyph } from "./InstagramLink";
 import type { NavItem } from "./nav";
 
 /**
@@ -20,6 +21,14 @@ export function MobileNav({ items }: { items: NavItem[] }) {
   return (
     <div className="lg:hidden">
       <div className="flex items-center gap-2">
+        {/* Görünürlük aralığı: 360px - 767px.
+            320px altında üst bar sıkışmasın diye gizli (menü panelinde var);
+            md ve üstünde masaüstü kümesindeki Instagram devreye girdiği için
+            burada gizlenir — aksi halde 768-1023 arasında iki kez çıkardı. */}
+        <InstagramLink
+          location="header_mobile"
+          className="hidden min-[360px]:flex md:hidden"
+        />
         {hasPhone && (
           <a
             href={`tel:${formatPhoneForTel(business.phone)}`}
@@ -30,7 +39,7 @@ export function MobileNav({ items }: { items: NavItem[] }) {
               })
             }
             aria-label={`Telefonla ara: ${formatPhoneForDisplay(business.phone)}`}
-            className="icon-btn flex h-11 w-11 items-center justify-center rounded-[10px] border transition-colors md:hidden"
+            className="icon-btn icon-btn-primary flex h-11 w-11 items-center justify-center rounded-[10px] border transition-colors md:hidden"
           >
             <PhoneIcon />
           </a>
@@ -79,6 +88,20 @@ export function MobileNav({ items }: { items: NavItem[] }) {
                 </Link>
               </li>
             ))}
+            {business.instagram && (
+              <li>
+                <a
+                  href={business.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setOpen(false)}
+                  className="flex min-h-[52px] items-center gap-2.5 text-[15px] font-medium tracking-[-0.01em] text-ink-900"
+                >
+                  <InstagramGlyph size={18} />
+                  Instagram
+                </a>
+              </li>
+            )}
             <li className="pt-4">
               <Link
                 href="/teklif-al"
