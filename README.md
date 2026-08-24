@@ -308,6 +308,16 @@ sınıfı alır; bu sınıf odak halkasını ve uzun metin renklerini otomatik t
 **Navbar:** açık zeminde başlar, 24px scroll sonrası koyuya döner
 (`HeaderShell` → `data-scrolled`). Yükseklik sabit 72px olduğu için CLS üretmez.
 
+**Site ikonu (favicon):** `src/app/icon.svg` — KC monogramı, siyah zemin
+(#13181C) üzerine beyaz. Tek kaynak, SVG olduğu için her boyutta keskin.
+16px'te okunabilirlik için hız çizgisi gibi ince öğe yok; K ile C arasında
+bilinçli boşluk var. `src/app/apple-icon.tsx` aynı monogramı iOS ana ekranı
+için 180×180 üretir — köşeleri yuvarlatmaz (iOS kendi maskesini uygular) ve
+saydamlık içermez. `theme-color` (#13181c) ikonla aynı tonda.
+
+Monogram değişirse `icon.svg` ile `apple-icon.tsx` içindeki yol verileri
+BİRLİKTE güncellenmelidir; ikisi aynı 64'lük tasarım ızgarasını kullanır.
+
 **Fotoğraf:** `.photo` sınıfı `saturate(0.85) contrast(1.03)` uygular — site
 temasına oturur ama siyah-beyaza çevrilmez. Hover'da en fazla `scale(1.02)`.
 `config/photos.ts` içindeki `heroPhoto` doldurulduğunda hero iki sütunlu

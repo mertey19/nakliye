@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!--
+    KANSU CAN NAKLİYAT — tarayıcı sekmesi ikonu (KC monogramı)
+
+    Tasarım kararları:
+    - Siyah zemin (#13181C) + beyaz monogram: marka sistemiyle aynı; hem açık
+      hem koyu tarayıcı temasında okunur.
+    - 16px'te ayrıntı kaybolduğu için hız çizgisi/ince öğe YOK; kalın geometrik
+      harf formları kullanıldı.
+    - K ile C arasında bilinçli boşluk var: 16px'te iki harf birbirine girmesin.
+    - Mürekkep alanı yatay ve dikeyde ortalandı, kenarlarda nefes payı bırakıldı.
+    - SVG olduğu için her boyutta keskin; tek dosya yeterli.
+  -->
+  <rect width="64" height="64" rx="14" fill="#13181C" />
+  <g
+    stroke="#FFFFFF"
+    stroke-width="6.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"
+  >
+    <!-- K: dikey gövde + iki kol -->
+    <path d="M15.75 21V43" />
+    <path d="M15.75 32L24.25 21.5" />
+    <path d="M15.75 32L25.25 42.5" />
+    <!-- C: sağ tarafı açık yay -->
+    <path d="M46.05 26.7A7.5 7.5 0 1 0 46.05 37.3" />
+  </g>
+</svg>
