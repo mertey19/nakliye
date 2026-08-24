@@ -551,5 +551,20 @@ Bu proje aşağıdakileri bilinçli olarak **yapmaz**; sonradan da eklenmemeli:
 
 ## Dokümantasyon
 
-- [`docs/seo/arama-amaci-haritasi.md`](docs/seo/arama-amaci-haritasi.md) — hangi arama hangi sayfaya gider, yamyamlaşma kararları, yeni sayfa açma koşulları
-- `scripts/seo-audit.mjs` — çalışan siteye karşı SEO QA matrisi üreten denetim scripti
+| Dosya | İçerik |
+| --- | --- |
+| [`docs/seo/SEO_AUDIT.md`](docs/seo/SEO_AUDIT.md) | Canlı site denetimi: mimari, alan adı davranışı, sayfa matrisi, bulunan ve düzeltilen sorunlar |
+| [`docs/seo/KEYWORD_MAP.md`](docs/seo/KEYWORD_MAP.md) | Hangi sorgu hangi sayfayı hedefliyor; yamyamlaşma kararları; yeni sayfa açma eşiği |
+| [`docs/seo/arama-amaci-haritasi.md`](docs/seo/arama-amaci-haritasi.md) | Arama amacı matrisi (ayrıntılı) |
+| [`docs/seo/LOCAL_SEO_PLAN.md`](docs/seo/LOCAL_SEO_PLAN.md) | Yerel varlık sinyalleri, öncelik sırası, yorum toplama süreci |
+| [`docs/seo/GOOGLE_BUSINESS_PROFILE_CHECKLIST.md`](docs/seo/GOOGLE_BUSINESS_PROFILE_CHECKLIST.md) | İşletme sahibinin GBP panelinde yapacağı işler |
+| [`docs/seo/LOCAL_BACKLINK_PLAN.md`](docs/seo/LOCAL_BACKLINK_PLAN.md) | Dizin kayıtları, gerçek yerel bağlantı fırsatları (spam yok) |
+| [`docs/seo/SEARCH_CONSOLE_SETUP.md`](docs/seo/SEARCH_CONSOLE_SETUP.md) | Doğrulama, sitemap, indeksleme, takip edilecek sorgular |
+| [`docs/seo/SEO_CHANGELOG.md`](docs/seo/SEO_CHANGELOG.md) | Her değişiklik: ne, neden, SEO etkisi |
+| `scripts/seo-audit.mjs` | Çalışan siteye karşı SEO QA matrisi üreten denetim scripti |
+
+Canlı siteyi denetlemek için:
+
+```bash
+npm run seo:audit -- https://www.kansucannakliye.com.tr
+```
