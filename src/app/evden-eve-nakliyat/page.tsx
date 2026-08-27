@@ -302,6 +302,19 @@ export default function EvdenEveNakliyatPage() {
             </li>
             <li>
               <Link
+                href="/rehber/nakliyat-fiyati-nasil-hesaplanir"
+                className="block rounded-card border border-line-soft bg-white p-5 hover:border-ink-500"
+              >
+                <span className="font-bold text-ink-900">
+                  Nakliyat Fiyatı Neye Göre Belirlenir?
+                </span>
+                <span className="mt-1 block text-[15px] text-ink-500">
+                  Teklifleri karşılaştırmadan önce fiyat etkenleri.
+                </span>
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="/hizmet-bolgeleri"
                 className="block rounded-card border border-line-soft bg-white p-5 hover:border-ink-500"
               >

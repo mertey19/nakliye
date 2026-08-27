@@ -37,6 +37,12 @@ sayfa varsa **yeni sayfa açılmaz**, mevcut sayfa güçlendirilir.
 | nakliye firması nasıl seçilir · nakliyat firması seçerken | `/rehber/nakliye-firmasi-secerken` | `/evden-eve-nakliyat` |
 | eşyalar nasıl paketlenir · koli nasıl hazırlanır | `/rehber/esyalar-nasil-paketlenir` | `/esya-paketleme` |
 | asansörsüz ev nasıl taşınır · asansör yoksa nakliyat · asansörsüz bina taşınma | `/rehber/asansorsuz-ev-nasil-tasinir` | `/evden-eve-nakliyat` |
+| nakliyat fiyatı nasıl hesaplanır · ev taşıma fiyatı neye göre değişir | `/rehber/nakliyat-fiyati-nasil-hesaplanir` | `/evden-eve-nakliyat` |
+| şehirler arası ev nasıl taşınır · il dışına ev taşıma planı | `/rehber/sehirler-arasi-ev-tasima` | `/sehirler-arasi-nakliyat` |
+| ofis taşırken nelere dikkat · işyeri taşıma kontrol listesi | `/rehber/ofis-tasirken-nelere-dikkat` | `/ofis-tasima` |
+| beyaz eşya nasıl taşınır · buzdolabı nasıl taşınır · çamaşır makinesi taşıma | `/rehber/beyaz-esya-nasil-tasinir` | `/parca-esya-tasima` |
+| öğrenci evi taşıma · dönem sonu eşya taşıma · stüdyo taşıma | `/rehber/ogrenci-evi-nasil-tasinir` | `/parca-esya-tasima` |
+| taşınma günü kontrol listesi · taşınma günü neler yapılır | `/rehber/tasinma-gunu-kontrol-listesi` | `/evden-eve-nakliyat` |
 
 ## Marka
 
@@ -59,6 +65,7 @@ sayfa varsa **yeni sayfa açılmaz**, mevcut sayfa güçlendirilir.
 | Ana sayfa H1 "Mersin Nakliyat ve Evden Eve Taşıma", money page H1 "Mersin Evden Eve Nakliyat" | İkisine aynı başlığı vermek Google'ı hangi sayfayı sıralayacağı konusunda ikileme sokar. |
 | `/sehir-ici-nakliyat` açılmadı | "şehir içi nakliyat" ile "evden eve nakliyat" aynı işi arıyor. Ayrı sayfa iki zayıf sayfa üretirdi; `/evden-eve-nakliyat#sehir-ici` H2 bölümü olarak ele alındı. |
 | `/mersin-nakliyat`, `/mersin-nakliye` gibi eş anlamlı URL'ler açılmadı | Hepsi ana sayfanın amacını tekrar eder; index bloat üretir. |
+| Fiyat HOW rehberi H1 "Nakliyat Fiyatı Neye Göre Belirlenir?"; "mersin nakliyat fiyatları" hâlâ `/evden-eve-nakliyat#fiyat` | Bilgi niyeti ile işlem niyeti ayrıldı. Rehbere uydurma TL listesi konmadı. |
 | İlçe sayfaları açılmadı | İlçeye özgü gerçek veri yok. Koşullar aşağıda. |
 | Rota sayfaları açılmadı | O rotalarda iş yapıldığı doğrulanmadı. |
 | `/yorumlar` açılmadı | Gerçek yorum verisi yok. |
@@ -101,5 +108,9 @@ mersin nakliyat firması
 mersin şehirler arası nakliyat
 mersin ofis taşıma
 mersin parça eşya taşıma
+nakliyat fiyatı nasıl hesaplanır
+şehirler arası ev nasıl taşınır
+öğrenci evi taşıma
+beyaz eşya nasıl taşınır
 kansu can nakliyat
 ```

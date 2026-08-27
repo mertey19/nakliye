@@ -16,7 +16,7 @@ const city = business.primaryCity;
 
 export const metadata: Metadata = {
   title: `Taşınma Rehberi | ${business.name}`,
-  description: `Ev taşırken yapılması gerekenler, nakliye firması seçerken dikkat edilecekler ve eşyaların doğru paketlenmesi. Taşınma sürecini kolaylaştıran pratik rehberler.`,
+  description: `Ev taşırken yapılacaklar, nakliyat fiyatının nasıl belirlendiği, şehirler arası plan, ofis ve beyaz eşya taşıma. ${city} taşınma sürecini kolaylaştıran pratik rehberler.`,
   alternates: { canonical: absoluteUrl("/rehber") },
   openGraph: {
     title: `Taşınma Rehberi | ${business.name}`,
@@ -88,26 +88,53 @@ export default function RehberPage() {
               <Link href="/rehber/ev-tasirken-yapilmasi-gerekenler">
                 ev taşırken yapılması gerekenler
               </Link>{" "}
-              rehberi, dört hafta öncesinden yeni evdeki ilk güne kadar sırayla
-              ne yapılacağını anlatıyor. Abonelik işlemleri ve &ldquo;ilk gün
-              kutusu&rdquo; gibi çoğu zaman atlanan adımlar da burada.
+              dört haftalık sırayı,{" "}
+              <Link href="/rehber/tasinma-gunu-kontrol-listesi">
+                taşınma günü kontrol listesi
+              </Link>{" "}
+              ise sabahın kendisini anlatır.
             </p>
             <p>
-              <strong>Elinizde birden fazla teklif varsa ve
-              karşılaştıramıyorsanız:</strong>{" "}
+              <strong>Elinizde birden fazla teklif varsa:</strong>{" "}
               <Link href="/rehber/nakliye-firmasi-secerken">
                 nakliye firması nasıl seçilir
               </Link>{" "}
-              yazısında telefonda sorulması gereken sorular ve düşük fiyatın ne
-              zaman risk olduğu var.
+              ve{" "}
+              <Link href="/rehber/nakliyat-fiyati-nasil-hesaplanir">
+                nakliyat fiyatı neye göre belirlenir
+              </Link>{" "}
+              yazıları aynı işi karşılaştırmanıza yardım eder. Uydurma fiyat
+              listesi yok; etkenler açık.
             </p>
             <p>
               <strong>Paketlemeyi kendiniz yapacaksanız:</strong>{" "}
               <Link href="/rehber/esyalar-nasil-paketlenir">
                 eşyalar nasıl paketlenir
               </Link>{" "}
-              rehberi mutfaktan elektroniğe oda oda yöntemi, malzeme seçimini ve
-              etiketlemeyi anlatıyor.
+              oda oda yöntem,{" "}
+              <Link href="/rehber/beyaz-esya-nasil-tasinir">
+                beyaz eşya nasıl taşınır
+              </Link>{" "}
+              buzdolabı ve çamaşır makinesi hazırlığı.
+            </p>
+            <p>
+              <strong>Özel durum:</strong> asansör yoksa{" "}
+              <Link href="/rehber/asansorsuz-ev-nasil-tasinir">
+                asansörsüz ev nasıl taşınır
+              </Link>
+              ; öğrenci evi veya dönem sonuysa{" "}
+              <Link href="/rehber/ogrenci-evi-nasil-tasinir">
+                öğrenci evi nasıl taşınır
+              </Link>
+              ; işyeri taşıyorsanız{" "}
+              <Link href="/rehber/ofis-tasirken-nelere-dikkat">
+                ofis taşırken nelere dikkat edilmeli
+              </Link>
+              ; il dışına gidiyorsanız{" "}
+              <Link href="/rehber/sehirler-arasi-ev-tasima">
+                şehirler arası ev nasıl taşınır
+              </Link>
+              .
             </p>
           </div>
         </section>

@@ -27,6 +27,12 @@ const routes = [
   "/rehber/asansorsuz-ev-nasil-tasinir",
   "/rehber/nakliye-firmasi-secerken",
   "/rehber/esyalar-nasil-paketlenir",
+  "/rehber/nakliyat-fiyati-nasil-hesaplanir",
+  "/rehber/sehirler-arasi-ev-tasima",
+  "/rehber/ofis-tasirken-nelere-dikkat",
+  "/rehber/beyaz-esya-nasil-tasinir",
+  "/rehber/ogrenci-evi-nasil-tasinir",
+  "/rehber/tasinma-gunu-kontrol-listesi",
   "/gizlilik-politikasi",
   "/kvkk-aydinlatma-metni",
 ];

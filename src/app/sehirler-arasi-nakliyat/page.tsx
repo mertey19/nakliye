@@ -254,6 +254,19 @@ export default function SehirlerArasiNakliyatPage() {
             </li>
             <li>
               <Link
+                href="/rehber/sehirler-arasi-ev-tasima"
+                className="block rounded-card border border-line-soft bg-white p-5 hover:border-ink-500"
+              >
+                <span className="font-bold text-ink-900">
+                  Şehirler Arası Ev Nasıl Taşınır?
+                </span>
+                <span className="mt-1 block text-[15px] text-ink-500">
+                  Yükleme-teslim ayrımı ve uzun yol paketlemesi.
+                </span>
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="/rehber/esyalar-nasil-paketlenir"
                 className="block rounded-card border border-line-soft bg-white p-5 hover:border-ink-500"
               >

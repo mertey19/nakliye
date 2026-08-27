@@ -157,6 +157,14 @@ export default function Page() {
         <li>Kutular tam dolu ve kapalı olmalı; yarım dolu kutu ezilir.</li>
         <li>Sıvı içeren kutular dik konumda kalacak şekilde yerleştirilir.</li>
       </ul>
+      <p>
+        Buzdolabı, çamaşır makinesi ve ekran koli gibi istiflenmez; cihaz
+        hazırlığı{" "}
+        <Link href="/rehber/beyaz-esya-nasil-tasinir">
+          beyaz eşya nasıl taşınır
+        </Link>{" "}
+        yazısında.
+      </p>
 
       <p>
         Paketlemeyi kendiniz yapmak istemiyorsanız{" "}

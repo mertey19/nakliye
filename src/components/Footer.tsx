@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Container } from "./Container";
 import { business } from "@/config/business";
 import { services } from "@/config/services";
-import { guides } from "@/config/guides";
+import { featuredGuides } from "@/config/guides";
 import { formatPhoneForDisplay, formatPhoneForTel, createWhatsAppUrl } from "@/lib/contact";
 import { defaultWhatsAppMessage } from "@/lib/messages";
 import {
@@ -199,7 +199,7 @@ export function Footer() {
               Rehber
             </p>
             <ul className="mt-3 text-[14px]">
-              {guides.map((g) => (
+              {featuredGuides.map((g) => (
                 <li key={g.slug}>
                   <Link
                     href={`/rehber/${g.slug}`}
@@ -209,6 +209,14 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link
+                  href="/rehber"
+                  className="inline-block py-1.5 text-ink-300 transition-colors hover:text-white"
+                >
+                  Tüm rehberler
+                </Link>
+              </li>
             </ul>
           </nav>
         </div>

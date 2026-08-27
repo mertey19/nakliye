@@ -151,7 +151,12 @@ export default function ParcaEsyaTasimaPage() {
             asansörden geçmemesi. Bunu önlemek için üç bilgi yeterli:{" "}
             <strong>eşyanın ne olduğu</strong>,{" "}
             <strong>iki adresin kat ve asansör durumu</strong> ve{" "}
-            <strong>eşyanın sökülebilir olup olmadığı</strong>.
+            <strong>eşyanın sökülebilir olup olmadığı</strong>. Buzdolabı ve
+            çamaşır makinesi için cihaz bazlı hazırlık{" "}
+            <Link href="/rehber/beyaz-esya-nasil-tasinir">
+              beyaz eşya nasıl taşınır
+            </Link>{" "}
+            rehberinde.
           </p>
 
           <h2>Tam Ev Taşıması Gerekiyorsa</h2>

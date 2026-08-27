@@ -32,6 +32,8 @@ const CONTENT_DATES = {
   initial: "2026-08-23",
   /** Marka adı "Nakliye" -> "Nakliyat" değişimi tüm başlıkları etkiledi. */
   brandRename: "2026-08-24",
+  /** Rehber kümesi genişledi; hub ve ana sayfa listesi değişti. */
+  guideCluster: "2026-08-27",
 } as const;
 
 /**
@@ -44,7 +46,7 @@ export const indexableRoutes: IndexableRoute[] = [
     path: "/",
     priority: 1.0,
     changeFrequency: "weekly",
-    lastModified: CONTENT_DATES.brandRename,
+    lastModified: CONTENT_DATES.guideCluster,
   },
 
   // Ticari hizmet sayfaları — başlık ve metinler marka adıyla güncellendi.
@@ -86,7 +88,7 @@ export const indexableRoutes: IndexableRoute[] = [
     path: "/rehber",
     priority: 0.5,
     changeFrequency: "monthly",
-    lastModified: CONTENT_DATES.brandRename,
+    lastModified: CONTENT_DATES.guideCluster,
   },
   // Rehber yazılarının tarihi kendi kaydından gelir; sayfada görünen
   // "Güncelleme" tarihiyle sitemap'teki lastmod böylece hep aynı olur.

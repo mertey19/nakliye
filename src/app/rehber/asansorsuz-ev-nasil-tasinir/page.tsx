@@ -185,7 +185,12 @@ export default function Page() {
       <p>
         {city} içinde asansörsüz binadan taşınacaksanız kat, eşya ve merdiven
         bilgisini paylaşmanız yeterli; işin kaç kişiyle ve kaç saatte
-        biteceğini önceden çıkarıp size söyleyelim.
+        biteceğini önceden çıkarıp size söyleyelim. Sürenin fiyatı nasıl
+        etkilediğini{" "}
+        <Link href="/rehber/nakliyat-fiyati-nasil-hesaplanir">
+          nakliyat fiyatı neye göre belirlenir
+        </Link>{" "}
+        yazısında açtık.
       </p>
     </GuideShell>
   );

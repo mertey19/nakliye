@@ -106,6 +106,10 @@ mersin şehirler arası nakliyat
 mersin nakliyat firması
 mersin ofis taşıma
 mersin parça eşya taşıma
+nakliyat fiyatı nasıl hesaplanır
+şehirler arası ev nasıl taşınır
+öğrenci evi taşıma
+beyaz eşya nasıl taşınır
 kansu can nakliyat
 ```
 

@@ -171,6 +171,11 @@ export default function OfisTasimaPage() {
             arşivin elenmesi, kişisel eşyaların çalışanlar tarafından
             toplanması, yeni adresteki oturma planının önceden çıkarılması ve
             internet/telefon aboneliklerinin taşınma gününe göre ayarlanması.
+            Adım adım listeyi{" "}
+            <Link href="/rehber/ofis-tasirken-nelere-dikkat">
+              ofis taşırken nelere dikkat edilmeli
+            </Link>{" "}
+            yazısında topladık.
           </p>
 
           <h2>Şehir Dışına Ofis Taşıma</h2>

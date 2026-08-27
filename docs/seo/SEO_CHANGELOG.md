@@ -4,6 +4,27 @@ En yeni üstte. Her madde: **ne değişti · neden · SEO etkisi**.
 
 ---
 
+## 2026-08-27 — Rehber kümesi: uzun kuyruk aramalar, yamyamlaşma yok
+
+"mersin nakliye" ve kardeş ticari sorguların birincil sayfası **değiştirilmedi**
+(`/` ve hizmet sayfaları). Altı yeni rehber, sitede sayfası olmayan **bilgi**
+amaçlarını karşılıyor ve ticari sayfalara iç linkle besleme yapıyor.
+
+| Dosya | Değişiklik | Neden | SEO etkisi |
+| --- | --- | --- | --- |
+| `rehber/nakliyat-fiyati-nasil-hesaplanir` | Fiyat HOW rehberi | "fiyat nasıl hesaplanır" bilgi niyeti vardı; uydurma TL listesi yok | Armut/Enakliyat fiyat SERP'ine dürüst alternatif. `/evden-eve-nakliyat#fiyat` yamyamlaşmaz (H1 ticari sorguyu kopyalamaz) |
+| `rehber/sehirler-arasi-ev-tasima` | İl dışı süreç rehberi | Rota doorway sayfası açılmadan "nasıl taşınır" niyeti | `/sehirler-arasi-nakliyat` otoritesine iç link |
+| `rehber/ofis-tasirken-nelere-dikkat` | Kurumsal kontrol listesi | Ev taşıma listesinden ayrı amaç | `/ofis-tasima` hunisi |
+| `rehber/beyaz-esya-nasil-tasinir` | Cihaz bazlı hazırlık | Koli rehberinden ayrı amaç (buzdolabı, makine, TV) | `/parca-esya-tasima` hunisi |
+| `rehber/ogrenci-evi-nasil-tasinir` | Dönem sonu / az eşya | Çiftlikköy-MEÜ çevresi yerel bağlam; doorway ilçe sayfası değil | Mevsimsel uzun kuyruk + parça/evden-eve ayrımı |
+| `rehber/tasinma-gunu-kontrol-listesi` | Yalnızca günün kendisi | 4 haftalık hazırlık rehberinden ayrı | `/evden-eve-nakliyat` hunisi |
+| Ana sayfa / footer | Yalnızca `featured` rehberler | 10 kart ana sayfayı şişirmesin | Ticari sayfa odağı korunur; hub `/rehber` tam liste |
+
+**Yapılmayan:** `/mersin-nakliye` URL'si, sahte fiyat tablosu, programatik rota
+sayfaları. Bunlar 1. sırayı hızlandırmaz; yamyamlaşma ve spam sinyali üretir.
+
+---
+
 ## 2026-08-24 — Teknik SEO denetimi ve düzeltmeler
 
 Canlı siteye (`https://www.kansucannakliye.com.tr`) karşı yapılan tam denetim

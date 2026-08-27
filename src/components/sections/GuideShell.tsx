@@ -8,7 +8,7 @@ import { JsonLd } from "../JsonLd";
 import { QuoteButton } from "../cta/ConversionButtons";
 
 import { business } from "@/config/business";
-import { guides, type GuideDef } from "@/config/guides";
+import { relatedGuides, type GuideDef } from "@/config/guides";
 import { serviceBySlug } from "@/config/services";
 import {
   articleSchema,
@@ -29,7 +29,7 @@ export function GuideShell({
   children: ReactNode;
 }) {
   const service = serviceBySlug(guide.ctaServiceSlug);
-  const others = guides.filter((g) => g.slug !== guide.slug);
+  const others = relatedGuides(guide.slug);
 
   const crumbs: Crumb[] = [
     { name: "Ana Sayfa", path: "/" },

@@ -94,6 +94,13 @@ export default function Page() {
           aşamasında ulaşılması zor olan firma, taşınma gününde de zor bulunur.
         </li>
       </ul>
+      <p>
+        Tekliflerin neden farklı çıktığını fiyat etkenleriyle okumak için{" "}
+        <Link href="/rehber/nakliyat-fiyati-nasil-hesaplanir">
+          nakliyat fiyatı neye göre belirlenir
+        </Link>{" "}
+        yazısına bakın.
+      </p>
 
       <h2>Firmanın gerçekten var olduğunu nasıl anlarsınız?</h2>
       <ul>

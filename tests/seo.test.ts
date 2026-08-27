@@ -161,6 +161,41 @@ test("sitemap lastmod GERÇEK içerik tarihi — derleme tarihi değil", () => {
   );
 });
 
+test("rehber slug'ları benzersiz ve relatedSlugs çözülür", () => {
+  const slugs = guides.map((g) => g.slug);
+  assert.equal(new Set(slugs).size, slugs.length, "yinelenen rehber slug'ı");
+  for (const g of guides) {
+    assert.ok(g.relatedSlugs.length >= 1, `${g.slug} relatedSlugs boş`);
+    for (const rel of g.relatedSlugs) {
+      assert.notEqual(rel, g.slug, `${g.slug} kendini related olarak gösteriyor`);
+      assert.ok(
+        slugs.includes(rel),
+        `${g.slug} → ${rel} mevcut bir rehber değil`,
+      );
+    }
+  }
+});
+
+test("rehber H1'leri ticari şehir+hizmet sorgularını kopyalamaz", () => {
+  const forbidden = [
+    `${business.primaryCity} Nakliyat`,
+    `${business.primaryCity} Nakliye`,
+    `${business.primaryCity} Evden Eve Nakliyat`,
+    `${business.primaryCity} Şehirler Arası Nakliyat`,
+    `${business.primaryCity} Ofis Taşıma`,
+    `${business.primaryCity} Parça Eşya`,
+    `${business.primaryCity} Eşya Paketleme`,
+  ];
+  for (const g of guides) {
+    for (const phrase of forbidden) {
+      assert.ok(
+        !g.h1.includes(phrase),
+        `${g.slug} H1 ticari sorguyu kopyalıyor: "${g.h1}"`,
+      );
+    }
+  }
+});
+
 test("rehber sayfalarının sitemap tarihi, sayfada görünen güncelleme tarihiyle aynı", () => {
   for (const g of guides) {
     const route = indexableRoutes.find((r) => r.path === `/rehber/${g.slug}`);

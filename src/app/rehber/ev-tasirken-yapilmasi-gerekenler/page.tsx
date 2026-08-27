@@ -134,6 +134,13 @@ export default function Page() {
         <li>Taşınma günü için araç park yerini bina yönetimiyle konuşun.</li>
         <li>Firmayla saati teyit edin ve iki adresin yol tarifini paylaşın.</li>
       </ul>
+      <p>
+        Günün kendisi ayrı bir listedir:{" "}
+        <Link href="/rehber/tasinma-gunu-kontrol-listesi">
+          taşınma günü kontrol listesi
+        </Link>
+        .
+      </p>
 
       <h2>Taşınma günü</h2>
       <ul>

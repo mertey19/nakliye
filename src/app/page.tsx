@@ -18,7 +18,7 @@ import { HomeLocation } from "@/components/sections/HomeLocation";
 import { JsonLd } from "@/components/JsonLd";
 
 import { business } from "@/config/business";
-import { guides } from "@/config/guides";
+import { featuredGuides } from "@/config/guides";
 import { absoluteUrl } from "@/config/site";
 import { faqSchema, type FaqItem } from "@/lib/schema";
 import { defaultWhatsAppMessage } from "@/lib/messages";
@@ -247,7 +247,7 @@ export default function HomePage() {
           intro="Taşınma tarihi yaklaşanların en çok sorduğu konuları yazıya döktük."
         />
         <ul className="mt-8 grid gap-4 sm:grid-cols-3">
-          {guides.map((g) => (
+          {featuredGuides.map((g) => (
             <li key={g.slug}>
               <article className="relative h-full rounded-card border border-line-soft bg-white p-6 transition-[border-color,transform] duration-200 hover:-translate-y-1 hover:border-ink-500">
                 <h3 className="text-[17px] font-bold tracking-[-0.02em] text-ink-900">
@@ -268,6 +268,13 @@ export default function HomePage() {
             </li>
           ))}
         </ul>
+        <Link
+          href="/rehber"
+          className="mt-7 inline-flex items-center gap-1.5 py-1.5 text-[15px] font-bold text-ink-900 underline decoration-1 underline-offset-4 transition-colors hover:text-ink-500"
+        >
+          Tüm taşınma rehberleri
+          <span aria-hidden="true">→</span>
+        </Link>
       </Section>
 
       <CtaBand

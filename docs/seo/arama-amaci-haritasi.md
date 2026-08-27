@@ -61,6 +61,13 @@ sayfa varsa **yeni sayfa açılmaz**, mevcut sayfa güçlendirilir.
 | ev taşırken nelere dikkat edilmeli · ev taşıma kontrol listesi · taşınma öncesi yapılacaklar | `/rehber/ev-tasirken-yapilmasi-gerekenler`   | → `/evden-eve-nakliyat`   |
 | nakliye firması nasıl seçilir · nakliyat firması seçerken nelere dikkat edilmeli | `/rehber/nakliye-firmasi-secerken`           | → `/evden-eve-nakliyat`   |
 | eşyalar nasıl paketlenir · taşınma kolisi hazırlama · koli nasıl paketlenir  | `/rehber/esyalar-nasil-paketlenir`           | → `/esya-paketleme`       |
+| asansörsüz ev nasıl taşınır · asansör yoksa nakliyat                          | `/rehber/asansorsuz-ev-nasil-tasinir`        | → `/evden-eve-nakliyat`   |
+| nakliyat fiyatı nasıl hesaplanır · ev taşıma fiyatı neye göre değişir         | `/rehber/nakliyat-fiyati-nasil-hesaplanir`   | → `/evden-eve-nakliyat`   |
+| şehirler arası ev nasıl taşınır · il dışına ev taşıma                         | `/rehber/sehirler-arasi-ev-tasima`           | → `/sehirler-arasi-nakliyat` |
+| ofis taşırken nelere dikkat · işyeri taşıma kontrol listesi                   | `/rehber/ofis-tasirken-nelere-dikkat`        | → `/ofis-tasima`          |
+| beyaz eşya nasıl taşınır · buzdolabı nasıl taşınır                            | `/rehber/beyaz-esya-nasil-tasinir`           | → `/parca-esya-tasima`    |
+| öğrenci evi taşıma · dönem sonu eşya taşıma                                   | `/rehber/ogrenci-evi-nasil-tasinir`          | → `/parca-esya-tasima`    |
+| taşınma günü kontrol listesi · taşınma günü neler yapılır                     | `/rehber/tasinma-gunu-kontrol-listesi`       | → `/evden-eve-nakliyat`   |
 
 ## 6. MARKA VE KURUMSAL
 
