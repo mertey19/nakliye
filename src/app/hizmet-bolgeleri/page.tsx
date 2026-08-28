@@ -9,6 +9,7 @@ import { CtaBand } from "@/components/sections/CtaBand";
 import { JsonLd } from "@/components/JsonLd";
 
 import { business } from "@/config/business";
+import { districtGuideSlug, guideBySlug } from "@/config/guides";
 import { absoluteUrl } from "@/config/site";
 import {
   breadcrumbSchema,
@@ -21,13 +22,12 @@ import { defaultWhatsAppMessage } from "@/lib/messages";
 const city = business.primaryCity;
 
 /**
- * TEK GÜÇLÜ BÖLGE SAYFASI.
+ * TEK GÜÇLÜ BÖLGE SAYFASI (ticari niyet: "mezitli nakliyat" vb.).
  *
- * Her ilçe için ayrı sayfa AÇILMADI. Sebebi: ilçe başına gerçekten özgün ve
- * faydalı bilgi verilemeyecekse, aynı metnin ilçe adı değiştirilerek
- * çoğaltılması "doorway page" davranışıdır ve uzun vadede sıralamayı düşürür.
- * İlçe bazında gerçek veri (ör. o bölgeye özgü taşıma koşulları, tamamlanmış
- * işler, fotoğraflar) biriktiğinde ayrı sayfa açılabilir.
+ * İlçe başına ayrı *hizmet* URL'si AÇILMADI. Aynı satış metninin ilçe adı
+ * değiştirilerek çoğaltılması doorway page'dir. İlçeye özgü sokak/bina notları
+ * bilgi rehberlerindedir: `/rehber/{ilce}-ev-tasima`. H1 "[İlçe] Nakliyat"
+ * değildir; yamyamlaşma olmaz.
  */
 export const metadata: Metadata = {
   title: `${city} Nakliyat Hizmet Bölgeleri | ${business.name}`,
@@ -118,14 +118,30 @@ export default function HizmetBolgeleriPage() {
             {city} Merkezde Taşıma Yaptığımız İlçeler
           </h2>
           <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {business.serviceAreas.map((a) => (
-              <li
-                key={a.slug}
-                className="rounded-card border border-line bg-white px-5 py-4 text-[16px] font-semibold text-ink-900"
-              >
-                {a.name}
-              </li>
-            ))}
+            {business.serviceAreas.map((a) => {
+              const g = guideBySlug(districtGuideSlug(a.slug));
+              return (
+                <li key={a.slug}>
+                  {g ? (
+                    <Link
+                      href={`/rehber/${g.slug}`}
+                      className="block rounded-card border border-line bg-white px-5 py-4 transition-shadow hover:shadow-md"
+                    >
+                      <span className="block text-[16px] font-semibold text-ink-900">
+                        {a.name}
+                      </span>
+                      <span className="mt-1.5 block text-[13px] font-normal leading-snug text-ink-500">
+                        {g.summary}
+                      </span>
+                    </Link>
+                  ) : (
+                    <span className="block rounded-card border border-line bg-white px-5 py-4 text-[16px] font-semibold text-ink-900">
+                      {a.name}
+                    </span>
+                  )}
+                </li>
+              );
+            })}
           </ul>
           <p className="mt-5 max-w-3xl text-[16px] leading-relaxed text-ink-700">
             Listede olmayan bir ilçeden ya da {city} dışından taşınıyorsanız yine

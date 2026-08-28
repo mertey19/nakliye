@@ -16,6 +16,11 @@ export type GuideDef = {
   featured: boolean;
   /** Yazı altındaki "diğer rehberler" sırası */
   relatedSlugs: string[];
+  /**
+   * `district`: Mersin merkez ilçe bilgi yazısı.
+   * Ticari "[ilçe] nakliyat" sorgusu /hizmet-bolgeleri'ndedir; bu yazı HOW.
+   */
+  topic?: "district";
 };
 
 /**
@@ -80,8 +85,8 @@ export const guides: GuideDef[] = [
     relatedSlugs: [
       "nakliyat-fiyati-nasil-hesaplanir",
       "tasinma-gunu-kontrol-listesi",
-      "beyaz-esya-nasil-tasinir",
-      "ev-tasirken-yapilmasi-gerekenler",
+      "toroslar-ev-tasima",
+      "akdeniz-ev-tasima",
     ],
   },
   {
@@ -154,9 +159,9 @@ export const guides: GuideDef[] = [
     readingMinutes: 6,
     featured: false,
     relatedSlugs: [
+      "akdeniz-ev-tasima",
       "nakliye-firmasi-secerken",
       "sehirler-arasi-ev-tasima",
-      "tasinma-gunu-kontrol-listesi",
       "nakliyat-fiyati-nasil-hesaplanir",
     ],
   },
@@ -192,10 +197,10 @@ export const guides: GuideDef[] = [
     readingMinutes: 6,
     featured: false,
     relatedSlugs: [
+      "yenisehir-ev-tasima",
       "beyaz-esya-nasil-tasinir",
       "ev-tasirken-yapilmasi-gerekenler",
       "nakliyat-fiyati-nasil-hesaplanir",
-      "esyalar-nasil-paketlenir",
     ],
   },
   {
@@ -217,12 +222,98 @@ export const guides: GuideDef[] = [
       "sehirler-arasi-ev-tasima",
     ],
   },
+  {
+    slug: "yenisehir-ev-tasima",
+    title: `Yenişehir'de Ev Taşıma Rehberi | ${business.name}`,
+    h1: "Yenişehir'de Ev Taşırken Nelere Dikkat Edilmeli?",
+    description:
+      "Yenişehir'de ev taşırken Çiftlikköy, Pozcu ve site girişleri nasıl planlanır? GMK trafiği, asansör ve yönetim saati. Taşınma öncesi pratik notlar.",
+    summary:
+      "Çiftlikköy, Pozcu ve sitelerde araç yaklaşımı, yönetim saati ve kampüs dönemi.",
+    updated: "2026-08-28",
+    ctaServiceSlug: "evden-eve-nakliyat",
+    readingMinutes: 6,
+    featured: false,
+    topic: "district",
+    relatedSlugs: [
+      "mezitli-ev-tasima",
+      "toroslar-ev-tasima",
+      "akdeniz-ev-tasima",
+      "ogrenci-evi-nasil-tasinir",
+    ],
+  },
+  {
+    slug: "mezitli-ev-tasima",
+    title: `Mezitli'de Ev Taşıma Rehberi | ${business.name}`,
+    h1: "Mezitli'de Ev Taşırken Nelere Dikkat Edilmeli?",
+    description:
+      "Mezitli'de ev taşırken Viranşehir, Tece ve sahil siteleri nasıl planlanır? D-400, yazlık dönem ve site bariyeri. Taşınma öncesi pratik notlar.",
+    summary:
+      "Sahil siteleri, D-400 yoğunluğu, yazlık dönem ve Tece–Davultepe bina farkı.",
+    updated: "2026-08-28",
+    ctaServiceSlug: "evden-eve-nakliyat",
+    readingMinutes: 6,
+    featured: false,
+    topic: "district",
+    relatedSlugs: [
+      "yenisehir-ev-tasima",
+      "akdeniz-ev-tasima",
+      "toroslar-ev-tasima",
+      "nakliyat-fiyati-nasil-hesaplanir",
+    ],
+  },
+  {
+    slug: "toroslar-ev-tasima",
+    title: `Toroslar'da Ev Taşıma Rehberi | ${business.name}`,
+    h1: "Toroslar'da Ev Taşırken Nelere Dikkat Edilmeli?",
+    description:
+      "Toroslar'da ev taşırken eğimli sokak, asansörsüz bina ve yağmur nasıl planı değiştirir? Çağlayan, Arpaçsuyu, Korukent. Taşınma öncesi pratik notlar.",
+    summary:
+      "Eğimli sokak, asansörsüz stok ve yağmurda yokuş: Toroslar'a özgü plan.",
+    updated: "2026-08-28",
+    ctaServiceSlug: "evden-eve-nakliyat",
+    readingMinutes: 6,
+    featured: false,
+    topic: "district",
+    relatedSlugs: [
+      "asansorsuz-ev-nasil-tasinir",
+      "akdeniz-ev-tasima",
+      "yenisehir-ev-tasima",
+      "mezitli-ev-tasima",
+    ],
+  },
+  {
+    slug: "akdeniz-ev-tasima",
+    title: `Akdeniz'de Ev Taşıma Rehberi | ${business.name}`,
+    h1: "Akdeniz'de Ev Taşırken Nelere Dikkat Edilmeli?",
+    description:
+      "Akdeniz ilçesinde ev ve işyeri taşırken merkez trafiği, park yasağı ve eski bina merdiveni nasıl planlanır? Çankaya, İhsaniye, Kültür. Pratik notlar.",
+    summary:
+      "Merkez caddeleri, park yasağı, eski bina merdiveni ve ofis-dükkan karışımı.",
+    updated: "2026-08-28",
+    ctaServiceSlug: "evden-eve-nakliyat",
+    readingMinutes: 6,
+    featured: false,
+    topic: "district",
+    relatedSlugs: [
+      "ofis-tasirken-nelere-dikkat",
+      "asansorsuz-ev-nasil-tasinir",
+      "yenisehir-ev-tasima",
+      "toroslar-ev-tasima",
+    ],
+  },
 ];
 
 export const guideBySlug = (slug: string): GuideDef | undefined =>
   guides.find((g) => g.slug === slug);
 
 export const featuredGuides = guides.filter((g) => g.featured);
+
+export const districtGuides = guides.filter((g) => g.topic === "district");
+
+export const generalGuides = guides.filter((g) => g.topic !== "district");
+
+export const districtGuideSlug = (areaSlug: string) => `${areaSlug}-ev-tasima`;
 
 export function relatedGuides(slug: string): GuideDef[] {
   const current = guideBySlug(slug);

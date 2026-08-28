@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 
 import { services } from "../src/config/services";
-import { guides } from "../src/config/guides";
+import { districtGuideSlug, guides } from "../src/config/guides";
 import { indexableRoutes } from "../src/config/routes";
 import { absoluteUrl, siteUrl } from "../src/config/site";
 import { business } from "../src/config/business";
@@ -193,6 +193,23 @@ test("rehber H1'leri ticari şehir+hizmet sorgularını kopyalamaz", () => {
         `${g.slug} H1 ticari sorguyu kopyalıyor: "${g.h1}"`,
       );
     }
+  }
+});
+
+test("her hizmet ilçesinin bilgi rehberi var; ticari ilçe H1 yok", () => {
+  for (const area of business.serviceAreas) {
+    const g = guides.find((x) => x.slug === districtGuideSlug(area.slug));
+    assert.ok(g, `${area.name} rehberi yok`);
+    assert.equal(g?.topic, "district");
+    assert.ok(g!.h1.includes(area.name), `${g!.slug} H1 ilçe adı taşımıyor`);
+    assert.ok(
+      !g!.h1.includes(`${area.name} Nakliyat`),
+      `${g!.slug} ticari "[ilçe] nakliyat" H1 kopyalıyor`,
+    );
+    assert.ok(
+      !g!.h1.includes(`${area.name} Nakliye`),
+      `${g!.slug} ticari "[ilçe] nakliye" H1 kopyalıyor`,
+    );
   }
 });
 

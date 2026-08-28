@@ -33,7 +33,7 @@ sayfa varsa **yeni sayfa açılmaz**, mevcut sayfa güçlendirilir.
 
 | Arama                                                      | Kanonik sayfa        | Karar                                                                                                                                                  |
 | ---------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| mezitli nakliyat · yenişehir nakliyat · toroslar nakliyat · akdeniz nakliyat | `/hizmet-bolgeleri`  | **İlçe başına ayrı sayfa AÇILMADI.** İlçe için özgün bilgi (o bölgeye ait gerçek iş, fotoğraf, taşıma koşulu) biriktiğinde açılabilir. Aynı metnin ilçe adı değiştirilerek çoğaltılması doorway page davranışıdır. |
+| mezitli nakliyat · yenişehir nakliyat · toroslar nakliyat · akdeniz nakliyat | `/hizmet-bolgeleri`  | **İlçe başına ayrı ticari URL AÇILMADI.** Bilgi rehberleri `/rehber/{ilce}-ev-tasima` (H1 "[İlçe] Nakliyat" değil). |
 
 **İlçe sayfası açma koşulları (hepsi sağlanmalı):**
 
@@ -68,6 +68,10 @@ sayfa varsa **yeni sayfa açılmaz**, mevcut sayfa güçlendirilir.
 | beyaz eşya nasıl taşınır · buzdolabı nasıl taşınır                            | `/rehber/beyaz-esya-nasil-tasinir`           | → `/parca-esya-tasima`    |
 | öğrenci evi taşıma · dönem sonu eşya taşıma                                   | `/rehber/ogrenci-evi-nasil-tasinir`          | → `/parca-esya-tasima`    |
 | taşınma günü kontrol listesi · taşınma günü neler yapılır                     | `/rehber/tasinma-gunu-kontrol-listesi`       | → `/evden-eve-nakliyat`   |
+| yenişehir'de ev taşıma · çiftlikköy taşınma                                   | `/rehber/yenisehir-ev-tasima`                | → `/evden-eve-nakliyat`   |
+| mezitli'de ev taşıma · viranşehir / tece taşınma                              | `/rehber/mezitli-ev-tasima`                  | → `/evden-eve-nakliyat`   |
+| toroslar'da ev taşıma · eğimli sokak / asansörsüz                             | `/rehber/toroslar-ev-tasima`                 | → `/evden-eve-nakliyat`   |
+| akdeniz'de ev taşıma · mersin merkez / çankaya                                | `/rehber/akdeniz-ev-tasima`                  | → `/evden-eve-nakliyat`   |
 
 ## 6. MARKA VE KURUMSAL
 

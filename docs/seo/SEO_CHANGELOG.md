@@ -4,6 +4,25 @@ En yeni üstte. Her madde: **ne değişti · neden · SEO etkisi**.
 
 ---
 
+## 2026-08-28 — İlçe bilgi rehberleri (doorway yok)
+
+Hizmet verilen dört merkez ilçe için **ticari URL açılmadı** (`/mezitli-nakliyat`
+vb. yok). Her ilçeye özgü sokak/bina notu `/rehber/{ilce}-ev-tasima` altında;
+H1 "[İlçe] Nakliyat" değil. "mezitli nakliyat" niyeti `/hizmet-bolgeleri`'nde.
+
+| Dosya | Değişiklik | Neden | SEO etkisi |
+| --- | --- | --- | --- |
+| `rehber/yenisehir-ev-tasima` | Çiftlikköy, Pozcu, site saati, GMK | Firma adresi burada; kampüs + cadde gerçeği | Uzun kuyruk + `/hizmet-bolgeleri` ve evden-eve iç link |
+| `rehber/mezitli-ev-tasima` | Sahil sitesi, D-400, yazlık, Tece | Yenişehir kopyası değil | Mevsimsel / sahil niyeti |
+| `rehber/toroslar-ev-tasima` | Eğim, asansörsüz, yağmur | Sahil sitesi şablonundan ayrı | Asansörsüz rehbere bağlar |
+| `rehber/akdeniz-ev-tasima` | Park yasağı, eski merkez, ofis | Liman/çarşı gerçeği | Ofis + parça eşya hunisi |
+| `/hizmet-bolgeleri` | İlçe kartları rehbere link | Orphan ilçe niyeti yok | Taranabilir iç link |
+
+**Yapılmayan:** Tarsus / Erdemli / Silifke sayfası (hizmet bölgesi doğrulanmadı),
+`/yenisehir-nakliyat` doorway, sahte iş fotoğrafı.
+
+---
+
 ## 2026-08-27 — Rehber kümesi: uzun kuyruk aramalar, yamyamlaşma yok
 
 "mersin nakliye" ve kardeş ticari sorguların birincil sayfası **değiştirilmedi**

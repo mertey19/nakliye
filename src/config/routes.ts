@@ -34,6 +34,8 @@ const CONTENT_DATES = {
   brandRename: "2026-08-24",
   /** Rehber kümesi genişledi; hub ve ana sayfa listesi değişti. */
   guideCluster: "2026-08-27",
+  /** İlçe bilgi rehberleri; hub ve hizmet bölgeleri iç link aldı. */
+  districtGuides: "2026-08-28",
 } as const;
 
 /**
@@ -68,7 +70,7 @@ export const indexableRoutes: IndexableRoute[] = [
     path: "/hizmet-bolgeleri",
     priority: 0.7,
     changeFrequency: "monthly",
-    lastModified: CONTENT_DATES.brandRename,
+    lastModified: CONTENT_DATES.districtGuides,
   },
   {
     path: "/iletisim",
@@ -88,7 +90,7 @@ export const indexableRoutes: IndexableRoute[] = [
     path: "/rehber",
     priority: 0.5,
     changeFrequency: "monthly",
-    lastModified: CONTENT_DATES.guideCluster,
+    lastModified: CONTENT_DATES.districtGuides,
   },
   // Rehber yazılarının tarihi kendi kaydından gelir; sayfada görünen
   // "Güncelleme" tarihiyle sitemap'teki lastmod böylece hep aynı olur.

@@ -7,7 +7,7 @@ import { CtaBand } from "@/components/sections/CtaBand";
 import { JsonLd } from "@/components/JsonLd";
 
 import { business } from "@/config/business";
-import { guides } from "@/config/guides";
+import { districtGuides, generalGuides } from "@/config/guides";
 import { absoluteUrl } from "@/config/site";
 import { breadcrumbSchema, type Crumb } from "@/lib/schema";
 import { defaultWhatsAppMessage } from "@/lib/messages";
@@ -16,7 +16,7 @@ const city = business.primaryCity;
 
 export const metadata: Metadata = {
   title: `Taşınma Rehberi | ${business.name}`,
-  description: `Ev taşırken yapılacaklar, nakliyat fiyatının nasıl belirlendiği, şehirler arası plan, ofis ve beyaz eşya taşıma. ${city} taşınma sürecini kolaylaştıran pratik rehberler.`,
+  description: `Ev taşırken yapılacaklar, nakliyat fiyatı, şehirler arası plan ve ${city} ilçelerinde (Yenişehir, Mezitli, Toroslar, Akdeniz) taşınma notları. Pratik rehberler.`,
   alternates: { canonical: absoluteUrl("/rehber") },
   openGraph: {
     title: `Taşınma Rehberi | ${business.name}`,
@@ -52,7 +52,7 @@ export default function RehberPage() {
         </div>
 
         <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {guides.map((g) => (
+          {generalGuides.map((g) => (
             <li key={g.slug} className="flex">
               <article className="relative flex w-full flex-col rounded-card border border-line bg-white p-6 transition-shadow hover:shadow-md">
                 <h2 className="text-lg font-bold text-ink-900">
@@ -73,6 +73,49 @@ export default function RehberPage() {
             </li>
           ))}
         </ul>
+
+        <section aria-labelledby="ilce-rehberleri" className="mt-14">
+          <h2
+            id="ilce-rehberleri"
+            className="text-2xl font-extrabold text-ink-900 sm:text-3xl"
+          >
+            {city} İlçelerinde Taşınma
+          </h2>
+          <p className="mt-3 max-w-3xl text-[16px] leading-relaxed text-ink-700">
+            Aynı metnin ilçe adı değiştirilmiş kopyaları değil; her ilçenin
+            sokak, bina ve site gerçeği ayrı. Ticari &ldquo;X nakliyat&rdquo;
+            araması{" "}
+            <Link
+              href="/hizmet-bolgeleri"
+              className="font-bold text-ink-900 underline decoration-1 underline-offset-4 hover:text-ink-500"
+            >
+              hizmet bölgeleri
+            </Link>{" "}
+            sayfasındadır.
+          </p>
+          <ul className="mt-8 grid gap-5 sm:grid-cols-2">
+            {districtGuides.map((g) => (
+              <li key={g.slug} className="flex">
+                <article className="relative flex w-full flex-col rounded-card border border-line bg-white p-6 transition-shadow hover:shadow-md">
+                  <h3 className="text-lg font-bold text-ink-900">
+                    <Link
+                      href={`/rehber/${g.slug}`}
+                      className="after:absolute after:inset-0 hover:text-ink-500"
+                    >
+                      {g.h1}
+                    </Link>
+                  </h3>
+                  <p className="mt-2.5 flex-1 text-[15px] leading-relaxed text-ink-500">
+                    {g.summary}
+                  </p>
+                  <p className="mt-4 text-sm text-ink-500">
+                    Yaklaşık {g.readingMinutes} dakika
+                  </p>
+                </article>
+              </li>
+            ))}
+          </ul>
+        </section>
 
         <section aria-labelledby="hangi-rehber" className="mt-14 max-w-3xl">
           <h2
@@ -134,7 +177,8 @@ export default function RehberPage() {
               <Link href="/rehber/sehirler-arasi-ev-tasima">
                 şehirler arası ev nasıl taşınır
               </Link>
-              .
+              . {city} merkez ilçelerinde sokak ve bina farkı için yukarıdaki
+              ilçe rehberleri.
             </p>
           </div>
         </section>

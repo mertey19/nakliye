@@ -43,6 +43,10 @@ sayfa varsa **yeni sayfa açılmaz**, mevcut sayfa güçlendirilir.
 | beyaz eşya nasıl taşınır · buzdolabı nasıl taşınır · çamaşır makinesi taşıma | `/rehber/beyaz-esya-nasil-tasinir` | `/parca-esya-tasima` |
 | öğrenci evi taşıma · dönem sonu eşya taşıma · stüdyo taşıma | `/rehber/ogrenci-evi-nasil-tasinir` | `/parca-esya-tasima` |
 | taşınma günü kontrol listesi · taşınma günü neler yapılır | `/rehber/tasinma-gunu-kontrol-listesi` | `/evden-eve-nakliyat` |
+| yenişehir'de ev taşıma · çiftlikköy taşınma · pozcu ev taşıma | `/rehber/yenisehir-ev-tasima` | `/evden-eve-nakliyat` |
+| mezitli'de ev taşıma · viranşehir taşınma · tece ev taşıma | `/rehber/mezitli-ev-tasima` | `/evden-eve-nakliyat` |
+| toroslar'da ev taşıma · çağlayan taşınma · arpaçsuyu ev taşıma | `/rehber/toroslar-ev-tasima` | `/evden-eve-nakliyat` |
+| akdeniz'de ev taşıma · mersin merkez ev taşıma · çankaya taşınma | `/rehber/akdeniz-ev-tasima` | `/evden-eve-nakliyat` |
 
 ## Marka
 
@@ -66,7 +70,8 @@ sayfa varsa **yeni sayfa açılmaz**, mevcut sayfa güçlendirilir.
 | `/sehir-ici-nakliyat` açılmadı | "şehir içi nakliyat" ile "evden eve nakliyat" aynı işi arıyor. Ayrı sayfa iki zayıf sayfa üretirdi; `/evden-eve-nakliyat#sehir-ici` H2 bölümü olarak ele alındı. |
 | `/mersin-nakliyat`, `/mersin-nakliye` gibi eş anlamlı URL'ler açılmadı | Hepsi ana sayfanın amacını tekrar eder; index bloat üretir. |
 | Fiyat HOW rehberi H1 "Nakliyat Fiyatı Neye Göre Belirlenir?"; "mersin nakliyat fiyatları" hâlâ `/evden-eve-nakliyat#fiyat` | Bilgi niyeti ile işlem niyeti ayrıldı. Rehbere uydurma TL listesi konmadı. |
-| İlçe sayfaları açılmadı | İlçeye özgü gerçek veri yok. Koşullar aşağıda. |
+| İlçe ticari URL (`/yenisehir-nakliyat` vb.) açılmadı; bilgi rehberleri `/rehber/{ilce}-ev-tasima`. H1 "[İlçe] Nakliyat" değil. | "mezitli nakliyat" niyeti `/hizmet-bolgeleri`'nde kaldı. Rehber HOW; doorway değil. |
+| İlçe sayfaları açılmadı | İlçeye özgü gerçek iş fotoğrafı yok. Koşullar aşağıda. Ticari sayfa hâlâ tek. |
 | Rota sayfaları açılmadı | O rotalarda iş yapıldığı doğrulanmadı. |
 | `/yorumlar` açılmadı | Gerçek yorum verisi yok. |
 
@@ -112,5 +117,9 @@ nakliyat fiyatı nasıl hesaplanır
 şehirler arası ev nasıl taşınır
 öğrenci evi taşıma
 beyaz eşya nasıl taşınır
+yenişehir ev taşıma
+mezitli ev taşıma
+toroslar ev taşıma
+akdeniz ev taşıma
 kansu can nakliyat
 ```

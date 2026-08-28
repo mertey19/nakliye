@@ -190,7 +190,11 @@ export default function Page() {
         <Link href="/rehber/nakliyat-fiyati-nasil-hesaplanir">
           nakliyat fiyatı neye göre belirlenir
         </Link>{" "}
-        yazısında açtık.
+        yazısında açtık. {city} içinde eğimli sokak ve eski merkez merdiveni
+        için{" "}
+        <Link href="/rehber/toroslar-ev-tasima">Toroslar</Link> ve{" "}
+        <Link href="/rehber/akdeniz-ev-tasima">Akdeniz</Link> ilçe notlarına
+        bakın.
       </p>
     </GuideShell>
   );

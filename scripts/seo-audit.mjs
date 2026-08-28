@@ -33,6 +33,10 @@ const routes = [
   "/rehber/beyaz-esya-nasil-tasinir",
   "/rehber/ogrenci-evi-nasil-tasinir",
   "/rehber/tasinma-gunu-kontrol-listesi",
+  "/rehber/yenisehir-ev-tasima",
+  "/rehber/mezitli-ev-tasima",
+  "/rehber/toroslar-ev-tasima",
+  "/rehber/akdeniz-ev-tasima",
   "/gizlilik-politikasi",
   "/kvkk-aydinlatma-metni",
 ];

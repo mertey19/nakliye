@@ -89,7 +89,12 @@ export default function Page() {
         </li>
         <li>
           Kampüs çevresi (ör. Çiftlikköy) dar sokak ve öğrenci sitesi
-          otoparkıyla bilinir. Aracın yanaşacağı yer baştan bakılmalı.
+          otoparkıyla bilinir. Aracın yanaşacağı yer baştan bakılmalı. Yenişehir
+          notları{" "}
+          <Link href="/rehber/yenisehir-ev-tasima">
+            Yenişehir&apos;de ev taşırken
+          </Link>{" "}
+          yazısında.
         </li>
       </ul>
 

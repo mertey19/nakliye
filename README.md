@@ -427,7 +427,7 @@ sitemap veya Search Console → Sayfalar). Sonra `next.config.ts` içindeki
 
 ## Yayına alma
 
-Site tamamen statik üretiliyor (23 kanonik sayfa), bu yüzden herhangi bir Node hosting
+Site tamamen statik üretiliyor (27 kanonik sayfa), bu yüzden herhangi bir Node hosting
 veya Vercel'de sorunsuz çalışır.
 
 **Vercel:**

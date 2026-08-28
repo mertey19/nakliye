@@ -110,6 +110,10 @@ nakliyat fiyatı nasıl hesaplanır
 şehirler arası ev nasıl taşınır
 öğrenci evi taşıma
 beyaz eşya nasıl taşınır
+yenişehir ev taşıma
+mezitli ev taşıma
+toroslar ev taşıma
+akdeniz ev taşıma
 kansu can nakliyat
 ```
 

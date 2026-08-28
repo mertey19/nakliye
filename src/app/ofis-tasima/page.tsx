@@ -185,7 +185,12 @@ export default function OfisTasimaPage() {
             <Link href="/sehirler-arasi-nakliyat">
               {city} şehirler arası nakliyat
             </Link>{" "}
-            sayfasında anlattık.
+            sayfasında anlattık. {city} merkez (Akdeniz ilçesi) cadde yasağı ve
+            eski bina notu{" "}
+            <Link href="/rehber/akdeniz-ev-tasima">
+              Akdeniz&apos;de ev taşırken
+            </Link>{" "}
+            yazısında.
           </p>
         </div>
 
