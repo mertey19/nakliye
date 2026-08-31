@@ -66,7 +66,7 @@ sayfa varsa **yeni sayfa açılmaz**, mevcut sayfa güçlendirilir.
 
 | Karar | Gerekçe |
 | --- | --- |
-| Ana sayfa H1 "Mersin Nakliyat ve Evden Eve Taşıma", money page H1 "Mersin Evden Eve Nakliyat" | İkisine aynı başlığı vermek Google'ı hangi sayfayı sıralayacağı konusunda ikileme sokar. |
+| Ana sayfa H1 "Mersin Nakliye ve Evden Eve Taşıma", money page H1 "Mersin Evden Eve Nakliyat" | İkisine aynı başlığı vermek Google'ı hangi sayfayı sıralayacağı konusunda ikileme sokar. Ana sayfa, sorgu yazımı "nakliye"yi H1/title'da doğal kullanır. |
 | `/sehir-ici-nakliyat` açılmadı | "şehir içi nakliyat" ile "evden eve nakliyat" aynı işi arıyor. Ayrı sayfa iki zayıf sayfa üretirdi; `/evden-eve-nakliyat#sehir-ici` H2 bölümü olarak ele alındı. |
 | `/mersin-nakliyat`, `/mersin-nakliye` gibi eş anlamlı URL'ler açılmadı | Hepsi ana sayfanın amacını tekrar eder; index bloat üretir. |
 | Fiyat HOW rehberi H1 "Nakliyat Fiyatı Neye Göre Belirlenir?"; "mersin nakliyat fiyatları" hâlâ `/evden-eve-nakliyat#fiyat` | Bilgi niyeti ile işlem niyeti ayrıldı. Rehbere uydurma TL listesi konmadı. |

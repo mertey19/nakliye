@@ -19,6 +19,12 @@ import { JsonLd } from "@/components/JsonLd";
 
 import { business } from "@/config/business";
 import { featuredGuides } from "@/config/guides";
+import {
+  homeDescription,
+  homeH1,
+  homeOgDescription,
+  homeTitle,
+} from "@/config/home";
 import { absoluteUrl } from "@/config/site";
 import { faqSchema, type FaqItem } from "@/lib/schema";
 import { defaultWhatsAppMessage } from "@/lib/messages";
@@ -39,12 +45,12 @@ const city = business.primaryCity;
  * → WHITE (tanıtım) → OFF-WHITE (SSS) → WHITE (rehber) → DARK (kapanış CTA)
  */
 export const metadata: Metadata = {
-  title: `${city} Nakliyat ve Evden Eve Taşıma | ${business.name}`,
-  description: `${city} içinde ve ${city} dışına evden eve nakliyat, ofis taşıma, parça eşya taşıma ve paketleme. Taşınma detaylarınızı paylaşın, ${business.name}'den hızlıca teklif alın.`,
+  title: homeTitle,
+  description: homeDescription,
   alternates: { canonical: absoluteUrl("/") },
   openGraph: {
-    title: `${city} Nakliyat ve Evden Eve Taşıma | ${business.name}`,
-    description: `${city} içinde ve ${city} dışına evden eve nakliyat, ofis taşıma ve parça eşya taşıma. Taşınma planınızı birlikte çıkaralım.`,
+    title: homeTitle,
+    description: homeOgDescription,
     url: absoluteUrl("/"),
   },
 };
@@ -105,6 +111,11 @@ const pricingFactors = [
 
 const faqItems: FaqItem[] = [
   {
+    question: "Mersin içi ve şehirler arası nakliyeyi aynı ekipten mi alıyorum?",
+    answer:
+      "Evet. Üssümüz Yenişehir, Çiftlikköy. Akdeniz, Mezitli, Toroslar ve Yenişehir'deki ev ve ofis taşımaları ile Mersin'den diğer illere giden taşımaları aynı ekip planlıyor. Tam ev, ofis veya birkaç parça için kapsam ayrı çıkarılır.",
+  },
+  {
     question: "Nakliyat fiyatı nasıl belirleniyor?",
     answer:
       "Fiyat; taşınacak eşya miktarı, iki adres arasındaki mesafe, kat ve asansör durumu, paketleme yapılıp yapılmayacağı ve aracın binaya yaklaşabilmesi gibi etkenlere göre belirlenir. Bu etkenler her taşınmada farklı olduğu için sabit liste fiyatı yayınlamıyoruz; bilgileri aldıktan sonra size özel fiyat veriyoruz.",
@@ -140,8 +151,8 @@ export default function HomePage() {
     <>
       <Hero
         eyebrow={business.name}
-        h1={`${city} Nakliyat ve Evden Eve Taşıma`}
-        intro={`${business.name} ile şehir içi ve şehirler arası taşınma sürecinizi planlayın. Taşınma detaylarınızı paylaşın, size uygun nakliye çözümü için hızlıca iletişime geçelim.`}
+        h1={homeH1}
+        intro={`${business.name}, Yenişehir'deki üssünden şehir içi ve şehirler arası nakliye planlar. Taşınma detaylarınızı paylaşın, size uygun çözümü birlikte çıkaralım.`}
         bullets={[
           "Evden eve, ofis ve parça eşya taşıma",
           `${city} içi ve ${city} dışı taşımalar`,
@@ -160,6 +171,30 @@ export default function HomePage() {
           title="Hangi Taşıma Hizmetlerini Veriyoruz?"
           intro="Her taşınma aynı değil. Bir öğrenci evinin taşınmasıyla bir ofisin taşınması farklı planlama gerektirir. Aşağıdaki hizmetlerden size uyanı seçip detay sayfasına bakabilir ya da doğrudan bilgi isteyebilirsiniz."
         />
+        <p className="mt-6 max-w-3xl text-[16px] leading-relaxed text-ink-700">
+          Üssümüz Yenişehir, Çiftlikköy. {city} içindeki ev taşımalarını{" "}
+          <Link
+            href="/evden-eve-nakliyat"
+            className="font-semibold text-ink-900 underline decoration-1 underline-offset-2 transition-colors hover:text-ink-500"
+          >
+            evden eve nakliyat
+          </Link>{" "}
+          sayfasında, il dışına giden işleri{" "}
+          <Link
+            href="/sehirler-arasi-nakliyat"
+            className="font-semibold text-ink-900 underline decoration-1 underline-offset-2 transition-colors hover:text-ink-500"
+          >
+            şehirler arası nakliyat
+          </Link>{" "}
+          sayfasında planlıyoruz. Birkaç parça için{" "}
+          <Link
+            href="/parca-esya-tasima"
+            className="font-semibold text-ink-900 underline decoration-1 underline-offset-2 transition-colors hover:text-ink-500"
+          >
+            parça eşya taşıma
+          </Link>{" "}
+          yeter.
+        </p>
         <ServiceCards />
       </Section>
 

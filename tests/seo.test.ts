@@ -6,6 +6,7 @@ import { districtGuideSlug, guides } from "../src/config/guides";
 import { indexableRoutes } from "../src/config/routes";
 import { absoluteUrl, siteUrl } from "../src/config/site";
 import { business } from "../src/config/business";
+import { homeDescription, homeH1, homeTitle } from "../src/config/home";
 
 test("kanonik URL üretimi: sorgu ve fragment kanonike girmez", () => {
   assert.equal(absoluteUrl("/"), siteUrl);
@@ -85,10 +86,41 @@ test("anahtar kelime yamyamlaşması yok: aynı H1 iki sayfada kullanılmaz", ()
   const h1s = services.map((s) => s.h1);
   assert.equal(new Set(h1s).size, h1s.length);
   // Ana sayfa H1'i hizmet sayfalarının hiçbiriyle aynı olmamalı.
-  const homeH1 = `${business.primaryCity} Nakliyat ve Evden Eve Taşıma`;
   assert.ok(
     !h1s.includes(homeH1),
     "ana sayfa H1'i bir hizmet sayfasıyla aynı olmamalı",
+  );
+  assert.notEqual(
+    homeH1,
+    `${business.primaryCity} Evden Eve Nakliyat`,
+    "ana sayfa H1, money page H1 ile çakışmamalı",
+  );
+});
+
+test("ana sayfa başlığı 'nakliye' yazımını doğal kullanır, SERP bütçesini aşmaz", () => {
+  assert.ok(
+    homeH1.toLocaleLowerCase("tr-TR").includes("nakliye"),
+    "H1, arama yazımı 'nakliye' içermeli",
+  );
+  assert.ok(
+    homeTitle.length <= 65,
+    `ana sayfa title çok uzun (${homeTitle.length}): ${homeTitle}`,
+  );
+  assert.ok(
+    homeTitle.split("|").length <= 2,
+    "ana sayfa title anahtar kelime doldurma gibi görünüyor",
+  );
+  assert.ok(
+    homeDescription.length >= 120 && homeDescription.length <= 160,
+    `ana sayfa description uzunluğu ${homeDescription.length}`,
+  );
+  assert.ok(
+    homeDescription.toLocaleLowerCase("tr-TR").includes("nakliye"),
+    "description, arama yazımı 'nakliye' içermeli",
+  );
+  assert.ok(
+    homeDescription.toLocaleLowerCase("tr-TR").includes("yenişehir"),
+    "description yerel üssü (Yenişehir) belirtmeli",
   );
 });
 

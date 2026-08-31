@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import { business } from "@/config/business";
+import { homeH1 } from "@/config/home";
 import { hasPhone, phoneLabel } from "@/lib/business";
 
 export const alt = `${business.name} — ${business.primaryCity} nakliyat`;
@@ -47,7 +48,7 @@ export default function OpengraphImage() {
               maxWidth: 900,
             }}
           >
-            {`${business.primaryCity} Nakliyat ve Evden Eve Taşıma`}
+            {homeH1}
           </div>
         </div>
 

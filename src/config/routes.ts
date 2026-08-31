@@ -36,6 +36,8 @@ const CONTENT_DATES = {
   guideCluster: "2026-08-27",
   /** İlçe bilgi rehberleri; hub ve hizmet bölgeleri iç link aldı. */
   districtGuides: "2026-08-28",
+  /** Ana sayfa title/H1 "nakliye" yazımı + yerel kapsama paragrafı. */
+  homeNakliyeQuery: "2026-08-31",
 } as const;
 
 /**
@@ -48,7 +50,7 @@ export const indexableRoutes: IndexableRoute[] = [
     path: "/",
     priority: 1.0,
     changeFrequency: "weekly",
-    lastModified: CONTENT_DATES.guideCluster,
+    lastModified: CONTENT_DATES.homeNakliyeQuery,
   },
 
   // Ticari hizmet sayfaları — başlık ve metinler marka adıyla güncellendi.
