@@ -1,29 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <!--
-    KANSU CAN NAKLİYAT — tarayıcı sekmesi ikonu (KC monogramı)
-
-    Tasarım kararları:
-    - Siyah zemin (#13181C) + beyaz monogram: marka sistemiyle aynı; hem açık
-      hem koyu tarayıcı temasında okunur.
-    - 16px'te ayrıntı kaybolduğu için hız çizgisi/ince öğe YOK; kalın geometrik
-      harf formları kullanıldı.
-    - K ile C arasında bilinçli boşluk var: 16px'te iki harf birbirine girmesin.
-    - Mürekkep alanı yatay ve dikeyde ortalandı, kenarlarda nefes payı bırakıldı.
-    - SVG olduğu için her boyutta keskin; tek dosya yeterli.
-  -->
-  <rect width="64" height="64" rx="14" fill="#13181C" />
-  <g
-    stroke="#FFFFFF"
-    stroke-width="6.5"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-    fill="none"
-  >
-    <!-- K: dikey gövde + iki kol -->
-    <path d="M15.75 21V43" />
-    <path d="M15.75 32L24.25 21.5" />
-    <path d="M15.75 32L25.25 42.5" />
-    <!-- C: sağ tarafı açık yay -->
-    <path d="M46.05 26.7A7.5 7.5 0 1 0 46.05 37.3" />
+  <!-- Favicon: circular KC mark, red ring on black. Detail is kept readable at 16px. -->
+  <circle cx="32" cy="32" r="32" fill="#0a0a0a" />
+  <circle cx="32" cy="32" r="30" fill="none" stroke="#e10600" stroke-width="2.25" />
+  <circle cx="34" cy="28" r="11" fill="#e10600" />
+  <rect x="23" y="28" width="22" height="2.2" fill="#0a0a0a" />
+  <rect x="23" y="32.2" width="22" height="2.2" fill="#0a0a0a" />
+  <g fill="#ffffff">
+    <path d="M16.2 18.5h6.1v11.2l7.4-11.2h7.2L27.2 32.4 37.6 46H30l-7.7-10.4V46h-6.1z" />
+    <path d="M40.6 21.8c3.4-2.4 8.2-2.1 11.1.9l-3.8 3.6c-1.4-1.4-3.6-1.6-5.1-.4-1.8 1.4-1.9 4.1-.2 5.6 1.5 1.3 3.8 1.2 5.3-.2l3.8 3.5c-3.1 3.2-8.2 3.5-11.7.6-4.1-3.4-4.3-9.8-.4-13.6z" />
   </g>
+  <path d="M14 20h9l-2.4 3.1H14zM14 24.2h7.2l-2.2 2.8H14zM14 28.3h5.4l-2 2.6H14z" fill="#e10600" />
 </svg>

@@ -10,6 +10,7 @@ dosyayı bu klasöre bırakmak yayına almak için yeterlidir.
 
 | Dosya | Nerede kullanılır | İçerik |
 | --- | --- | --- |
+| `kansu-can-nakliye-logo.png` | Header, footer, loader, favicon/OG, depo rozeti | Resmi dairesel marka logosu |
 | `kansu-can-nakliye-arac.webp` | Ana sayfa ve hizmet sayfalarının hero görseli | Firma logosu ve iletişim bilgisi taşıyan araç |
 | `kansu-can-nakliye-ekip.webp` | "İşlerimizden" galerisi | Ekip, aracın önünde |
 

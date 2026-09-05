@@ -18,9 +18,8 @@ import { business } from "@/config/business";
  * - Tıklama GA4'e olay olarak gider; hiçbir kişisel veri gönderilmez.
  * - İlgili iletişim bilgisi yoksa buton hiç render edilmez.
  *
- * RENK KURALI: Sistemde aksan rengi yok. Birincil aksiyon siyah/beyaz
- * kontrastıyla kurulur. WhatsApp yeşili yalnızca WhatsApp ikonunda ve
- * mobil dock'taki doğrudan WhatsApp aksiyonunda kullanılır.
+ * RENK KURALI: Birincil aksiyon marka kırmızısıdır. WhatsApp yeşili yalnızca
+ * WhatsApp ikonunda ve mobil dock'taki doğrudan WhatsApp aksiyonunda kullanılır.
  */
 
 const base =
@@ -29,8 +28,8 @@ const base =
   "transition-[background-color,color,border-color,transform] duration-200";
 
 export const btnStyles = {
-  /** Birincil: siyah yüzey, beyaz metin. */
-  primary: `${base} bg-ink-900 text-white hover:bg-ink-600 hover:-translate-y-px`,
+  /** Birincil: marka kırmızısı, beyaz metin. */
+  primary: `${base} bg-brand text-white hover:bg-brand-hover hover:-translate-y-px`,
   /** Koyu bölümlerde birincil: ters çevrilir. */
   inverse: `${base} bg-white text-ink-900 hover:bg-ink-300 hover:-translate-y-px`,
   /** İkincil: şeffaf yüzey, metalik kenarlık. */
@@ -219,6 +218,7 @@ export function CtaGroup({
   location,
   service,
   whatsappMessage,
+  whatsappLabel,
   quoteLabel,
   className = "",
   onDark = false,
@@ -226,6 +226,7 @@ export function CtaGroup({
   location: string;
   service?: string;
   whatsappMessage: string;
+  whatsappLabel?: string;
   quoteLabel?: string;
   className?: string;
   onDark?: boolean;
@@ -242,6 +243,7 @@ export function CtaGroup({
         message={whatsappMessage}
         location={location}
         service={service}
+        label={whatsappLabel}
         onDark={onDark}
       />
       <CallButton location={location} service={service} onDark={onDark} />

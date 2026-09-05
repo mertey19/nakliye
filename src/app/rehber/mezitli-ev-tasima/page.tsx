@@ -35,7 +35,9 @@ export default function Page() {
         <strong>sahil sitesi mi eski mahalle mi</strong> olduğudur. Viranşehir
         ile Tece aynı ilçedir; araç yanaşması ve asansör gerçeği ayrıdır. Bu
         yazı satış sayfası değil. İlçe ticari kaydı{" "}
-        <Link href="/hizmet-bolgeleri">{city} hizmet bölgeleri</Link>nde.
+        <Link href="/mezitli-nakliye">Mezitli nakliye</Link> sayfasındadır.
+        Tüm ilçeler için{" "}
+        <Link href="/hizmet-bolgeleri">{city} hizmet bölgeleri</Link>.
       </p>
 
       <h2>Sahil bandı: Viranşehir ve yeni siteler</h2>

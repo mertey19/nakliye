@@ -34,8 +34,10 @@ export default function Page() {
       <p>
         {business.name} adresi Yenişehir Çiftlikköy&apos;de. Bu yazı bir
         &ldquo;Yenişehir nakliyat&rdquo; satış sayfası değil; ilçede evi taşırken
-        işi uzatan şeylerin listesi. Ticari bölge kaydı{" "}
-        <Link href="/hizmet-bolgeleri">{city} hizmet bölgeleri</Link> sayfasında.
+        işi uzatan şeylerin listesi. Ticari teklif{" "}
+        <Link href="/yenisehir-nakliye">Mersin Yenişehir nakliye</Link> sayfasında.
+        Tüm ilçeler için{" "}
+        <Link href="/hizmet-bolgeleri">{city} hizmet bölgeleri</Link>.
       </p>
 
       <h2>Mahalleye göre ne değişir?</h2>

@@ -3,6 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  transpilePackages: ["three", "@react-three/fiber", "@react-three/drei"],
   // Kanonikleştirme: tek strateji -> trailing slash YOK, non-www, https.
   // (Bkz. README "Kanonikleştirme" bölümü ve hosting redirect kuralları.)
   trailingSlash: false,
@@ -17,6 +18,12 @@ const nextConfig: NextConfig = {
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           { key: "X-Frame-Options", value: "SAMEORIGIN" },
+        ],
+      },
+      {
+        source: "/models/:path*",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
         ],
       },
     ];

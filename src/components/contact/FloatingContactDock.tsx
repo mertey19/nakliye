@@ -63,7 +63,7 @@ export function FloatingContactDock() {
 
   return (
     <div
-      className={`fixed bottom-6 right-6 z-40 hidden md:block ${
+      className={`cinema-hidden-dock fixed bottom-6 right-6 z-40 hidden md:block ${
         visible
           ? "pointer-events-auto translate-y-0 opacity-100"
           : "pointer-events-none translate-y-3 opacity-0"

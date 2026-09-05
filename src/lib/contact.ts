@@ -1,5 +1,7 @@
 import { business } from "@/config/business";
 import { services } from "@/config/services";
+import { journeyWhatsAppMessage } from "@/config/journey";
+import { locationBySlug } from "@/config/locations";
 
 /**
  * İLETİŞİM AKSİYON KATMANI
@@ -68,7 +70,7 @@ export type PageContext = {
 export function resolvePageContext(pathname: string): PageContext {
   const slug = pathname.replace(/^\/+|\/+$/g, "");
   if (slug === "") {
-    return { context: "homepage", whatsappMessage: generalInfoMessage };
+    return { context: "homepage", whatsappMessage: journeyWhatsAppMessage };
   }
   const service = services.find((s) => s.slug === slug);
   if (service) {
@@ -77,6 +79,9 @@ export function resolvePageContext(pathname: string): PageContext {
       service: service.slug,
       whatsappMessage: serviceInfoMessage(service.navLabel),
     };
+  }
+  if (locationBySlug(slug)) {
+    return { context: slug, whatsappMessage: journeyWhatsAppMessage };
   }
   return { context: slug, whatsappMessage: generalInfoMessage };
 }

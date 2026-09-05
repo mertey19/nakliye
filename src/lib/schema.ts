@@ -3,6 +3,7 @@ import { reviews } from "@/config/reviews";
 import { photos, heroPhoto } from "@/config/photos";
 import { siteUrl, absoluteUrl } from "@/config/site";
 import type { ServiceDef } from "@/config/services";
+import { locationSchemaAreas, type LocationDef } from "@/config/locations";
 import {
   hasAddress,
   hasCoordinates,
@@ -52,17 +53,14 @@ export function movingCompanySchema(): Json {
           addressLocality: business.address.city,
           addressCountry: business.address.countryCode,
         },
-    areaServed: [
-      { "@type": "City", name: business.primaryCity },
-      ...business.serviceAreas.map((a) => ({
-        "@type": "AdministrativeArea",
-        name: `${a.name}, ${business.primaryCity}`,
-      })),
-    ],
+    areaServed: locationSchemaAreas.map((area) => ({
+      "@type": area.type,
+      name: area.name,
+    })),
     knowsLanguage: "tr",
     // Marka görseli ve iş görseli — Google'ın işletmeyi tanıması ve
     // GBP kaydıyla eşleştirmesi için. İkisi de gerçek dosya.
-    logo: absoluteUrl("/icon.svg"),
+    logo: absoluteUrl("/images/kansu-can-nakliye-logo.png"),
     // heroPhoto null olabilir; sadece tanımlıysa eklenir (uydurma URL yok).
     image: [
       ...(heroPhoto ? [absoluteUrl(heroPhoto.src)] : []),
@@ -123,6 +121,25 @@ export function movingCompanySchema(): Json {
   }
 
   return node;
+}
+
+export function locationServiceSchema(location: LocationDef): Json {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: location.h1,
+    serviceType: location.schemaServiceType,
+    description: location.description,
+    url: absoluteUrl(`/${location.slug}`),
+    provider: { "@id": ORGANIZATION_ID },
+    areaServed:
+      location.kind === "city" || location.kind === "intent"
+        ? { "@type": "City", name: business.primaryCity }
+        : {
+            "@type": "AdministrativeArea",
+            name: `${location.place}, ${business.primaryCity}`,
+          },
+  };
 }
 
 export function serviceSchema(service: ServiceDef): Json {

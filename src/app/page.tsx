@@ -1,324 +1,124 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-
-import { Hero } from "@/components/sections/Hero";
-import { TrustBar } from "@/components/sections/TrustBar";
-import { WhyUs } from "@/components/sections/WhyUs";
-import { Section, SectionHeading } from "@/components/sections/Section";
-import { ServiceCards } from "@/components/sections/ServiceCards";
-import { ProcessSteps } from "@/components/sections/ProcessSteps";
-import { PricingFactors } from "@/components/sections/PricingFactors";
-import { Faq } from "@/components/sections/Faq";
-import { Reviews } from "@/components/sections/Reviews";
-import { Gallery } from "@/components/sections/Gallery";
-import { PromoStrip } from "@/components/sections/PromoStrip";
-import { WhatsAppSection } from "@/components/sections/WhatsAppSection";
-import { CtaBand } from "@/components/sections/CtaBand";
+import { ScrollExperience } from "@/components/3d/ScrollExperience";
+import { JourneyActions } from "@/components/ui/JourneyActions";
 import { HomeLocation } from "@/components/sections/HomeLocation";
+import { Gallery } from "@/components/sections/Gallery";
+import { Faq } from "@/components/sections/Faq";
 import { JsonLd } from "@/components/JsonLd";
-
-import { business } from "@/config/business";
 import { featuredGuides } from "@/config/guides";
-import {
-  homeDescription,
-  homeH1,
-  homeOgDescription,
-  homeTitle,
-} from "@/config/home";
+import { services } from "@/config/services";
+import { districtLocationLinks } from "@/config/locations";
+import { homeDescription, homeH1, homeTitle } from "@/config/home";
 import { absoluteUrl } from "@/config/site";
-import { faqSchema, type FaqItem } from "@/lib/schema";
-import { defaultWhatsAppMessage } from "@/lib/messages";
-import { generalInfoMessage } from "@/lib/contact";
+import { breadcrumbSchema, faqSchema, serviceSchema, ORGANIZATION_ID } from "@/lib/schema";
+import "./journey.css";
 
-const city = business.primaryCity;
-
-/**
- * ANA SAYFA — arama amacı: "mersin nakliyat", "mersin nakliye",
- * "mersin nakliyat firması", "nakliyeci mersin" (geniş şehir + sektör).
- *
- * "mersin evden eve nakliyat" araması için kanonik sayfa /evden-eve-nakliyat'tır.
- * Bu ayrım, iki sayfanın aynı sorguda birbirini yemesini (cannibalization) önler.
- *
- * Bölüm ritmi: OFF-WHITE (hero) → DARK (güven bandı) → WHITE (hizmetler)
- * → OFF-WHITE (süreç) → DARK (neden biz) → WHITE (fiyat)
- * → OFF-WHITE (WhatsApp) → WHITE (bölgeler) → OFF-WHITE (galeri)
- * → WHITE (tanıtım) → OFF-WHITE (SSS) → WHITE (rehber) → DARK (kapanış CTA)
- */
 export const metadata: Metadata = {
   title: homeTitle,
   description: homeDescription,
   alternates: { canonical: absoluteUrl("/") },
-  openGraph: {
-    title: homeTitle,
-    description: homeOgDescription,
-    url: absoluteUrl("/"),
-  },
+  openGraph: { title: homeTitle, description: homeDescription, url: absoluteUrl("/"), locale: "tr_TR", type: "website" },
+  twitter: { card: "summary_large_image", title: homeTitle, description: homeDescription, images: [absoluteUrl("/opengraph-image")] },
 };
 
-const processSteps = [
-  {
-    title: "İletişim",
-    text: "Telefon, WhatsApp veya teklif formundan taşınma bilgilerinizi iletirsiniz.",
-  },
-  {
-    title: "İhtiyacın belirlenmesi",
-    text: "Eşya miktarı, kat, asansör durumu ve iki adresin araç yaklaşımı konuşulur.",
-  },
-  {
-    title: "Planlama",
-    text: "Taşınma günü, ekip ve araç ihtiyacı ile paketleme kapsamı netleştirilir.",
-  },
-  {
-    title: "Paketleme",
-    text: "İstenirse kırılabilir eşya, mutfak ve elektronik ürünler taşımaya hazır paketlenir.",
-  },
-  {
-    title: "Yükleme",
-    text: "Mobilyalar gerekiyorsa sökülür, sabitlenerek araca yüklenir.",
-  },
-  {
-    title: "Taşıma ve teslim",
-    text: "Eşyalar yeni adrese taşınır, mobilyalar kurulur ve yerleşim yapılır.",
-  },
-];
-
-const pricingFactors = [
-  {
-    title: "Mesafe ve rota",
-    text: `${city} içi kısa mesafe ile il dışına giden bir taşıma aynı fiyatlanmaz; yol süresi ve yakıt maliyeti değişir.`,
-  },
-  {
-    title: "Eşya miktarı",
-    text: "1+1 bir evle 4+1 bir evin araç hacmi ve ekip ihtiyacı farklıdır.",
-  },
-  {
-    title: "Kat ve asansör",
-    text: "Asansör yoksa veya eşya asansöre sığmıyorsa taşıma süresi ve işçilik artar.",
-  },
-  {
-    title: "Paketleme kapsamı",
-    text: "Sadece taşıma mı, yoksa paketleme malzemesi ve işçiliği de dahil mi olduğu fiyatı değiştirir.",
-  },
-  {
-    title: "Araç yaklaşımı",
-    text: "Dar sokak, otopark sorunu veya aracın binaya yaklaşamaması ek taşıma mesafesi yaratır.",
-  },
-  {
-    title: "Tarih ve zamanlama",
-    text: "Ay sonu ve hafta sonu yoğunluğu ile acil taşımalar planlamayı etkiler.",
-  },
-];
-
-const faqItems: FaqItem[] = [
-  {
-    question: "Mersin içi ve şehirler arası nakliyeyi aynı ekipten mi alıyorum?",
-    answer:
-      "Evet. Üssümüz Yenişehir, Çiftlikköy. Akdeniz, Mezitli, Toroslar ve Yenişehir'deki ev ve ofis taşımaları ile Mersin'den diğer illere giden taşımaları aynı ekip planlıyor. Tam ev, ofis veya birkaç parça için kapsam ayrı çıkarılır.",
-  },
-  {
-    question: "Nakliyat fiyatı nasıl belirleniyor?",
-    answer:
-      "Fiyat; taşınacak eşya miktarı, iki adres arasındaki mesafe, kat ve asansör durumu, paketleme yapılıp yapılmayacağı ve aracın binaya yaklaşabilmesi gibi etkenlere göre belirlenir. Bu etkenler her taşınmada farklı olduğu için sabit liste fiyatı yayınlamıyoruz; bilgileri aldıktan sonra size özel fiyat veriyoruz.",
-  },
-  {
-    question: "Taşınmadan kaç gün önce iletişime geçmeliyim?",
-    answer:
-      "Tarihiniz netleştiği anda yazmanız en iyisi. Özellikle ay sonu ve hafta sonları yoğun olduğu için erken haber vermek istediğiniz güne yer ayırmayı kolaylaştırır. Acil durumlarda da önce arayın; uygun araç ve ekip varsa kısa sürede planlayabiliriz.",
-  },
-  {
-    question: "Eşyaları kim paketliyor?",
-    answer:
-      "Tercihe bağlı. İsterseniz kırılabilir eşya, mutfak ve elektronik ürünlerin paketlemesini biz yaparız; isterseniz siz paketler, biz sadece taşırız. Paketleme kapsamı fiyatı doğrudan etkilediği için teklif öncesinde netleştiriyoruz.",
-  },
-  {
-    question: "Şehirler arası taşıma yapıyor musunuz?",
-    answer: `Evet. ${city} içindeki taşımaların yanında ${city} dışına ev ve ofis taşıması da yapıyoruz. Çıkış ve varış adresini, tahmini tarihi ve eşya miktarını paylaşırsanız rotaya göre plan çıkarıyoruz.`,
-  },
-  {
-    question: "Asansör olmayan binalarda taşıma yapılıyor mu?",
-    answer:
-      "Yapılıyor. Bu durumda eşyalar merdivenden taşınır; süre ve işçilik arttığı için planlamayı buna göre yapıyoruz. Kat sayısını ve asansör durumunu önceden bildirmeniz, gün içinde sürpriz yaşanmasını önler.",
-  },
-  {
-    question: "Sadece birkaç parça eşya taşıtabilir miyim?",
-    answer:
-      "Evet. Tek koltuk, buzdolabı, çamaşır makinesi veya birkaç kutuluk yük için tam ev taşıma paketi gerekmez. Parça eşya taşıma hizmetinde yalnızca taşınan parçaya göre plan yapılır.",
-  },
+const faqItems = [
+  { question: "Mersin'de hangi bölgelere hizmet veriyorsunuz?", answer: "Yenişehir, Çiftlikköy'deki merkezimizden Akdeniz, Mezitli, Toroslar ve Yenişehir ilçelerine hizmet veriyoruz. Mersin içi ev ve ofis taşımalarının yanı sıra şehirler arası nakliyat da planlıyoruz." },
+  { question: "Nakliye fiyatı nasıl belirleniyor?", answer: "Eşya miktarı, mesafe, kat ve asansör durumu, paketleme kapsamı ve aracın binaya yaklaşımı değerlendirilir. Bu bilgileri telefon, WhatsApp veya teklif formundan ilettiğinizde taşınmanıza özel ücretsiz teklif hazırlıyoruz." },
+  { question: "Paketleme ve mobilya sökümü yapılıyor mu?", answer: "İhtiyacınıza göre kırılabilir eşya ve elektronik ürünlerin paketlenmesini, mobilyaların söküm ve kurulumunu planlıyoruz. Hangi işlemlerin dahil olduğu taşıma öncesinde birlikte netleştirilir." },
+  { question: "Mersin'den başka şehirlere taşıma yapıyor musunuz?", answer: "Evet. Mersin çıkışlı şehirler arası ev ve ofis taşımaları için çıkış adresini, varış şehrini, eşya miktarını ve taşınma tarihinizi paylaşabilirsiniz. Rota ve teslim planını bu bilgilere göre oluşturuyoruz." },
+  { question: "Makine veya motosiklet taşımak için hangi bilgiler gerekli?", answer: "Taşınacak yükün ölçüleri, ağırlığı, fotoğrafları ve iki adresin yükleme koşulları gereklidir. Uygun araç, ekipman ve sabitleme ihtiyacı değerlendirildikten sonra taşıma kapsamı ve uygunluk teyit edilir." },
 ];
 
 export default function HomePage() {
-  return (
-    <>
-      <Hero
-        eyebrow={business.name}
-        h1={homeH1}
-        intro={`${business.name}, Yenişehir'deki üssünden şehir içi ve şehirler arası nakliye planlar. Taşınma detaylarınızı paylaşın, size uygun çözümü birlikte çıkaralım.`}
-        bullets={[
-          "Evden eve, ofis ve parça eşya taşıma",
-          `${city} içi ve ${city} dışı taşımalar`,
-          "İsteğe bağlı profesyonel paketleme",
-          "Taşınma günü için saat bazlı program",
-        ]}
-        whatsappMessage={defaultWhatsAppMessage}
-      />
-
-      <TrustBar />
-
-      <Section tone="white" labelledBy="hizmetler-baslik">
-        <SectionHeading
-          id="hizmetler-baslik"
-          eyebrow="Hizmetlerimiz"
-          title="Hangi Taşıma Hizmetlerini Veriyoruz?"
-          intro="Her taşınma aynı değil. Bir öğrenci evinin taşınmasıyla bir ofisin taşınması farklı planlama gerektirir. Aşağıdaki hizmetlerden size uyanı seçip detay sayfasına bakabilir ya da doğrudan bilgi isteyebilirsiniz."
-        />
-        <p className="mt-6 max-w-3xl text-[16px] leading-relaxed text-ink-700">
-          Üssümüz Yenişehir, Çiftlikköy. {city} içindeki ev taşımalarını{" "}
-          <Link
-            href="/evden-eve-nakliyat"
-            className="font-semibold text-ink-900 underline decoration-1 underline-offset-2 transition-colors hover:text-ink-500"
-          >
-            evden eve nakliyat
-          </Link>{" "}
-          sayfasında, il dışına giden işleri{" "}
-          <Link
-            href="/sehirler-arasi-nakliyat"
-            className="font-semibold text-ink-900 underline decoration-1 underline-offset-2 transition-colors hover:text-ink-500"
-          >
-            şehirler arası nakliyat
-          </Link>{" "}
-          sayfasında planlıyoruz. Birkaç parça için{" "}
-          <Link
-            href="/parca-esya-tasima"
-            className="font-semibold text-ink-900 underline decoration-1 underline-offset-2 transition-colors hover:text-ink-500"
-          >
-            parça eşya taşıma
-          </Link>{" "}
-          yeter.
-        </p>
-        <ServiceCards />
-      </Section>
-
-      <Section tone="light" labelledBy="surec-baslik">
-        <SectionHeading
-          id="surec-baslik"
-          eyebrow="Süreç"
-          title="Taşınma Süreci Nasıl İlerliyor?"
-          intro="Taşınma gününde sürpriz yaşanmaması, öncesinde konuşulanlara bağlı. Süreci şu sırayla yürütüyoruz:"
-        />
-        <ProcessSteps steps={processSteps} />
-      </Section>
-
-      <WhyUs whatsappMessage={defaultWhatsAppMessage} />
-
-      <Section tone="white" labelledBy="fiyat-baslik">
-        <SectionHeading
-          id="fiyat-baslik"
-          eyebrow="Fiyatlandırma"
-          title="Nakliyat Fiyatı Nasıl Hesaplanır?"
-          intro="İnternette gördüğünüz sabit fiyat listeleri çoğu zaman taşınmanızın gerçek koşullarını içermez. Fiyatı belirleyen asıl etkenler şunlar:"
-        />
-        <PricingFactors
-          factors={pricingFactors}
-          whatsappMessage={defaultWhatsAppMessage}
-        />
-      </Section>
-
-      <WhatsAppSection message={generalInfoMessage} location="home_whatsapp_section" />
-
-      <Section tone="white" labelledBy="bolge-baslik">
-        <SectionHeading
-          id="bolge-baslik"
-          eyebrow="Hizmet bölgeleri"
-          title="Hangi Bölgelerde Hizmet Veriyoruz?"
-          intro={`${city} merkezde ${business.serviceAreas
-            .map((a) => a.name)
-            .join(", ")} ilçelerinde taşıma yapıyoruz. ${city} dışına yapılan ev ve ofis taşımaları için de aynı ekip planlama yürütüyor.`}
-        />
-        <div className="mt-8 flex flex-wrap gap-2.5">
-          {business.serviceAreas.map((a) => (
-            <span
-              key={a.slug}
-              className="rounded-[10px] border border-line bg-surface px-5 py-2.5 text-[14px] font-semibold text-ink-900"
-            >
-              {a.name}
-            </span>
-          ))}
+  return <>
+    <ScrollExperience>
+      <section id="baslangic" data-journey-chapter className="journey-panel journey-panel--intro" aria-labelledby="journey-title">
+        <div className="journey-copy">
+          <p className="journey-eyebrow"><i /> {"MERSİN'DEN TÜRKİYE'YE"}</p>
+          <p className="journey-brand" aria-hidden="true">KANSU CAN<br /><span>NAKLİYE<span className="journey-period">.</span></span></p>
+          <h1 id="journey-title">{homeH1}</h1>
+          <p className="journey-tagline">Yükünüz bizimle güvende.</p>
+          <p className="journey-description">Her eşyanın bir hikâyesi var.<br />Biz o hikâyeyi yeni adresine taşıyoruz.</p>
+          <JourneyActions location="cinematic_intro" />
         </div>
-        <Link
-          href="/hizmet-bolgeleri"
-          className="mt-7 inline-flex items-center gap-1.5 py-1.5 text-[15px] font-bold text-ink-900 underline decoration-1 underline-offset-4 transition-colors hover:text-ink-500"
-        >
-          Hizmet bölgeleri ve taşıma koşulları
-          <span aria-hidden="true">→</span>
-        </Link>
-        <HomeLocation />
-      </Section>
-
-      {/* Gerçek iş fotoğrafları — dosya yoksa bölüm hiç render edilmez. */}
-      <Section tone="light" labelledBy="galeri-baslik">
-        <Gallery />
-        <Reviews />
-      </Section>
-
-      {/* Tanıtım grafikleri — gerçek iş fotoğraflarından AYRI başlık altında. */}
-      <Section tone="white" labelledBy="tanitim-baslik">
-        <PromoStrip />
-      </Section>
-
-      <Section tone="light" labelledBy="sss-baslik">
-        <SectionHeading
-          id="sss-baslik"
-          eyebrow="Sık sorulanlar"
-          title="Sık Sorulan Sorular"
-        />
-        <Faq items={faqItems} />
-      </Section>
-
-      <Section tone="white" labelledBy="rehber-baslik">
-        <SectionHeading
-          id="rehber-baslik"
-          eyebrow="Rehber"
-          title="Taşınma Rehberi"
-          intro="Taşınma tarihi yaklaşanların en çok sorduğu konuları yazıya döktük."
-        />
-        <ul className="mt-8 grid gap-4 sm:grid-cols-3">
-          {featuredGuides.map((g) => (
-            <li key={g.slug}>
-              <article className="relative h-full rounded-card border border-line-soft bg-white p-6 transition-[border-color,transform] duration-200 hover:-translate-y-1 hover:border-ink-500">
-                <h3 className="text-[17px] font-bold tracking-[-0.02em] text-ink-900">
-                  <Link
-                    href={`/rehber/${g.slug}`}
-                    className="after:absolute after:inset-0"
-                  >
-                    {g.h1}
-                  </Link>
-                </h3>
-                <p className="mt-3 text-[15px] leading-relaxed text-ink-500">
-                  {g.summary}
-                </p>
-                <p className="mt-5 text-[13px] font-semibold uppercase tracking-[0.1em] text-ink-500">
-                  {g.readingMinutes} dk okuma
-                </p>
-              </article>
-            </li>
-          ))}
-        </ul>
-        <Link
-          href="/rehber"
-          className="mt-7 inline-flex items-center gap-1.5 py-1.5 text-[15px] font-bold text-ink-900 underline decoration-1 underline-offset-4 transition-colors hover:text-ink-500"
-        >
-          Tüm taşınma rehberleri
-          <span aria-hidden="true">→</span>
-        </Link>
-      </Section>
-
-      <CtaBand
-        title="Taşınmanızı Planlayalım"
-        text={`Taşınma tarihiniz belli olduysa erken haber vermeniz uygun araç ve ekip ayırmayı kolaylaştırır. Bilgileri paylaşın, ${business.name} size özel teklifi hazırlasın.`}
-        whatsappMessage={defaultWhatsAppMessage}
-      />
-
-      <JsonLd data={faqSchema(faqItems)} />
-    </>
-  );
+        <a href="#ev-tasima" className="journey-scroll-cue"><span>↓</span> YOLCULUĞU KEŞFET</a>
+        <p className="journey-scene-caption">36°46′ N · 34°33′ E<br /><span>{"AKDENİZ'DE BİR BAŞLANGIÇ"}</span></p>
+      </section>
+      <section id="ev-tasima" data-journey-chapter className="journey-panel" aria-labelledby="ev-baslik">
+        <div className="journey-copy"><p className="journey-eyebrow">01 / EVDEN EVE NAKLİYAT</p>
+          <h2 id="ev-baslik">EVİNİZİ DEĞİL,<br /><span>HAYATINIZI</span><br />TAŞIYORUZ.</h2>
+          <p className="journey-description">Eşyalarınızı profesyonel ekip ve özenle planlanan taşıma süreçleriyle yeni adresinize ulaştırıyoruz.</p>
+          <div className="journey-tags"><span>Özenli paketleme</span><span>Planlı yükleme</span><span>Güvenli teslim</span></div>
+          <JourneyActions compact location="cinematic_home" /><Link className="journey-detail-link" href="/evden-eve-nakliyat">Evden eve nakliyat hizmetini incele ↗</Link>
+        </div>
+      </section>
+      <section id="ofis-tasima" data-journey-chapter className="journey-panel" aria-labelledby="ofis-baslik">
+        <div className="journey-copy"><p className="journey-eyebrow">02 / OFİS TAŞIMACILIĞI</p>
+          <h2 id="ofis-baslik">ADRESİNİZ<br />DEĞİŞSİN.<br /><span>İŞİNİZ DURMASIN.</span></h2>
+          <p className="journey-description">Masalardan elektronik ekipmanlara, ofisinizi minimum kesinti hedefiyle taşıyoruz. Her detay, işinize kaldığınız yerden devam etmeniz için.</p>
+          <JourneyActions compact location="cinematic_office" /><Link className="journey-detail-link" href="/ofis-tasima">Ofis taşıma planını incele ↗</Link>
+        </div>
+      </section>
+      <section id="fabrika-tasima" data-journey-chapter className="journey-panel" aria-labelledby="fabrika-baslik">
+        <div className="journey-copy"><p className="journey-eyebrow">03 / FABRİKA & AĞIR EŞYA</p>
+          <h2 id="fabrika-baslik">BÜYÜK YÜKLER.<br /><span>PROFESYONEL</span><br />ÇÖZÜMLER.</h2>
+          <p className="journey-description">Endüstriyel taşımada her yükün kendi planı vardır. Makine ölçüleri, ağırlık ve saha koşullarına göre araç ve ekipman ihtiyacını birlikte değerlendiriyoruz.</p>
+          <div className="journey-tags"><span>Saha değerlendirmesi</span><span>Yüke özel planlama</span></div>
+          <JourneyActions compact location="cinematic_factory" />
+        </div>
+      </section>
+      <section id="arac-tasima" data-journey-chapter className="journey-panel" aria-labelledby="arac-baslik">
+        <div className="journey-copy"><p className="journey-eyebrow">04 / MOTOSİKLET & ARAÇ TAŞIMA</p>
+          <h2 id="arac-baslik">ARACINIZ DA<br /><span>BİZİMLE</span><br />GÜVENDE.</h2>
+          <p className="journey-description">İki teker ya da dört teker; doğru yükleme ve sabitleme planıyla yola çıkıyoruz. Aracınızın bilgilerini iletin, taşıma uygunluğunu ve koşullarını netleştirelim.</p>
+          <JourneyActions compact location="cinematic_vehicle" />
+        </div>
+      </section>
+      <section id="turkiye-rotalari" data-journey-chapter className="journey-panel" aria-labelledby="rota-baslik">
+        <div className="journey-copy"><p className="journey-eyebrow">05 / ŞEHİRLER ARASI NAKLİYAT</p>
+          <h2 id="rota-baslik">{"MERSİN'DEN"}<br /><span>{"TÜRKİYE'NİN"}</span><br />HER NOKTASINA.</h2>
+          <p className="journey-description">Mesafeler değişir, gösterdiğimiz özen değişmez. Mersin çıkışlı taşınmanız için rotayı ve teslim sürecini beraber planlıyoruz.</p>
+          <p className="journey-cities">İstanbul · Ankara · İzmir · Antalya · Adana</p>
+          <JourneyActions compact location="cinematic_routes" /><Link className="journey-detail-link" href="/sehirler-arasi-nakliyat">Şehirler arası taşımayı incele ↗</Link>
+        </div>
+      </section>
+      <section id="yola-hazir" data-journey-chapter className="journey-panel journey-panel--final" aria-labelledby="hazir-baslik">
+        <div className="journey-copy"><p className="journey-eyebrow">SONRAKİ DURAK: YENİ ADRESİNİZ</p>
+          <h2 id="hazir-baslik">TAŞINMAYA<br /><span>HAZIR MISINIZ?</span></h2>
+          <p className="journey-description">Dakikalar içinde ücretsiz teklif alın.<br />Siz yeni başlangıcınızı düşünün, taşıma planını birlikte hazırlayalım.</p>
+          <JourneyActions location="cinematic_final" /><a className="journey-detail-link" href="#iletisim-ve-detaylar">Konum, hizmet detayları ve sık sorulanlar ↓</a>
+        </div>
+      </section>
+    </ScrollExperience>
+    <div id="iletisim-ve-detaylar" className="journey-details">
+      <section className="journey-local-intro" aria-labelledby="yerel-baslik">
+        <div><p className="journey-eyebrow">GERÇEK EKİP. GERÇEK İLETİŞİM.</p><h2 id="yerel-baslik">{homeH1}</h2></div>
+        <div><p>{"Kansu Can Nakliye, Yenişehir Çiftlikköy'deki merkezinden Mersin içi ve şehirler arası nakliye planlar. Akdeniz, Mezitli, Toroslar ve Yenişehir'de ev, ofis ve parça eşya taşıma ihtiyaçlarınız için yanınızdayız."}</p><p>Profesyonel nakliyat, doğru hazırlıkla başlar. Taşınma tarihi, adresler ve eşya bilgilerini paylaşın; paketleme, ekip ve araç ihtiyacını netleştirelim.</p><Link className="journey-detail-link" href="/hizmet-bolgeleri">Hizmet bölgelerimiz ↗</Link></div>
+      </section>
+      <nav className="journey-service-links" aria-label="Hizmet detayları">{services.map(service => <Link key={service.slug} href={`/${service.slug}`}>{service.navLabel}<span>↗</span></Link>)}</nav>
+      <section className="journey-local-intro" aria-labelledby="bolge-baslik">
+        <div>
+          <p className="journey-eyebrow">HİZMET BÖLGELERİMİZ</p>
+          <h2 id="bolge-baslik">Mersin ve çevre ilçeler</h2>
+        </div>
+        <div>
+          <p>Taşımayı ilçeye indirmek, teklifi de netleştirir. Mersin, Mezitli, Yenişehir, Erdemli, Silifke ve Tarsus için ayrı ticari sayfalar var; bilgi rehberleriyle karışmaz.</p>
+          <nav className="journey-service-links" aria-label="Hizmet bölgelerimiz">
+            {districtLocationLinks.map((location) => (
+              <Link key={location.slug} href={`/${location.slug}`}>{location.navLabel}<span>↗</span></Link>
+            ))}
+          </nav>
+          <Link className="journey-detail-link" href="/mersin-ucuz-nakliye">Mersin uygun fiyatlı nakliye ↗</Link>
+        </div>
+      </section>
+      <HomeLocation />
+      <section className="journey-faq" aria-labelledby="sorular-baslik"><p className="journey-eyebrow">AKLINIZDAKİ SORULAR</p><h2 id="sorular-baslik">Birlikte netleştirelim.</h2><Faq items={faqItems} /></section>
+      <details className="journey-more"><summary>Ekibimiz ve taşınma rehberleri <span>+</span></summary><div className="journey-gallery"><Gallery /></div><div className="journey-guide-links">{featuredGuides.map(guide => <Link key={guide.slug} href={`/rehber/${guide.slug}`}>{guide.h1} ↗</Link>)}<Link href="/rehber">Tüm taşınma rehberleri ↗</Link></div></details>
+    </div>
+    <JsonLd data={faqSchema(faqItems)} />
+    <JsonLd data={breadcrumbSchema([{ name: "Ana Sayfa", path: "/" }])} />
+    {services.map(service => <JsonLd key={service.slug} data={serviceSchema(service)} />)}
+    {["Fabrika ve Ağır Eşya Taşımacılığı", "Motosiklet ve Araç Taşımacılığı"].map((name, index) => <JsonLd key={name} data={{ "@context": "https://schema.org", "@type": "Service", name: `Mersin ${name}`, serviceType: name, provider: { "@id": ORGANIZATION_ID }, areaServed: { "@type": "City", name: "Mersin" }, url: `${absoluteUrl("/")}#${index ? "arac-tasima" : "fabrika-tasima"}`, description: "Yük ve saha bilgilerine göre uygunluğu değerlendirilerek planlanan taşıma hizmeti." }} />)}
+  </>;
 }

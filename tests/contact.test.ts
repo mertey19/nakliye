@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 
 import { business } from "../src/config/business";
 import { services } from "../src/config/services";
+import { journeyWhatsAppMessage } from "../src/config/journey";
 import {
   createWhatsAppUrl,
   formatPhoneForDisplay,
@@ -76,7 +77,7 @@ test("hizmete özel mesaj bağlama göre değişir", () => {
 test("resolvePageContext ana sayfa / hizmet / diğer ayrımını yapar", () => {
   const home = resolvePageContext("/");
   assert.equal(home.context, "homepage");
-  assert.equal(home.whatsappMessage, generalInfoMessage);
+  assert.equal(home.whatsappMessage, journeyWhatsAppMessage);
   assert.equal(home.service, undefined);
 
   const svc = resolvePageContext("/evden-eve-nakliyat");
@@ -88,6 +89,10 @@ test("resolvePageContext ana sayfa / hizmet / diğer ayrımını yapar", () => {
   assert.equal(other.context, "iletisim");
   assert.equal(other.service, undefined);
   assert.equal(other.whatsappMessage, generalInfoMessage);
+
+  const district = resolvePageContext("/mezitli-nakliye");
+  assert.equal(district.context, "mezitli-nakliye");
+  assert.equal(district.whatsappMessage, journeyWhatsAppMessage);
 });
 
 test("her hizmet sayfası için benzersiz kalıcı-CTA mesajı üretilir", () => {

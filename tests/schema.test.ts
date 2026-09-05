@@ -8,9 +8,11 @@ import {
   serviceSchema,
   articleSchema,
   webSiteSchema,
+  locationServiceSchema,
 } from "../src/lib/schema";
 import { services } from "../src/config/services";
 import { business } from "../src/config/business";
+import { locations } from "../src/config/locations";
 import { hasAddress, hasPhone } from "../src/lib/business";
 import { siteUrl } from "../src/config/site";
 
@@ -20,6 +22,19 @@ test("MovingCompany şeması doğrulanmış alanlarla üretilir", () => {
   assert.equal(node.name, business.name);
   assert.equal(node.url, siteUrl);
   assert.ok(Array.isArray(node.areaServed));
+  const served = (node.areaServed as { name: string }[]).map((a) => a.name);
+  for (const name of ["Mersin", "Mezitli, Mersin", "Yenişehir, Mersin", "Erdemli, Mersin", "Silifke, Mersin", "Tarsus, Mersin"]) {
+    assert.ok(served.includes(name), `areaServed eksik: ${name}`);
+  }
+});
+
+test("konum sayfaları Service şeması kanonik URL taşır", () => {
+  for (const location of locations) {
+    const node = locationServiceSchema(location) as Record<string, unknown>;
+    assert.equal(node["@type"], "Service");
+    assert.equal(node.url, `${siteUrl}/${location.slug}`);
+    assert.deepEqual(node.provider, { "@id": `${siteUrl}/#business` });
+  }
 });
 
 test("doğrulanmamış alanlar JSON-LD'ye SIZMAZ", () => {

@@ -1,5 +1,6 @@
 import { services } from "./services";
 import { guides } from "./guides";
+import { locations } from "./locations";
 
 export type IndexableRoute = {
   /** Kanonik yol, başında "/", sonunda "/" YOK. */
@@ -38,6 +39,8 @@ const CONTENT_DATES = {
   districtGuides: "2026-08-28",
   /** Ana sayfa title/H1 "nakliye" yazımı + yerel kapsama paragrafı. */
   homeNakliyeQuery: "2026-08-31",
+  /** İlçe ticari iniş sayfaları. */
+  locationLandings: "2026-09-05",
 } as const;
 
 /**
@@ -50,7 +53,7 @@ export const indexableRoutes: IndexableRoute[] = [
     path: "/",
     priority: 1.0,
     changeFrequency: "weekly",
-    lastModified: CONTENT_DATES.homeNakliyeQuery,
+    lastModified: CONTENT_DATES.locationLandings,
   },
 
   // Ticari hizmet sayfaları — başlık ve metinler marka adıyla güncellendi.
@@ -72,8 +75,14 @@ export const indexableRoutes: IndexableRoute[] = [
     path: "/hizmet-bolgeleri",
     priority: 0.7,
     changeFrequency: "monthly",
-    lastModified: CONTENT_DATES.districtGuides,
+    lastModified: CONTENT_DATES.locationLandings,
   },
+  ...locations.map((location) => ({
+    path: `/${location.slug}`,
+    priority: location.kind === "city" ? 0.85 : 0.8,
+    changeFrequency: "monthly" as const,
+    lastModified: CONTENT_DATES.locationLandings,
+  })),
   {
     path: "/iletisim",
     priority: 0.7,

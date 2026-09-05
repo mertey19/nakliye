@@ -7,6 +7,7 @@ import { indexableRoutes } from "../src/config/routes";
 import { absoluteUrl, siteUrl } from "../src/config/site";
 import { business } from "../src/config/business";
 import { homeDescription, homeH1, homeTitle } from "../src/config/home";
+import { locations } from "../src/config/locations";
 
 test("kanonik URL üretimi: sorgu ve fragment kanonike girmez", () => {
   assert.equal(absoluteUrl("/"), siteUrl);
@@ -35,7 +36,12 @@ test("hizmet slug'ları benzersiz", () => {
 });
 
 test("başlık etiketleri benzersiz (yinelenen metadata yok)", () => {
-  const titles = [...services.map((s) => s.title), ...guides.map((g) => g.title)];
+  const titles = [
+    homeTitle,
+    ...services.map((s) => s.title),
+    ...guides.map((g) => g.title),
+    ...locations.map((l) => l.title),
+  ];
   const duplicates = titles.filter((t, i) => titles.indexOf(t) !== i);
   assert.deepEqual(duplicates, [], `yinelenen başlık: ${duplicates.join(" | ")}`);
 });
@@ -44,6 +50,7 @@ test("meta açıklamaları benzersiz ve makul uzunlukta", () => {
   const descriptions = [
     ...services.map((s) => s.description),
     ...guides.map((g) => g.description),
+    ...locations.map((l) => l.description),
   ];
   const duplicates = descriptions.filter((d, i) => descriptions.indexOf(d) !== i);
   assert.deepEqual(duplicates, []);
@@ -83,13 +90,13 @@ test("hizmet başlıkları şehir + hizmet + marka kalıbına uyar, spam içerme
 });
 
 test("anahtar kelime yamyamlaşması yok: aynı H1 iki sayfada kullanılmaz", () => {
-  const h1s = services.map((s) => s.h1);
-  assert.equal(new Set(h1s).size, h1s.length);
-  // Ana sayfa H1'i hizmet sayfalarının hiçbiriyle aynı olmamalı.
-  assert.ok(
-    !h1s.includes(homeH1),
-    "ana sayfa H1'i bir hizmet sayfasıyla aynı olmamalı",
-  );
+  const h1s = [
+    homeH1,
+    ...services.map((s) => s.h1),
+    ...guides.map((g) => g.h1),
+    ...locations.map((l) => l.h1),
+  ];
+  assert.equal(new Set(h1s).size, h1s.length, `yinelenen H1: ${h1s.join(" | ")}`);
   assert.notEqual(
     homeH1,
     `${business.primaryCity} Evden Eve Nakliyat`,
@@ -140,6 +147,9 @@ test("her hizmet ve rehber sayfası sitemap'te (orphan sayfa yok)", () => {
   const paths = new Set(indexableRoutes.map((r) => r.path));
   for (const s of services) {
     assert.ok(paths.has(`/${s.slug}`), `${s.slug} sitemap'te yok`);
+  }
+  for (const l of locations) {
+    assert.ok(paths.has(`/${l.slug}`), `${l.slug} sitemap'te yok`);
   }
   for (const g of guides) {
     assert.ok(paths.has(`/rehber/${g.slug}`), `${g.slug} sitemap'te yok`);
@@ -227,6 +237,22 @@ test("rehber H1'leri ticari şehir+hizmet sorgularını kopyalamaz", () => {
     }
   }
 });
+
+test("ticari konum sayfaları benzersiz title/H1/canonical bütçesine uyar", () => {
+  for (const l of locations) {
+    assert.ok(l.title.length >= 40 && l.title.length <= 65, `${l.slug} title ${l.title.length}: ${l.title}`);
+    assert.ok(l.title.split("|").length <= 2, `${l.slug} title doldurma gibi`);
+    assert.ok(l.description.length >= 120 && l.description.length <= 170, `${l.slug} description ${l.description.length}`);
+    assert.ok(l.faqs.length >= 4, `${l.slug} SSS eksik`);
+    assert.ok(!l.h1.toLocaleLowerCase("tr-TR").includes("en ucuz"), `${l.slug} sahte en ucuz iddiası`);
+    assert.ok(!l.description.toLocaleLowerCase("tr-TR").includes("en ucuzu"), `${l.slug} description en ucuz iddiası`);
+  }
+  assert.equal(locationBySlugCheck("mersin-ucuz-nakliye")?.h1, "Mersin Uygun Fiyatlı Nakliye");
+});
+
+function locationBySlugCheck(slug: string) {
+  return locations.find((l) => l.slug === slug);
+}
 
 test("her hizmet ilçesinin bilgi rehberi var; ticari ilçe H1 yok", () => {
   for (const area of business.serviceAreas) {

@@ -38,6 +38,10 @@ export const metadata: Metadata = {
     locale: site.locale,
     siteName: business.name,
   },
+  icons: {
+    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+    apple: "/apple-icon",
+  },
   formatDetection: { telephone: true, address: false, email: false },
   ...(site.gscVerification
     ? { verification: { google: site.gscVerification } }
@@ -45,7 +49,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#13181c",
+  themeColor: "#0a0a0a",
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",

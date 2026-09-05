@@ -10,6 +10,7 @@ import { JsonLd } from "@/components/JsonLd";
 
 import { business } from "@/config/business";
 import { districtGuideSlug, guideBySlug } from "@/config/guides";
+import { districtLocationLinks } from "@/config/locations";
 import { absoluteUrl } from "@/config/site";
 import {
   breadcrumbSchema,
@@ -22,12 +23,9 @@ import { defaultWhatsAppMessage } from "@/lib/messages";
 const city = business.primaryCity;
 
 /**
- * TEK GÜÇLÜ BÖLGE SAYFASI (ticari niyet: "mezitli nakliyat" vb.).
- *
- * İlçe başına ayrı *hizmet* URL'si AÇILMADI. Aynı satış metninin ilçe adı
- * değiştirilerek çoğaltılması doorway page'dir. İlçeye özgü sokak/bina notları
- * bilgi rehberlerindedir: `/rehber/{ilce}-ev-tasima`. H1 "[İlçe] Nakliyat"
- * değildir; yamyamlaşma olmaz.
+ * BÖLGE HUB'I — ticari ilçe sayfalarına ve bilgi rehberlerine bağlar.
+ * İlçe satış metni artık /{ilce}-nakliye sayfalarındadır; bu sayfa dizin işi görür.
+ * Rehber URL'leri HOW içeriğidir, yamyamlaştırılmaz.
  */
 export const metadata: Metadata = {
   title: `${city} Nakliyat Hizmet Bölgeleri | ${business.name}`,
@@ -113,10 +111,50 @@ export default function HizmetBolgeleriPage() {
       />
 
       <Container className="py-14">
-        <section aria-labelledby="bolgeler">
-          <h2 id="bolgeler" className="text-2xl font-extrabold text-ink-900 sm:text-3xl">
-            {city} Merkezde Taşıma Yaptığımız İlçeler
+        <section aria-labelledby="ticari-bolgeler">
+          <h2 id="ticari-bolgeler" className="text-2xl font-extrabold text-ink-900 sm:text-3xl">
+            İlçe ve şehir nakliye sayfaları
           </h2>
+          <p className="mt-3 max-w-3xl text-[16px] leading-relaxed text-ink-700">
+            {city} nakliye, Mezitli, Yenişehir, Erdemli, Silifke ve Tarsus için
+            ayrı ticari sayfalar var. Her birinde o yerin koşulları, süreç ve
+            sık sorulanlar durur; aynı metin kopyalanmaz.
+          </p>
+          <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {districtLocationLinks.map((location) => (
+              <li key={location.slug}>
+                <Link
+                  href={`/${location.slug}`}
+                  className="block rounded-card border border-line bg-white px-5 py-4 transition-shadow hover:shadow-md"
+                >
+                  <span className="block text-[16px] font-semibold text-ink-900">
+                    {location.navLabel}
+                  </span>
+                  <span className="mt-1.5 block text-[13px] font-normal leading-snug text-ink-500">
+                    {location.h1}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-4">
+            <Link
+              href="/mersin-ucuz-nakliye"
+              className="font-bold text-ink-900 underline decoration-1 underline-offset-4 hover:text-ink-500"
+            >
+              Mersin uygun fiyatlı nakliye
+            </Link>
+          </p>
+        </section>
+
+        <section aria-labelledby="bolgeler" className="mt-16">
+          <h2 id="bolgeler" className="text-2xl font-extrabold text-ink-900 sm:text-3xl">
+            {city} merkez ilçe bilgi rehberleri
+          </h2>
+          <p className="mt-3 max-w-3xl text-[16px] leading-relaxed text-ink-700">
+            Sokak, site ve bina notları satış sayfası değildir. Aşağıdaki
+            yazılar &quot;nasıl taşınır&quot; sorusuna cevap verir.
+          </p>
           <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {business.serviceAreas.map((a) => {
               const g = guideBySlug(districtGuideSlug(a.slug));

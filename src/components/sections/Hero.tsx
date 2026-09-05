@@ -26,6 +26,7 @@ export function Hero({
   intro,
   bullets,
   whatsappMessage,
+  whatsappLabel,
   service,
   eyebrow,
 }: {
@@ -33,6 +34,7 @@ export function Hero({
   intro: string;
   bullets?: string[];
   whatsappMessage: string;
+  whatsappLabel?: string;
   service?: string;
   eyebrow?: string;
 }) {
@@ -69,6 +71,7 @@ export function Hero({
               location="hero"
               service={service}
               whatsappMessage={whatsappMessage}
+              whatsappLabel={whatsappLabel}
               className="mt-9"
             />
 

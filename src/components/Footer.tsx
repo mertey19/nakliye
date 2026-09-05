@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { Container } from "./Container";
+import { BrandLogo } from "./ui/BrandLogo";
 import { business } from "@/config/business";
 import { services } from "@/config/services";
 import { featuredGuides } from "@/config/guides";
+import { districtLocationLinks } from "@/config/locations";
 import { formatPhoneForDisplay, formatPhoneForTel, createWhatsAppUrl } from "@/lib/contact";
 import { defaultWhatsAppMessage } from "@/lib/messages";
 import {
@@ -41,9 +43,12 @@ export function Footer() {
       <Container className="py-14">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <p className="text-[18px] font-extrabold tracking-[-0.03em] text-white">
-              {business.name}
-            </p>
+            <div className="flex items-center gap-3">
+              <BrandLogo size={56} className="h-14 w-14 rounded-full" />
+              <p className="text-[18px] font-extrabold tracking-[-0.03em] text-white">
+                {business.name}
+              </p>
+            </div>
             <p className="eyebrow mt-1.5 text-ink-300/80">
               {business.primaryCity} Nakliyat
             </p>
@@ -221,7 +226,41 @@ export function Footer() {
           </nav>
         </div>
 
-        <div className="mt-12 border-t border-white/10 pt-6">
+        <nav aria-label="Hizmet bölgeleri" className="mt-12 border-t border-white/10 pt-8">
+          <p className="text-[13px] font-bold uppercase tracking-[0.14em] text-white">
+            Hizmet bölgeleri
+          </p>
+          <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-[14px]">
+            {districtLocationLinks.map((location) => (
+              <li key={location.slug}>
+                <Link
+                  href={`/${location.slug}`}
+                  className="inline-block py-1.5 text-ink-300 transition-colors hover:text-white"
+                >
+                  {location.navLabel}
+                </Link>
+              </li>
+            ))}
+            <li>
+              <Link
+                href="/mersin-ucuz-nakliye"
+                className="inline-block py-1.5 text-ink-300 transition-colors hover:text-white"
+              >
+                Uygun fiyatlı nakliye
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/hizmet-bolgeleri"
+                className="inline-block py-1.5 text-ink-300 transition-colors hover:text-white"
+              >
+                Tüm bölgeler
+              </Link>
+            </li>
+          </ul>
+        </nav>
+
+        <div className="mt-8 border-t border-white/10 pt-6">
           <p className="text-[14px] text-ink-300">
             <span className="font-semibold text-white">Hizmet bölgesi:</span>{" "}
             {business.primaryCity} —{" "}

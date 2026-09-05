@@ -9,6 +9,7 @@ export function CtaBand({
   title,
   text,
   whatsappMessage,
+  whatsappLabel,
   service,
   location = "page_bottom",
   quoteLabel,
@@ -16,6 +17,7 @@ export function CtaBand({
   title: string;
   text: string;
   whatsappMessage: string;
+  whatsappLabel?: string;
   service?: string;
   location?: string;
   quoteLabel?: string;
@@ -32,6 +34,7 @@ export function CtaBand({
             location={location}
             service={service}
             whatsappMessage={whatsappMessage}
+            whatsappLabel={whatsappLabel}
             quoteLabel={quoteLabel}
             className="mt-8"
             onDark

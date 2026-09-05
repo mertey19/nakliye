@@ -7,6 +7,7 @@
  */
 
 export type ConversionEvent =
+  | "quote_click"
   | "phone_click"
   | "whatsapp_click"
   | "quote_form_view"

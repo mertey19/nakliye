@@ -19,7 +19,7 @@ export function HeaderQuoteButton() {
           device_type: deviceType(),
         })
       }
-      className="header-cta inline-flex min-h-[44px] items-center justify-center rounded-[10px] bg-ink-900 whitespace-nowrap px-5 text-[14px] font-semibold tracking-[-0.01em] text-white transition-[background-color,color,transform] duration-200 hover:-translate-y-px hover:bg-ink-600"
+      className="header-cta inline-flex min-h-[44px] items-center justify-center rounded-[10px] bg-brand whitespace-nowrap px-5 text-[14px] font-semibold tracking-[-0.01em] text-white transition-[background-color,color,transform] duration-200 hover:-translate-y-px hover:bg-brand-hover"
     >
       <span className="whitespace-nowrap">Teklif Al</span>
     </Link>

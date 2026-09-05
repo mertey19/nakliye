@@ -6,6 +6,7 @@ import { mobileNav, primaryNav } from "./nav";
 import { CallLinkWithNumber } from "./cta/ConversionButtons";
 import { HeaderQuoteButton } from "./HeaderQuoteButton";
 import { InstagramLink } from "./InstagramLink";
+import { BrandLogo } from "./ui/BrandLogo";
 import { business } from "@/config/business";
 import { hasPhone } from "@/lib/business";
 
@@ -21,12 +22,15 @@ export function Header() {
       <Container className="relative">
         <div className="flex h-[72px] items-center justify-between gap-4">
           {/* Logo bağlantısının erişilebilir adı, görünen metnin kendisidir. */}
-          <Link href="/" className="flex shrink-0 flex-col py-1 leading-none">
-            <span className="brand-name text-[17px] font-extrabold tracking-[-0.03em] xl:text-[19px]">
-              {business.name}
-            </span>
-            <span className="brand-sub mt-1 text-[10px] font-semibold uppercase tracking-[0.2em] md:text-[11px]">
-              {business.primaryCity} Nakliyat
+          <Link href="/" className="flex shrink-0 items-center gap-2.5 py-1 leading-none">
+            <BrandLogo size={44} className="h-11 w-11 rounded-full" priority />
+            <span className="flex flex-col">
+              <span className="brand-name text-[17px] font-extrabold tracking-[-0.03em] xl:text-[19px]">
+                {business.name}
+              </span>
+              <span className="brand-sub mt-1 text-[10px] font-semibold uppercase tracking-[0.2em] md:text-[11px]">
+                {business.primaryCity} Nakliyat
+              </span>
             </span>
           </Link>
 

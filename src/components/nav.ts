@@ -16,6 +16,7 @@ export const primaryNav: NavItem[] = [
 export const mobileNav: NavItem[] = [
   ...services.map((s) => ({ label: s.navLabel, href: `/${s.slug}` })),
   { label: "Hizmet Bölgeleri", href: "/hizmet-bolgeleri" },
+  { label: "Mersin Nakliye", href: "/mersin-nakliye" },
   { label: "Rehber", href: "/rehber" },
   { label: "Hakkımızda", href: "/hakkimizda" },
   { label: "İletişim", href: "/iletisim" },
