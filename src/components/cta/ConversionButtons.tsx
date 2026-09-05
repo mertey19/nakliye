@@ -33,7 +33,7 @@ export const btnStyles = {
   /** Koyu bölümlerde birincil: ters çevrilir. */
   inverse: `${base} bg-white text-ink-900 hover:bg-ink-300 hover:-translate-y-px`,
   /** İkincil: şeffaf yüzey, metalik kenarlık. */
-  outline: `${base} bg-transparent text-ink-900 border border-ink-500 hover:border-ink-900 hover:bg-white`,
+  outline: `${base} bg-transparent text-white border border-white/30 hover:border-white hover:bg-white/5`,
   /** Koyu bölümlerde ikincil. */
   outlineDark: `${base} bg-transparent text-white border border-white/30 hover:border-white hover:bg-white/5`,
 } as const;

@@ -195,7 +195,7 @@ export default function SehirlerArasiNakliyatPage() {
         </div>
 
         <section aria-labelledby="surec" className="mt-14">
-          <h2 id="surec" className="text-2xl font-extrabold text-ink-900 sm:text-3xl">
+          <h2 id="surec" className="text-2xl font-extrabold text-white sm:text-3xl">
             Şehirler Arası Nakliyat Süreci
           </h2>
           <ProcessSteps steps={steps} />
@@ -209,7 +209,7 @@ export default function SehirlerArasiNakliyatPage() {
         </section>
 
         <section aria-labelledby="fiyat" className="mt-16">
-          <h2 id="fiyat" className="text-2xl font-extrabold text-ink-900 sm:text-3xl">
+          <h2 id="fiyat" className="text-2xl font-extrabold text-white sm:text-3xl">
             Şehirler Arası Nakliyat Fiyatı Nasıl Hesaplanır?
           </h2>
           <p className="mt-3 max-w-3xl text-[16px] leading-relaxed text-ink-700">
@@ -228,23 +228,23 @@ export default function SehirlerArasiNakliyatPage() {
         <Reviews />
 
         <section aria-labelledby="sss" className="mt-16">
-          <h2 id="sss" className="text-2xl font-extrabold text-ink-900 sm:text-3xl">
+          <h2 id="sss" className="text-2xl font-extrabold text-white sm:text-3xl">
             Şehirler Arası Nakliyat Hakkında Sık Sorulan Sorular
           </h2>
           <Faq items={faqItems} />
         </section>
 
         <section aria-labelledby="ilgili" className="mt-16">
-          <h2 id="ilgili" className="text-2xl font-extrabold text-ink-900 sm:text-3xl">
+          <h2 id="ilgili" className="text-2xl font-extrabold text-white sm:text-3xl">
             İlgili Sayfalar
           </h2>
           <ul className="mt-5 grid gap-3 sm:grid-cols-2">
             <li>
               <Link
                 href="/evden-eve-nakliyat"
-                className="block rounded-card border border-line-soft bg-white p-5 hover:border-ink-500"
+                className="block rounded-card border border-line-soft bg-card p-5 hover:border-ink-500"
               >
-                <span className="font-bold text-ink-900">
+                <span className="font-bold text-white">
                   {city} Evden Eve Nakliyat
                 </span>
                 <span className="mt-1 block text-[15px] text-ink-500">
@@ -255,9 +255,9 @@ export default function SehirlerArasiNakliyatPage() {
             <li>
               <Link
                 href="/rehber/sehirler-arasi-ev-tasima"
-                className="block rounded-card border border-line-soft bg-white p-5 hover:border-ink-500"
+                className="block rounded-card border border-line-soft bg-card p-5 hover:border-ink-500"
               >
-                <span className="font-bold text-ink-900">
+                <span className="font-bold text-white">
                   Şehirler Arası Ev Nasıl Taşınır?
                 </span>
                 <span className="mt-1 block text-[15px] text-ink-500">
@@ -268,9 +268,9 @@ export default function SehirlerArasiNakliyatPage() {
             <li>
               <Link
                 href="/rehber/esyalar-nasil-paketlenir"
-                className="block rounded-card border border-line-soft bg-white p-5 hover:border-ink-500"
+                className="block rounded-card border border-line-soft bg-card p-5 hover:border-ink-500"
               >
-                <span className="font-bold text-ink-900">
+                <span className="font-bold text-white">
                   Eşyalar Nasıl Paketlenir?
                 </span>
                 <span className="mt-1 block text-[15px] text-ink-500">

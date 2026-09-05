@@ -195,7 +195,7 @@ export default function OfisTasimaPage() {
         </div>
 
         <section aria-labelledby="surec" className="mt-14">
-          <h2 id="surec" className="text-2xl font-extrabold text-ink-900 sm:text-3xl">
+          <h2 id="surec" className="text-2xl font-extrabold text-white sm:text-3xl">
             Ofis Taşıma Süreci
           </h2>
           <ProcessSteps steps={steps} />
@@ -209,7 +209,7 @@ export default function OfisTasimaPage() {
         </section>
 
         <section aria-labelledby="fiyat" className="mt-16">
-          <h2 id="fiyat" className="text-2xl font-extrabold text-ink-900 sm:text-3xl">
+          <h2 id="fiyat" className="text-2xl font-extrabold text-white sm:text-3xl">
             Ofis Taşıma Fiyatı Neye Göre Belirlenir?
           </h2>
           <PricingFactors
@@ -224,7 +224,7 @@ export default function OfisTasimaPage() {
         <Reviews />
 
         <section aria-labelledby="sss" className="mt-16">
-          <h2 id="sss" className="text-2xl font-extrabold text-ink-900 sm:text-3xl">
+          <h2 id="sss" className="text-2xl font-extrabold text-white sm:text-3xl">
             Ofis Taşıma Hakkında Sık Sorulan Sorular
           </h2>
           <Faq items={faqItems} />

@@ -23,9 +23,9 @@ export type ContactActionVariant =
   | "onDarkOutline";
 
 const variants: Record<ContactActionVariant, string> = {
-  primary: "bg-ink-900 text-white border border-ink-900 hover:bg-ink-600",
-  neutral: "bg-white text-ink-900 border border-line hover:border-ink-500",
-  whatsapp: "bg-white text-ink-900 border border-line hover:border-wa-500",
+  primary: "bg-brand text-white border border-brand hover:bg-brand-hover",
+  neutral: "bg-card text-white border border-line hover:border-white/40",
+  whatsapp: "bg-wa-500 text-white border border-wa-500 hover:bg-wa-600",
   onDarkPrimary:
     "bg-white text-ink-900 border border-white hover:bg-ink-300",
   onDarkOutline:

@@ -4,14 +4,15 @@ import { Container } from "../Container";
 import { CtaGroup } from "../cta/ConversionButtons";
 import { hasDirectContact } from "@/lib/business";
 import { business } from "@/config/business";
-import { availableHeroPhoto } from "@/lib/photos.server";
+import { serviceHeroPhotos } from "@/config/photos";
+import { availableHeroPhoto, availablePromoPhotos } from "@/lib/photos.server";
+import { TrustBar } from "./TrustBar";
 
 /**
  * HERO — ilk 5 saniye testi:
  * KİM (marka) / NE (hizmet) / NEREDE (şehir) / NEDEN (fayda) / NASIL (CTA)
  *
- * Zemin off-white (#F4F4F3), başlık siyah (#13181C): yüksek kontrast,
- * geniş whitespace, çok güçlü tipografi.
+ * Zemin derin siyah, başlık beyaz, vurgu kırmızı: marka kimliği.
  *
  * Sağ sütun: firmanın GERÇEK aracı/işi fotoğrafı varsa o kullanılır
  * (config/photos.ts → heroPhoto). Fotoğraf yoksa STOK GÖRSEL KONULMAZ;
@@ -29,6 +30,7 @@ export function Hero({
   whatsappLabel,
   service,
   eyebrow,
+  photoSrc,
 }: {
   h1: string;
   intro: string;
@@ -37,7 +39,12 @@ export function Hero({
   whatsappLabel?: string;
   service?: string;
   eyebrow?: string;
+  photoSrc?: string;
 }) {
+  const resolvedSrc = photoSrc || (service ? serviceHeroPhotos[service] : undefined);
+  const photo =
+    (resolvedSrc && availablePromoPhotos.find((item) => item.src === resolvedSrc)) ||
+    availableHeroPhoto;
   return (
     <section className="border-b border-line bg-surface">
       <Container className="py-12 sm:py-16 lg:py-20">
@@ -45,7 +52,7 @@ export function Hero({
           <div>
             {eyebrow && <p className="eyebrow mb-4 text-ink-500">{eyebrow}</p>}
 
-            <h1 className="headline text-[34px] text-ink-900 sm:text-[46px] lg:text-[56px]">
+            <h1 className="headline text-[34px] text-white sm:text-[46px] lg:text-[56px]">
               {h1}
             </h1>
 
@@ -58,7 +65,7 @@ export function Hero({
                 {bullets.map((b) => (
                   <li
                     key={b}
-                    className="flex items-start gap-2.5 text-[15px] font-medium text-ink-700"
+                    className="flex items-start gap-2.5 text-[15px] font-medium text-ink-300"
                   >
                     <CheckIcon />
                     <span>{b}</span>
@@ -82,15 +89,15 @@ export function Hero({
             )}
           </div>
 
-          {availableHeroPhoto ? (
+          {photo ? (
             /* Ölçü dosyadan okunduğu için görsel kendi oranında, kırpılmadan
                render edilir ve yer önceden ayrıldığından CLS oluşmaz. */
-            <figure className="photo-zoom overflow-hidden rounded-card border border-line bg-white">
+            <figure className="photo-zoom overflow-hidden rounded-card border border-line bg-card">
               <Image
-                src={availableHeroPhoto.src}
-                alt={availableHeroPhoto.alt}
-                width={availableHeroPhoto.width}
-                height={availableHeroPhoto.height}
+                src={photo.src}
+                alt={photo.alt}
+                width={photo.width}
+                height={photo.height}
                 priority
                 sizes="(max-width: 1024px) 100vw, 46vw"
                 className="photo h-auto w-full"
@@ -101,6 +108,7 @@ export function Hero({
           )}
         </div>
       </Container>
+      <TrustBar />
     </section>
   );
 }
@@ -144,7 +152,7 @@ function CheckIcon() {
       height="18"
       viewBox="0 0 20 20"
       fill="none"
-      className="mt-0.5 shrink-0 text-ink-900"
+      className="mt-0.5 shrink-0 text-brand"
     >
       <path
         d="M4 10.5l4 4 8-9"

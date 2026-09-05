@@ -8,10 +8,10 @@ import { Container } from "../Container";
  * "10 yıllık deneyim", "10.000 mutlu müşteri", "4.9 puan" gibi
  * doğrulanmamış iddialar burada YER ALMAZ.
  */
-const items: { title: string; icon: "check" | "truck" | "clock" }[] = [
-  { title: "Güvenilir Hizmet", icon: "check" },
-  { title: "Profesyonel Taşıma", icon: "truck" },
-  { title: "Planlı Teslim", icon: "clock" },
+const items: { title: string; text: string; icon: "check" | "truck" | "clock" }[] = [
+  { title: "Güvenli", text: "Özenli paketleme ve kontrollü yükleme", icon: "check" },
+  { title: "Hızlı", text: "Planlı çıkış, zamanında teslim", icon: "clock" },
+  { title: "Profesyonel", text: "Doğrudan ekip, net plan", icon: "truck" },
 ];
 
 export function TrustBar() {
@@ -25,12 +25,15 @@ export function TrustBar() {
           {items.map((it) => (
             <li
               key={it.title}
-              className="flex items-center justify-center gap-3 px-4 py-5 sm:py-6"
+              className="flex flex-col items-center justify-center gap-1.5 px-4 py-5 text-center sm:py-6"
             >
-              <Icon name={it.icon} />
-              <span className="text-[13px] font-bold uppercase tracking-[0.12em] sm:text-[14px]">
-                {it.title}
+              <span className="flex items-center gap-2">
+                <Icon name={it.icon} />
+                <span className="text-[13px] font-bold uppercase tracking-[0.12em] sm:text-[14px]">
+                  {it.title}
+                </span>
               </span>
+              <span className="text-[12px] font-medium text-ink-300">{it.text}</span>
             </li>
           ))}
         </ul>
@@ -50,7 +53,7 @@ function Icon({ name }: { name: "check" | "truck" | "clock" }) {
     strokeWidth: 1.6,
     strokeLinecap: "round" as const,
     strokeLinejoin: "round" as const,
-    className: "shrink-0 text-ink-300",
+    className: "shrink-0 text-white",
   };
 
   if (name === "truck") {

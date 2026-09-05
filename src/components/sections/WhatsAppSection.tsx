@@ -47,13 +47,13 @@ export function WhatsAppSection({
       aria-labelledby="whatsapp-baslik"
     >
       <Container>
-        <div className="overflow-hidden rounded-card border border-line-soft bg-white">
+        <div className="overflow-hidden rounded-card border border-line-soft bg-card">
           <div className="grid gap-10 p-8 sm:p-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14 lg:p-12">
             <div>
               <p className="eyebrow text-ink-500">WhatsApp</p>
               <h2
                 id="whatsapp-baslik"
-                className="headline mt-4 text-[28px] text-ink-900 sm:text-[34px]"
+                className="headline mt-4 text-[28px] text-white sm:text-[34px]"
               >
                 WhatsApp&apos;tan Bilgi Al
               </h2>

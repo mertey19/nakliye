@@ -169,7 +169,7 @@ export default function ParcaEsyaTasimaPage() {
         </div>
 
         <section aria-labelledby="surec" className="mt-14">
-          <h2 id="surec" className="text-2xl font-extrabold text-ink-900 sm:text-3xl">
+          <h2 id="surec" className="text-2xl font-extrabold text-white sm:text-3xl">
             Parça Eşya Taşıma Nasıl İlerliyor?
           </h2>
           <ProcessSteps steps={steps} />
@@ -183,7 +183,7 @@ export default function ParcaEsyaTasimaPage() {
         </section>
 
         <section aria-labelledby="fiyat" className="mt-16">
-          <h2 id="fiyat" className="text-2xl font-extrabold text-ink-900 sm:text-3xl">
+          <h2 id="fiyat" className="text-2xl font-extrabold text-white sm:text-3xl">
             Parça Eşya Taşıma Fiyatı Nasıl Belirlenir?
           </h2>
           <PricingFactors
@@ -198,7 +198,7 @@ export default function ParcaEsyaTasimaPage() {
         <Reviews />
 
         <section aria-labelledby="sss" className="mt-16">
-          <h2 id="sss" className="text-2xl font-extrabold text-ink-900 sm:text-3xl">
+          <h2 id="sss" className="text-2xl font-extrabold text-white sm:text-3xl">
             Parça Eşya Taşıma Hakkında Sık Sorulan Sorular
           </h2>
           <Faq items={faqItems} />

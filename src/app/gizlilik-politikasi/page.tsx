@@ -36,7 +36,7 @@ export default function GizlilikPolitikasiPage() {
 
       <Container className="py-10 sm:py-14">
         <article className="max-w-3xl">
-          <h1 className="text-3xl font-extrabold leading-tight text-ink-900 sm:text-4xl">
+          <h1 className="text-3xl font-extrabold leading-tight text-white sm:text-4xl">
             Gizlilik Politikası
           </h1>
 

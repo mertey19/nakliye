@@ -11,7 +11,7 @@ export type SectionTone = "light" | "white" | "dark";
 
 const tones: Record<SectionTone, string> = {
   light: "bg-surface text-ink-800",
-  white: "bg-white text-ink-800",
+  white: "bg-card text-ink-800",
   dark: "section-dark bg-ink-900 text-ink-300",
 };
 
@@ -67,7 +67,7 @@ export function SectionHeading({
       <h2
         id={id}
         className={`headline text-[28px] sm:text-[36px] ${
-          dark ? "text-white" : "text-ink-900"
+          dark ? "text-white" : "text-white"
         }`}
       >
         {title}

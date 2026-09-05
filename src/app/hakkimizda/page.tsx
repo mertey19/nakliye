@@ -4,8 +4,11 @@ import Link from "next/link";
 import { Container } from "@/components/Container";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Gallery } from "@/components/sections/Gallery";
+import { PromoStrip } from "@/components/sections/PromoStrip";
 import { Reviews } from "@/components/sections/Reviews";
+import { TrustBar } from "@/components/sections/TrustBar";
 import { CtaBand } from "@/components/sections/CtaBand";
+import { featuredPromoPhotos } from "@/config/photos";
 import { JsonLd } from "@/components/JsonLd";
 
 import { business } from "@/config/business";
@@ -45,10 +48,11 @@ export default function HakkimizdaPage() {
           <Breadcrumbs crumbs={crumbs} />
         </Container>
       </div>
+      <TrustBar />
 
       <Container className="py-10 sm:py-14">
         <div className="max-w-3xl">
-          <h1 className="text-3xl font-extrabold leading-tight text-ink-900 sm:text-4xl">
+          <h1 className="text-3xl font-extrabold leading-tight text-white sm:text-4xl">
             {business.name} Hakkında
           </h1>
 
@@ -131,6 +135,9 @@ export default function HakkimizdaPage() {
         </div>
 
         <Gallery title="İşlerimizden" />
+        <div className="mt-14">
+          <PromoStrip srcs={featuredPromoPhotos} />
+        </div>
         <Reviews />
       </Container>
 

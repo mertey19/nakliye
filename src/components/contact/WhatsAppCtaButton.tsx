@@ -32,9 +32,9 @@ export function WhatsAppCtaButton({
           service,
         })
       }
-      className="inline-flex min-h-[52px] w-full items-center justify-center gap-2.5 rounded-[10px] bg-ink-900 px-7 text-[16px] font-semibold tracking-[-0.01em] text-white transition-[background-color,transform,box-shadow] duration-200 hover:-translate-y-px hover:bg-ink-600 hover:shadow-[0_10px_24px_-12px_rgba(19,24,28,0.7)] sm:w-auto"
+      className="inline-flex min-h-[52px] w-full items-center justify-center gap-2.5 rounded-[10px] bg-wa-500 px-7 text-[16px] font-semibold tracking-[-0.01em] text-white transition-[background-color,transform,box-shadow] duration-200 hover:-translate-y-px hover:bg-wa-600 hover:shadow-[0_10px_24px_-12px_rgba(37,211,102,0.35)] sm:w-auto"
     >
-      <WhatsAppIcon className="text-wa-500" />
+      <WhatsAppIcon className="text-white" />
       WhatsApp&apos;tan Bilgi Al
     </a>
   );

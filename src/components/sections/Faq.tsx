@@ -9,10 +9,10 @@ import type { FaqItem } from "@/lib/schema";
  */
 export function Faq({ items }: { items: FaqItem[] }) {
   return (
-    <div className="mt-8 divide-y divide-line-soft overflow-hidden rounded-card border border-line-soft bg-white">
+    <div className="mt-8 divide-y divide-line-soft overflow-hidden rounded-card border border-line bg-card">
       {items.map((f) => (
         <details key={f.question} className="group px-6">
-          <summary className="flex cursor-pointer list-none items-center justify-between gap-5 py-5 text-[16px] font-semibold tracking-[-0.01em] text-ink-900 marker:hidden">
+          <summary className="flex cursor-pointer list-none items-center justify-between gap-5 py-5 text-[16px] font-semibold tracking-[-0.01em] text-white marker:hidden">
             {f.question}
             <span
               aria-hidden="true"

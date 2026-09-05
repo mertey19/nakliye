@@ -16,7 +16,7 @@ export function Gallery({ title = "İşlerimizden" }: { title?: string }) {
       <p className="eyebrow text-ink-500">Gerçek işlerimiz</p>
       <h2
         id="galeri-baslik"
-        className="headline mt-4 text-[28px] text-ink-900 sm:text-[34px]"
+        className="headline mt-4 text-[28px] text-white sm:text-[34px]"
       >
         {title}
       </h2>
@@ -24,7 +24,7 @@ export function Gallery({ title = "İşlerimizden" }: { title?: string }) {
       <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {availablePhotos.map((p) => (
           <li key={p.src}>
-            <figure className="photo-zoom overflow-hidden rounded-card border border-line-soft bg-white">
+            <figure className="photo-zoom overflow-hidden rounded-card border border-line-soft bg-card">
               <Image
                 src={p.src}
                 alt={p.alt}

@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { Container } from "@/components/Container";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { TrustBar } from "@/components/sections/TrustBar";
 import { JsonLd } from "@/components/JsonLd";
 import {
   CallButton,
@@ -71,9 +72,10 @@ export default function IletisimPage() {
           <Breadcrumbs crumbs={crumbs} />
         </Container>
       </div>
+      <TrustBar />
 
       <Container className="py-10 sm:py-14">
-        <h1 className="text-3xl font-extrabold leading-tight text-ink-900 sm:text-4xl">
+        <h1 className="text-3xl font-extrabold leading-tight text-white sm:text-4xl">
           {business.name} İletişim
         </h1>
         <p className="mt-4 max-w-2xl text-[17px] leading-relaxed text-ink-700">
@@ -83,16 +85,16 @@ export default function IletisimPage() {
 
         <div className="mt-10 grid gap-10 lg:grid-cols-2">
           <section aria-labelledby="iletisim-bilgileri">
-            <h2 id="iletisim-bilgileri" className="text-xl font-extrabold text-ink-900">
+            <h2 id="iletisim-bilgileri" className="text-xl font-extrabold text-white">
               İletişim Bilgileri
             </h2>
 
-            <dl className="mt-5 divide-y divide-line-soft rounded-card border border-line bg-white">
+            <dl className="mt-5 divide-y divide-line-soft rounded-card border border-line bg-card">
               <div className="flex flex-wrap items-baseline gap-2 px-5 py-4">
                 <dt className="w-32 shrink-0 text-sm font-bold uppercase tracking-wide text-ink-500">
                   Firma
                 </dt>
-                <dd className="text-[16px] font-semibold text-ink-900">
+                <dd className="text-[16px] font-semibold text-white">
                   {business.name}
                 </dd>
               </div>
@@ -105,7 +107,7 @@ export default function IletisimPage() {
                   <dd>
                     <a
                       href={telHref}
-                      className="text-[16px] font-bold text-ink-900 underline decoration-1 underline-offset-4 transition-colors hover:text-ink-500"
+                      className="text-[16px] font-bold text-white underline decoration-1 underline-offset-4 transition-colors hover:text-ink-500"
                     >
                       {phoneLabel}
                     </a>
@@ -121,7 +123,7 @@ export default function IletisimPage() {
                   <dd>
                     <a
                       href={`mailto:${business.email}`}
-                      className="text-[16px] text-ink-900 underline decoration-1 underline-offset-4 transition-colors hover:text-ink-500"
+                      className="text-[16px] text-white underline decoration-1 underline-offset-4 transition-colors hover:text-ink-500"
                     >
                       {business.email}
                     </a>
@@ -134,7 +136,7 @@ export default function IletisimPage() {
                   <dt className="w-32 shrink-0 text-sm font-bold uppercase tracking-wide text-ink-500">
                     Adres
                   </dt>
-                  <dd className="text-[16px] text-ink-900">{addressOneLine}</dd>
+                  <dd className="text-[16px] text-white">{addressOneLine}</dd>
                 </div>
               )}
 
@@ -142,7 +144,7 @@ export default function IletisimPage() {
                 <dt className="w-32 shrink-0 text-sm font-bold uppercase tracking-wide text-ink-500">
                   Hizmet bölgesi
                 </dt>
-                <dd className="text-[16px] text-ink-900">
+                <dd className="text-[16px] text-white">
                   {city} ({business.serviceAreas.map((a) => a.name).join(", ")}) ve{" "}
                   {city} dışı taşımalar
                 </dd>
@@ -153,7 +155,7 @@ export default function IletisimPage() {
                   <dt className="w-32 shrink-0 text-sm font-bold uppercase tracking-wide text-ink-500">
                     Çalışma saatleri
                   </dt>
-                  <dd className="text-[16px] text-ink-900">
+                  <dd className="text-[16px] text-white">
                     <ul>
                       {business.openingHours.map((h, i) => (
                         <li key={i}>
@@ -189,7 +191,7 @@ export default function IletisimPage() {
                 Taşınma bilgilerinizi{" "}
                 <Link
                   href="/teklif-al"
-                  className="font-bold text-ink-900 underline decoration-1 underline-offset-4 transition-colors hover:text-ink-500"
+                  className="font-bold text-white underline decoration-1 underline-offset-4 transition-colors hover:text-ink-500"
                 >
                   teklif formu
                 </Link>{" "}
@@ -199,7 +201,7 @@ export default function IletisimPage() {
 
             {socialLinks.length > 0 && (
               <div className="mt-8">
-                <h2 className="text-xl font-extrabold text-ink-900">
+                <h2 className="text-xl font-extrabold text-white">
                   Sosyal Medya ve Google
                 </h2>
                 <ul className="mt-4 flex flex-wrap gap-3">
@@ -209,7 +211,7 @@ export default function IletisimPage() {
                         href={s.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex min-h-[44px] items-center rounded-[10px] border border-line bg-white px-4 font-semibold text-ink-700 hover:bg-surface"
+                        className="inline-flex min-h-[44px] items-center rounded-[10px] border border-line bg-card px-4 font-semibold text-white hover:border-white/40"
                       >
                         {s.label}
                       </a>
@@ -221,7 +223,7 @@ export default function IletisimPage() {
           </section>
 
           <section aria-labelledby="konum">
-            <h2 id="konum" className="text-xl font-extrabold text-ink-900">
+            <h2 id="konum" className="text-xl font-extrabold text-white">
               Konum
             </h2>
             {hasMapEmbed ? (
@@ -243,8 +245,8 @@ export default function IletisimPage() {
               </p>
             )}
 
-            <div className="mt-6 rounded-card border border-line bg-white p-6">
-              <h3 className="text-[17px] font-bold text-ink-900">
+            <div className="mt-6 rounded-card border border-line bg-card p-6">
+              <h3 className="text-[17px] font-bold text-white">
                 Yazarken şunları eklerseniz daha hızlı dönebiliriz
               </h3>
               <ul className="mt-3 space-y-2 text-[15px] leading-relaxed text-ink-500">
@@ -261,7 +263,7 @@ export default function IletisimPage() {
       <Container className="pb-14">
         <div className="grid gap-10 lg:grid-cols-2">
           <section aria-labelledby="ne-zaman">
-            <h2 id="ne-zaman" className="text-xl font-extrabold text-ink-900">
+            <h2 id="ne-zaman" className="text-xl font-extrabold text-white">
               Ne Zaman Ulaşmalısınız?
             </h2>
             <div className="prose-tr mt-4">
@@ -281,7 +283,7 @@ export default function IletisimPage() {
           </section>
 
           <section aria-labelledby="hangi-hizmet">
-            <h2 id="hangi-hizmet" className="text-xl font-extrabold text-ink-900">
+            <h2 id="hangi-hizmet" className="text-xl font-extrabold text-white">
               Hangi Hizmet İçin Yazıyorsunuz?
             </h2>
             <p className="mt-4 text-[15px] leading-relaxed text-ink-700">
@@ -293,7 +295,7 @@ export default function IletisimPage() {
                 <li key={s.slug}>
                   <Link
                     href={`/${s.slug}`}
-                    className="block rounded-card border border-line bg-white px-4 py-3 font-semibold text-ink-900 hover:border-ink-500 hover:text-ink-500"
+                    className="block rounded-card border border-line bg-card px-4 py-3 font-semibold text-white hover:border-ink-500 hover:text-ink-500"
                   >
                     {city} {s.navLabel}
                   </Link>

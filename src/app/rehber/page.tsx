@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { Container } from "@/components/Container";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { TrustBar } from "@/components/sections/TrustBar";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { JsonLd } from "@/components/JsonLd";
 
@@ -38,10 +39,11 @@ export default function RehberPage() {
           <Breadcrumbs crumbs={crumbs} />
         </Container>
       </div>
+      <TrustBar />
 
       <Container className="py-10 sm:py-14">
         <div className="max-w-3xl">
-          <h1 className="text-3xl font-extrabold leading-tight text-ink-900 sm:text-4xl">
+          <h1 className="text-3xl font-extrabold leading-tight text-white sm:text-4xl">
             Taşınma Rehberi
           </h1>
           <p className="mt-4 text-[17px] leading-relaxed text-ink-700">
@@ -54,8 +56,8 @@ export default function RehberPage() {
         <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {generalGuides.map((g) => (
             <li key={g.slug} className="flex">
-              <article className="relative flex w-full flex-col rounded-card border border-line bg-white p-6 transition-shadow hover:shadow-md">
-                <h2 className="text-lg font-bold text-ink-900">
+              <article className="relative flex w-full flex-col rounded-card border border-line bg-card p-6 transition-shadow hover:shadow-md">
+                <h2 className="text-lg font-bold text-white">
                   <Link
                     href={`/rehber/${g.slug}`}
                     className="after:absolute after:inset-0 hover:text-ink-500"
@@ -77,7 +79,7 @@ export default function RehberPage() {
         <section aria-labelledby="ilce-rehberleri" className="mt-14">
           <h2
             id="ilce-rehberleri"
-            className="text-2xl font-extrabold text-ink-900 sm:text-3xl"
+            className="text-2xl font-extrabold text-white sm:text-3xl"
           >
             {city} İlçelerinde Taşınma
           </h2>
@@ -87,7 +89,7 @@ export default function RehberPage() {
             araması{" "}
             <Link
               href="/hizmet-bolgeleri"
-              className="font-bold text-ink-900 underline decoration-1 underline-offset-4 hover:text-ink-500"
+              className="font-bold text-white underline decoration-1 underline-offset-4 hover:text-ink-500"
             >
               hizmet bölgeleri
             </Link>{" "}
@@ -96,8 +98,8 @@ export default function RehberPage() {
           <ul className="mt-8 grid gap-5 sm:grid-cols-2">
             {districtGuides.map((g) => (
               <li key={g.slug} className="flex">
-                <article className="relative flex w-full flex-col rounded-card border border-line bg-white p-6 transition-shadow hover:shadow-md">
-                  <h3 className="text-lg font-bold text-ink-900">
+                <article className="relative flex w-full flex-col rounded-card border border-line bg-card p-6 transition-shadow hover:shadow-md">
+                  <h3 className="text-lg font-bold text-white">
                     <Link
                       href={`/rehber/${g.slug}`}
                       className="after:absolute after:inset-0 hover:text-ink-500"
@@ -120,7 +122,7 @@ export default function RehberPage() {
         <section aria-labelledby="hangi-rehber" className="mt-14 max-w-3xl">
           <h2
             id="hangi-rehber"
-            className="text-2xl font-extrabold text-ink-900 sm:text-3xl"
+            className="text-2xl font-extrabold text-white sm:text-3xl"
           >
             Hangi Rehberi Okumalısınız?
           </h2>
@@ -187,7 +189,7 @@ export default function RehberPage() {
           Taşınma planınız netleştiyse{" "}
           <Link
             href="/evden-eve-nakliyat"
-            className="font-bold text-ink-900 underline decoration-1 underline-offset-4 transition-colors hover:text-ink-500"
+            className="font-bold text-white underline decoration-1 underline-offset-4 transition-colors hover:text-ink-500"
           >
             {city} evden eve nakliyat
           </Link>{" "}

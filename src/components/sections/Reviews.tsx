@@ -12,22 +12,22 @@ export function Reviews({ limit = 6 }: { limit?: number }) {
 
   return (
     <section className="mt-14" aria-labelledby="yorumlar-baslik">
-      <h2 id="yorumlar-baslik" className="text-2xl font-extrabold text-ink-900">
+      <h2 id="yorumlar-baslik" className="text-2xl font-extrabold text-white">
         Müşteri Yorumları
       </h2>
       <ul className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {reviews.slice(0, limit).map((r, i) => (
-          <li key={`${r.name}-${i}`} className="rounded-card border border-line bg-white p-6">
+          <li key={`${r.name}-${i}`} className="rounded-card border border-line bg-card p-6">
             <blockquote className="text-[15px] leading-relaxed text-ink-700">
               “{r.text}”
             </blockquote>
-            <p className="mt-4 text-sm font-bold text-ink-900">{r.name}</p>
+            <p className="mt-4 text-sm font-bold text-white">{r.name}</p>
             {r.sourceUrl && (
               <a
                 href={r.sourceUrl}
                 target="_blank"
                 rel="noopener noreferrer nofollow"
-                className="mt-1 inline-block text-xs font-semibold text-ink-900 underline decoration-1 underline-offset-2 transition-colors hover:text-ink-500"
+                className="mt-1 inline-block text-xs font-semibold text-white underline decoration-1 underline-offset-2 transition-colors hover:text-ink-500"
               >
                 Yorumun kaynağı
               </a>
@@ -40,7 +40,7 @@ export function Reviews({ limit = 6 }: { limit?: number }) {
           href={business.googleReviewUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-6 inline-block text-sm font-bold text-ink-900 underline decoration-1 underline-offset-4 transition-colors hover:text-ink-500"
+          className="mt-6 inline-block text-sm font-bold text-white underline decoration-1 underline-offset-4 transition-colors hover:text-ink-500"
         >
           Google&apos;da yorum bırakın
         </a>

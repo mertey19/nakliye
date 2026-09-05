@@ -17,10 +17,10 @@ export function ServiceCards({ exclude }: { exclude?: string }) {
     <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {list.map((s) => (
         <li key={s.slug} className="flex">
-          <article className="relative flex w-full flex-col rounded-card border border-line-soft bg-white p-6 transition-[border-color,transform,box-shadow] duration-200 hover:-translate-y-1 hover:border-ink-500 hover:shadow-[0_16px_32px_-24px_rgba(19,24,28,0.6)]">
+          <article className="relative flex w-full flex-col rounded-card border border-line-soft bg-card p-6 transition-[border-color,transform,box-shadow] duration-200 hover:-translate-y-1 hover:border-ink-500 hover:shadow-[0_16px_32px_-24px_rgba(19,24,28,0.6)]">
             <ServiceIcon slug={s.slug} />
 
-            <h3 className="mt-5 text-[13px] font-bold uppercase tracking-[0.1em] text-ink-900">
+            <h3 className="mt-5 text-[13px] font-bold uppercase tracking-[0.1em] text-white">
               <Link
                 href={`/${s.slug}`}
                 className="after:absolute after:inset-0"
@@ -44,7 +44,7 @@ export function ServiceCards({ exclude }: { exclude?: string }) {
               ))}
             </ul>
 
-            <span className="mt-6 inline-flex items-center gap-1.5 text-[14px] font-bold text-ink-900">
+            <span className="mt-6 inline-flex items-center gap-1.5 text-[14px] font-bold text-white">
               Detayları Gör
               <span aria-hidden="true">→</span>
             </span>

@@ -108,11 +108,12 @@ export default function HizmetBolgeleriPage() {
           .map((a) => a.name)
           .join(", ")} ilçelerinde taşıma yapıyoruz. Aynı ekip ${city} dışına yapılan ev ve ofis taşımalarını da planlıyor.`}
         whatsappMessage={defaultWhatsAppMessage}
+        photoSrc="/images/sahne-mersin-sahil.webp"
       />
 
       <Container className="py-14">
         <section aria-labelledby="ticari-bolgeler">
-          <h2 id="ticari-bolgeler" className="text-2xl font-extrabold text-ink-900 sm:text-3xl">
+          <h2 id="ticari-bolgeler" className="text-2xl font-extrabold text-white sm:text-3xl">
             İlçe ve şehir nakliye sayfaları
           </h2>
           <p className="mt-3 max-w-3xl text-[16px] leading-relaxed text-ink-700">
@@ -125,9 +126,9 @@ export default function HizmetBolgeleriPage() {
               <li key={location.slug}>
                 <Link
                   href={`/${location.slug}`}
-                  className="block rounded-card border border-line bg-white px-5 py-4 transition-shadow hover:shadow-md"
+                  className="block rounded-card border border-line bg-card px-5 py-4 transition-shadow hover:shadow-md"
                 >
-                  <span className="block text-[16px] font-semibold text-ink-900">
+                  <span className="block text-[16px] font-semibold text-white">
                     {location.navLabel}
                   </span>
                   <span className="mt-1.5 block text-[13px] font-normal leading-snug text-ink-500">
@@ -140,7 +141,7 @@ export default function HizmetBolgeleriPage() {
           <p className="mt-4">
             <Link
               href="/mersin-ucuz-nakliye"
-              className="font-bold text-ink-900 underline decoration-1 underline-offset-4 hover:text-ink-500"
+              className="font-bold text-white underline decoration-1 underline-offset-4 hover:text-ink-500"
             >
               Mersin uygun fiyatlı nakliye
             </Link>
@@ -148,7 +149,7 @@ export default function HizmetBolgeleriPage() {
         </section>
 
         <section aria-labelledby="bolgeler" className="mt-16">
-          <h2 id="bolgeler" className="text-2xl font-extrabold text-ink-900 sm:text-3xl">
+          <h2 id="bolgeler" className="text-2xl font-extrabold text-white sm:text-3xl">
             {city} merkez ilçe bilgi rehberleri
           </h2>
           <p className="mt-3 max-w-3xl text-[16px] leading-relaxed text-ink-700">
@@ -163,9 +164,9 @@ export default function HizmetBolgeleriPage() {
                   {g ? (
                     <Link
                       href={`/rehber/${g.slug}`}
-                      className="block rounded-card border border-line bg-white px-5 py-4 transition-shadow hover:shadow-md"
+                      className="block rounded-card border border-line bg-card px-5 py-4 transition-shadow hover:shadow-md"
                     >
-                      <span className="block text-[16px] font-semibold text-ink-900">
+                      <span className="block text-[16px] font-semibold text-white">
                         {a.name}
                       </span>
                       <span className="mt-1.5 block text-[13px] font-normal leading-snug text-ink-500">
@@ -173,7 +174,7 @@ export default function HizmetBolgeleriPage() {
                       </span>
                     </Link>
                   ) : (
-                    <span className="block rounded-card border border-line bg-white px-5 py-4 text-[16px] font-semibold text-ink-900">
+                    <span className="block rounded-card border border-line bg-card px-5 py-4 text-[16px] font-semibold text-white">
                       {a.name}
                     </span>
                   )}
@@ -189,7 +190,7 @@ export default function HizmetBolgeleriPage() {
         </section>
 
         <section aria-labelledby="kontrol" className="mt-16">
-          <h2 id="kontrol" className="text-2xl font-extrabold text-ink-900 sm:text-3xl">
+          <h2 id="kontrol" className="text-2xl font-extrabold text-white sm:text-3xl">
             Bölgenizde Taşımayı Etkileyen Dört Şey
           </h2>
           <p className="mt-3 max-w-3xl text-[16px] leading-relaxed text-ink-700">
@@ -199,15 +200,15 @@ export default function HizmetBolgeleriPage() {
           </p>
           <ul className="mt-6 grid gap-4 sm:grid-cols-2">
             {checklistItems.map((c) => (
-              <li key={c.title} className="rounded-card border border-line bg-white p-5">
-                <p className="font-bold text-ink-900">{c.title}</p>
+              <li key={c.title} className="rounded-card border border-line bg-card p-5">
+                <p className="font-bold text-white">{c.title}</p>
                 <p className="mt-2 text-[15px] leading-relaxed text-ink-500">
                   {c.text}
                 </p>
                 {c.href && (
                   <Link
                     href={c.href}
-                    className="mt-3 inline-block py-1 text-[14px] font-bold text-ink-900 underline decoration-1 underline-offset-4 transition-colors hover:text-ink-500"
+                    className="mt-3 inline-block py-1 text-[14px] font-bold text-white underline decoration-1 underline-offset-4 transition-colors hover:text-ink-500"
                   >
                     {c.hrefLabel} →
                   </Link>
@@ -218,7 +219,7 @@ export default function HizmetBolgeleriPage() {
         </section>
 
         <section aria-labelledby="sehirdisi" className="mt-16">
-          <h2 id="sehirdisi" className="text-2xl font-extrabold text-ink-900 sm:text-3xl">
+          <h2 id="sehirdisi" className="text-2xl font-extrabold text-white sm:text-3xl">
             {city} Dışına Taşımalar
           </h2>
           <p className="mt-3 max-w-3xl text-[16px] leading-relaxed text-ink-700">
@@ -227,7 +228,7 @@ export default function HizmetBolgeleriPage() {
             Süreci{" "}
             <Link
               href="/sehirler-arasi-nakliyat"
-              className="font-bold text-ink-900 underline decoration-1 underline-offset-4 transition-colors hover:text-ink-500"
+              className="font-bold text-white underline decoration-1 underline-offset-4 transition-colors hover:text-ink-500"
             >
               {city} şehirler arası nakliyat
             </Link>{" "}
@@ -236,7 +237,7 @@ export default function HizmetBolgeleriPage() {
         </section>
 
         <section aria-labelledby="sss" className="mt-16">
-          <h2 id="sss" className="text-2xl font-extrabold text-ink-900 sm:text-3xl">
+          <h2 id="sss" className="text-2xl font-extrabold text-white sm:text-3xl">
             Hizmet Bölgeleri Hakkında Sık Sorulan Sorular
           </h2>
           <Faq items={faqItems} />

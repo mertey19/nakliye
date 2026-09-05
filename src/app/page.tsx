@@ -4,7 +4,9 @@ import { ScrollExperience } from "@/components/3d/ScrollExperience";
 import { JourneyActions } from "@/components/ui/JourneyActions";
 import { HomeLocation } from "@/components/sections/HomeLocation";
 import { Gallery } from "@/components/sections/Gallery";
+import { PromoStrip } from "@/components/sections/PromoStrip";
 import { Faq } from "@/components/sections/Faq";
+import { featuredPromoPhotos } from "@/config/photos";
 import { JsonLd } from "@/components/JsonLd";
 import { featuredGuides } from "@/config/guides";
 import { services } from "@/config/services";
@@ -113,6 +115,9 @@ export default function HomePage() {
         </div>
       </section>
       <HomeLocation />
+      <div className="mt-14">
+        <PromoStrip srcs={featuredPromoPhotos} />
+      </div>
       <section className="journey-faq" aria-labelledby="sorular-baslik"><p className="journey-eyebrow">AKLINIZDAKİ SORULAR</p><h2 id="sorular-baslik">Birlikte netleştirelim.</h2><Faq items={faqItems} /></section>
       <details className="journey-more"><summary>Ekibimiz ve taşınma rehberleri <span>+</span></summary><div className="journey-gallery"><Gallery /></div><div className="journey-guide-links">{featuredGuides.map(guide => <Link key={guide.slug} href={`/rehber/${guide.slug}`}>{guide.h1} ↗</Link>)}<Link href="/rehber">Tüm taşınma rehberleri ↗</Link></div></details>
     </div>

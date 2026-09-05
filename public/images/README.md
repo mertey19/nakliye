@@ -1,30 +1,41 @@
 # public/images
 
-Firmanın **gerçek** görselleri buraya konur. Stok fotoğraf kullanılmaz.
+Firmanın **gerçek** iş fotoğrafları ve ayrı tutulan tanıtım görselleri buraya konur.
+Stok fotoğraf, `photos` galerisine karıştırılmaz.
 
-Bu klasördeki dosyalar `src/config/photos.ts` içinden referans verilir.
-Dosya burada YOKSA ilgili görsel sitede **gösterilmez** (kırık görsel çıkmaz);
-dosyayı bu klasöre bırakmak yayına almak için yeterlidir.
+Dosyalar `src/config/photos.ts` içinden referans verilir. Dosya yoksa ilgili
+görsel sitede gösterilmez (kırık görsel çıkmaz).
 
-## Şu an beklenen dosyalar
+## Gerçek iş fotoğrafları (`photos`)
 
-| Dosya | Nerede kullanılır | İçerik |
-| --- | --- | --- |
-| `kansu-can-nakliye-logo.png` | Header, footer, loader, favicon/OG, depo rozeti | Resmi dairesel marka logosu |
-| `kansu-can-nakliye-arac.webp` | Ana sayfa ve hizmet sayfalarının hero görseli | Firma logosu ve iletişim bilgisi taşıyan araç |
-| `kansu-can-nakliye-ekip.webp` | "İşlerimizden" galerisi | Ekip, aracın önünde |
+| Dosya | Kullanım |
+| --- | --- |
+| `kansu-can-nakliye-ekip.webp` | "İşlerimizden" galerisi |
 
-Dosya adları birebir bu şekilde olmalı. Farklı ad kullanacaksanız
-`src/config/photos.ts` içindeki `src` değerlerini de güncelleyin.
+## Tanıtım / üretilmiş görseller (`promoPhotos`)
+
+| Dosya | Kullanım |
+| --- | --- |
+| `kansu-can-nakliye-logo.png` | Header, footer, loader, favicon/OG |
+| `tanitim-sinematik-kamyon.webp` | Varsayılan hero, marka afişi |
+| `tanitim-tasinmanin-guvenli-adresi.webp` | Evden eve hero, uygun fiyat sayfası |
+| `sahne-mersin-sahil.webp` | Mersin / şehirler arası / bölgeler |
+| `sahne-mezitli-nakliye.webp` | Mezitli landing |
+| `sahne-yenisehir-nakliye.webp` | Yenişehir landing |
+| `sahne-erdemli-nakliye.webp` | Erdemli landing |
+| `sahne-silifke-nakliye.webp` | Silifke landing |
+| `sahne-tarsus-nakliye.webp` | Tarsus landing |
+| `sahne-ofis-tasima.webp` | Ofis taşıma hero |
+| `sahne-fabrika-tasima.webp` | Fabrika / ağır eşya tanıtımı |
+| `sahne-arac-tasima.webp` | Motosiklet ve araç taşıma tanıtımı |
+| `sahne-ofis-fabrika-arac.webp` | Ofis · fabrika · araç derleme |
+| `tanitim-arac.webp`, `tanitim-yukleme.webp`, `tanitim-teslimat.webp` | Ek tanıtım şeridi |
+| `kansu-can-nakliye-arac.webp` | Arşiv araç görseli |
+
+Tanıtım görsellerinin `alt` metni "Tanıtım görseli" ifadesini taşır; bunlar
+tamamlanmış iş fotoğrafı gibi sunulmaz.
 
 ## Ölçü ve format
 
-- En/boy oranı **serbest**. Kartlar sabit oranlı kutu kullandığı için hangi
-  ölçüde olursa olsun düzen kaymaz (CLS oluşmaz).
-- Tercihen `.webp`. Uzun kenar 1600 px yeterli; daha büyüğü gereksiz yük.
-- 400 KB üzerindeki dosyaları sıkıştırın (mobil ilk yükleme süresi).
-
-## Adlandırma kuralı
-
-Dosya adına anahtar kelime doldurulmaz. `alt` metni fotoğrafta gerçekten
-ne görünüyorsa onu anlatır — `photos.ts` içinde tanımlıdır.
+- Tercihen `.webp`. Uzun kenar 1600 px yeterli.
+- 400 KB üzerindeki dosyaları sıkıştırın.

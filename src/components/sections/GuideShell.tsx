@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Container } from "../Container";
 import { Breadcrumbs } from "../Breadcrumbs";
 import { CtaBand } from "./CtaBand";
+import { TrustBar } from "./TrustBar";
 import { JsonLd } from "../JsonLd";
 import { QuoteButton } from "../cta/ConversionButtons";
 
@@ -44,11 +45,12 @@ export function GuideShell({
           <Breadcrumbs crumbs={crumbs} />
         </Container>
       </div>
+      <TrustBar />
 
       <Container className="py-10 sm:py-14">
         <article className="max-w-3xl">
           <header>
-            <h1 className="text-3xl font-extrabold leading-tight text-ink-900 sm:text-4xl">
+            <h1 className="text-3xl font-extrabold leading-tight text-white sm:text-4xl">
               {guide.h1}
             </h1>
             <p className="mt-4 text-[17px] leading-relaxed text-ink-700">
@@ -69,15 +71,15 @@ export function GuideShell({
           <div className="prose-tr mt-8">{children}</div>
 
           {service && (
-            <aside className="mt-12 rounded-card border-2 border-ink-900 bg-surface p-6">
-              <p className="text-[17px] font-bold text-ink-900">
+            <aside className="mt-12 rounded-card border border-brand bg-card p-6">
+              <p className="text-[17px] font-bold text-white">
                 Taşınma tarihiniz yaklaştıysa planı erken kurun
               </p>
               <p className="mt-2 text-[15px] leading-relaxed text-ink-700">
                 {business.name}{" "}
                 <Link
                   href={`/${service.slug}`}
-                  className="font-bold text-ink-900 underline decoration-1 underline-offset-4 hover:text-ink-500"
+                  className="font-bold text-white underline decoration-1 underline-offset-4 hover:text-ink-500"
                 >
                   {business.primaryCity} {service.navLabel.toLocaleLowerCase("tr-TR")}
                 </Link>{" "}
@@ -97,7 +99,7 @@ export function GuideShell({
           <section aria-labelledby="diger-rehberler" className="mt-12">
             <h2
               id="diger-rehberler"
-              className="text-xl font-extrabold text-ink-900"
+              className="text-xl font-extrabold text-white"
             >
               Diğer Rehberler
             </h2>
@@ -106,9 +108,9 @@ export function GuideShell({
                 <li key={g.slug}>
                   <Link
                     href={`/rehber/${g.slug}`}
-                    className="block rounded-card border border-line bg-white p-4 hover:border-ink-500"
+                    className="block rounded-card border border-line bg-card p-4 hover:border-ink-500"
                   >
-                    <span className="font-bold text-ink-900">{g.h1}</span>
+                    <span className="font-bold text-white">{g.h1}</span>
                     <span className="mt-1 block text-[15px] text-ink-500">
                       {g.summary}
                     </span>

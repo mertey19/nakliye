@@ -44,12 +44,12 @@ const EMPTY: Values = {
 };
 
 const inputClass =
-  "w-full rounded-[10px] border border-line bg-surface px-4 py-3 text-[16px] text-ink-900 " +
+  "w-full rounded-[10px] border border-line bg-card px-4 py-3 text-[16px] text-white " +
   "placeholder:text-ink-500 transition-[border-color,box-shadow] " +
-  "focus:border-ink-900 focus:outline-none focus:ring-[3px] focus:ring-ink-900/[0.08] " +
-  "aria-invalid:border-ink-900 aria-invalid:bg-white";
+  "focus:border-brand focus:outline-none focus:ring-[3px] focus:ring-brand/20 " +
+  "aria-invalid:border-brand aria-invalid:bg-card";
 
-const labelClass = "block text-[15px] font-semibold text-ink-900";
+const labelClass = "block text-[15px] font-semibold text-white";
 
 export function QuoteForm() {
   const [step, setStep] = useState(1);
@@ -126,8 +126,8 @@ export function QuoteForm() {
 
   if (sent) {
     return (
-      <div className="rounded-card border border-line-soft bg-white p-6 shadow-[0_18px_40px_-32px_rgba(19,24,28,0.55)] sm:p-8">
-        <h2 className="text-xl font-extrabold text-ink-900">
+      <div className="rounded-card border border-line-soft bg-card p-6 shadow-[0_18px_40px_-32px_rgba(19,24,28,0.55)] sm:p-8">
+        <h2 className="text-xl font-extrabold text-white">
           Taşınma bilgileriniz hazır
         </h2>
         {sent.href ? (
@@ -146,7 +146,7 @@ export function QuoteForm() {
                   cta_location: "quote_success",
                 })
               }
-              className="mt-6 inline-flex min-h-[48px] items-center justify-center gap-2 rounded-[10px] border border-line bg-white px-6 font-semibold text-ink-900 transition-colors hover:border-ink-500"
+              className="mt-6 inline-flex min-h-[48px] items-center justify-center gap-2 rounded-[10px] bg-wa-500 px-6 font-semibold text-white transition-colors hover:bg-wa-600"
             >
               {hasWhatsApp ? "WhatsApp'ta Gönder" : "E-posta ile Gönder"}
             </a>
@@ -166,7 +166,7 @@ export function QuoteForm() {
             Acele ediyorsanız doğrudan arayın:{" "}
             <a
               href={telHref}
-              className="font-bold text-ink-900 underline underline-offset-2"
+              className="font-bold text-white underline underline-offset-2"
             >
               {phoneLabel}
             </a>
@@ -191,7 +191,7 @@ export function QuoteForm() {
     <form
       onSubmit={submit}
       noValidate
-      className="rounded-card border border-line-soft bg-white p-6 shadow-[0_18px_40px_-32px_rgba(19,24,28,0.55)] sm:p-8"
+      className="rounded-card border border-line-soft bg-card p-6 shadow-[0_18px_40px_-32px_rgba(19,24,28,0.55)] sm:p-8"
     >
       <div className="flex items-center justify-between gap-4">
         <p
@@ -216,7 +216,7 @@ export function QuoteForm() {
 
       {step === 1 && (
         <div className="mt-6 space-y-5">
-          <h2 className="text-xl font-extrabold text-ink-900">
+          <h2 className="text-xl font-extrabold text-white">
             Nereden nereye taşınıyorsunuz?
           </h2>
           <div>
@@ -239,7 +239,7 @@ export function QuoteForm() {
             {errors.from && (
               <p
                 id="from-error"
-                className="mt-2 flex items-center gap-1.5 text-sm font-semibold text-ink-900"
+                className="mt-2 flex items-center gap-1.5 text-sm font-semibold text-white"
               >
                 <AlertIcon />
                 {errors.from}
@@ -264,7 +264,7 @@ export function QuoteForm() {
             {errors.to && (
               <p
                 id="to-error"
-                className="mt-2 flex items-center gap-1.5 text-sm font-semibold text-ink-900"
+                className="mt-2 flex items-center gap-1.5 text-sm font-semibold text-white"
               >
                 <AlertIcon />
                 {errors.to}
@@ -276,7 +276,7 @@ export function QuoteForm() {
 
       {step === 2 && (
         <div className="mt-6 space-y-5">
-          <h2 className="text-xl font-extrabold text-ink-900">
+          <h2 className="text-xl font-extrabold text-white">
             Ne taşınacak, ne zaman?
           </h2>
           <div>
@@ -318,7 +318,7 @@ export function QuoteForm() {
 
       {step === 3 && (
         <div className="mt-6 space-y-5">
-          <h2 className="text-xl font-extrabold text-ink-900">
+          <h2 className="text-xl font-extrabold text-white">
             Size nasıl dönelim?
           </h2>
           <div>
@@ -341,7 +341,7 @@ export function QuoteForm() {
             {errors.phone && (
               <p
                 id="phone-error"
-                className="mt-2 flex items-center gap-1.5 text-sm font-semibold text-ink-900"
+                className="mt-2 flex items-center gap-1.5 text-sm font-semibold text-white"
               >
                 <AlertIcon />
                 {errors.phone}

@@ -16,7 +16,7 @@ export function DevChecklist() {
   if (missing.length === 0) return null;
 
   return (
-    <aside className="border-t-4 border-ink-900 bg-surface px-4 py-4 text-sm text-ink-900 print:hidden">
+    <aside className="border-t-4 border-brand bg-card px-4 py-4 text-sm text-white print:hidden">
       <p className="font-bold">
         [DEV] Eksik iş bilgisi ({missing.length}) — bu alanlar doldurulana kadar
         ilgili bölümler sitede gizlenir:

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import { Container } from "@/components/Container";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { TrustBar } from "@/components/sections/TrustBar";
 import { QuoteForm } from "@/components/QuoteForm";
 import { Faq } from "@/components/sections/Faq";
 import { JsonLd } from "@/components/JsonLd";
@@ -76,11 +77,12 @@ export default function TeklifAlPage() {
           <Breadcrumbs crumbs={crumbs} />
         </Container>
       </div>
+      <TrustBar />
 
       <Container className="py-10 sm:py-14">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
           <div>
-            <h1 className="text-3xl font-extrabold leading-tight text-ink-900 sm:text-4xl">
+            <h1 className="text-3xl font-extrabold leading-tight text-white sm:text-4xl">
               Nakliyat Teklifi Al
             </h1>
             <p className="mt-4 max-w-xl text-[17px] leading-relaxed text-ink-700">
@@ -91,19 +93,19 @@ export default function TeklifAlPage() {
 
             <ul className="mt-6 space-y-2.5 text-[15px] text-ink-700">
               <li className="flex gap-2.5">
-                <span aria-hidden="true" className="font-bold text-ink-900">
+                <span aria-hidden="true" className="font-bold text-white">
                   1.
                 </span>
                 Nereden nereye taşınıyorsunuz?
               </li>
               <li className="flex gap-2.5">
-                <span aria-hidden="true" className="font-bold text-ink-900">
+                <span aria-hidden="true" className="font-bold text-white">
                   2.
                 </span>
                 Ne taşınacak ve tahmini tarih ne?
               </li>
               <li className="flex gap-2.5">
-                <span aria-hidden="true" className="font-bold text-ink-900">
+                <span aria-hidden="true" className="font-bold text-white">
                   3.
                 </span>
                 Size hangi numaradan dönelim?
@@ -112,7 +114,7 @@ export default function TeklifAlPage() {
 
             {hasDirectContact && (
               <div className="mt-8 rounded-card border border-line bg-surface p-6">
-                <p className="text-[16px] font-bold text-ink-900">
+                <p className="text-[16px] font-bold text-white">
                   Form doldurmak istemiyor musunuz?
                 </p>
                 <p className="mt-2 text-[15px] leading-relaxed text-ink-700">
@@ -131,8 +133,8 @@ export default function TeklifAlPage() {
               </div>
             )}
 
-            <div className="mt-8 rounded-card border border-line bg-white p-6">
-              <h2 className="text-[17px] font-bold text-ink-900">
+            <div className="mt-8 rounded-card border border-line bg-card p-6">
+              <h2 className="text-[17px] font-bold text-white">
                 Teklif verirken neye bakıyoruz?
               </h2>
               <p className="mt-2 text-[15px] leading-relaxed text-ink-500">
@@ -153,7 +155,7 @@ export default function TeklifAlPage() {
         <section aria-labelledby="teklif-sss" className="max-w-3xl">
           <h2
             id="teklif-sss"
-            className="text-2xl font-extrabold text-ink-900 sm:text-3xl"
+            className="text-2xl font-extrabold text-white sm:text-3xl"
           >
             Teklif Süreci Hakkında Sık Sorulan Sorular
           </h2>

@@ -1,32 +1,15 @@
 /**
- * GERÇEK İŞ FOTOĞRAFLARI
- * ======================
- * Buraya SADECE firmaya ait gerçek görseller girilir. Stok fotoğraf kullanılmaz.
- *
- * ÖNEMLİ: Bu dosya yalnızca "hangi görseller olmalı" listesidir. Dosya
- * `public/` altında GERÇEKTEN yoksa ilgili görsel sitede GÖSTERİLMEZ
- * (bkz. src/lib/photos.server.ts). Böylece dosya eklenmeden kırık görsel
- * yayınlanmaz; dosyayı klasöre bırakmak yayına almak için yeterlidir.
- *
- * Dosyalar `public/images/` altına konur. En/boy oranı serbesttir; kartlar
- * sabit oranlı kutu kullandığı için hangi ölçüde olursa olsun CLS oluşmaz.
- *
- * alt metni fotoğrafta GERÇEKTEN ne varsa onu anlatır; anahtar kelime
- * doldurulmaz.
+ * GÖRSEL KAYITLARI
+ * photos = gerçek iş fotoğrafı (galeri).
+ * promoPhotos = tanıtım / üretilmiş görseller — "İşlerimizden"e karışmaz.
  */
+
 export type Photo = {
-  /** /images/... ile başlayan yol (public/ köküne göre) */
   src: string;
-  /** Fotoğrafta gerçekten görüneni anlatan alt metni */
   alt: string;
-  /** Opsiyonel kısa açıklama (galeride kartın altında görünür) */
   caption?: string;
 };
 
-/**
- * "İşlerimizden" galerisi.
- * Dosya eklendikçe bu listeye satır eklenir.
- */
 export const photos: Photo[] = [
   {
     src: "/images/kansu-can-nakliye-ekip.webp",
@@ -35,22 +18,67 @@ export const photos: Photo[] = [
   },
 ];
 
-/**
- * TANITIM GÖRSELLERİ
- * ==================
- * Firmanın kendi pazarlama grafikleri (afiş/poster). Bunlar TAMAMLANMIŞ İŞ
- * FOTOĞRAFI DEĞİLDİR; kompozit/üretilmiş görsellerdir. Bu yüzden bilinçli
- * olarak `photos` listesinden AYRI tutulur ve sitede "İşlerimizden" değil,
- * "Tanıtım Görsellerimiz" başlığı altında gösterilir.
- *
- * Sebep: ziyaretçi bir görseli "sizin yaptığınız taşıma" sanıp gerçekte
- * farklısıyla karşılaşırsa güven, tam da kazanılması gereken anda kırılır.
- * Etiketi doğru koymak hem dürüst hem de uzun vadede daha çok dönüşüm getirir.
- *
- * alt metni, görselin bir tanıtım grafiği olduğunu belirtir — ekran okuyucu
- * kullanan ziyaretçi de neye baktığını bilir.
- */
 export const promoPhotos: Photo[] = [
+  {
+    src: "/images/tanitim-sinematik-kamyon.webp",
+    alt: "Tanıtım görseli: gün batımında Mersin sahil yolunda Kansu Can Nakliye kamyonu",
+    caption: "Sinematik marka afişi",
+  },
+  {
+    src: "/images/tanitim-tasinmanin-guvenli-adresi.webp",
+    alt: "Tanıtım görseli: Taşınmanın Güvenli Adresi başlıklı marka afişi ve taşıma aracı",
+    caption: "Taşınmanın güvenli adresi",
+  },
+  {
+    src: "/images/sahne-mersin-sahil.webp",
+    alt: "Tanıtım görseli: Mersin sahil yolunda palmiyeler arasında markalı nakliye kamyonu",
+    caption: "Mersin sahil hattı",
+  },
+  {
+    src: "/images/sahne-mezitli-nakliye.webp",
+    alt: "Tanıtım görseli: Mezitli sahil siteleri önünde markalı kamyon ve yükleme",
+    caption: "Mezitli",
+  },
+  {
+    src: "/images/sahne-yenisehir-nakliye.webp",
+    alt: "Tanıtım görseli: Yenişehir konut sokağında markalı kamyon ve ekip",
+    caption: "Yenişehir",
+  },
+  {
+    src: "/images/sahne-erdemli-nakliye.webp",
+    alt: "Tanıtım görseli: Erdemli sahil atmosferinde markalı nakliye kamyonu",
+    caption: "Erdemli",
+  },
+  {
+    src: "/images/sahne-silifke-nakliye.webp",
+    alt: "Tanıtım görseli: Silifke yaklaşımında markalı nakliye kamyonu",
+    caption: "Silifke",
+  },
+  {
+    src: "/images/sahne-tarsus-nakliye.webp",
+    alt: "Tanıtım görseli: Tarsus sokaklarında markalı kamyon ve taşınan koltuk",
+    caption: "Tarsus",
+  },
+  {
+    src: "/images/sahne-ofis-tasima.webp",
+    alt: "Tanıtım görseli: Mersin ofis lobisinde markalı kamyon ve ofis taşıma ekibi",
+    caption: "Ofis taşıma",
+  },
+  {
+    src: "/images/sahne-fabrika-tasima.webp",
+    alt: "Tanıtım görseli: fabrika rampasında forklift ve markalı nakliye kamyonu",
+    caption: "Fabrika taşıma",
+  },
+  {
+    src: "/images/sahne-arac-tasima.webp",
+    alt: "Tanıtım görseli: Mersin sahil yolunda motosiklet ve araç taşıma kamyonu",
+    caption: "Araç taşıma",
+  },
+  {
+    src: "/images/sahne-ofis-fabrika-arac.webp",
+    alt: "Tanıtım görseli: ofis, fabrika ve motosiklet taşıma sahneleri bir arada",
+    caption: "Ofis · Fabrika · Araç",
+  },
   {
     src: "/images/tanitim-arac.webp",
     alt: "Kansu Can Nakliyat tanıtım görseli: firma aracı ile ev, ofis ve şehirler arası taşıma hizmetleri",
@@ -68,13 +96,32 @@ export const promoPhotos: Photo[] = [
   },
 ];
 
-/**
- * HERO FOTOĞRAFI — ana sayfa ve hizmet sayfalarının üst bölümünde kullanılır.
- *
- * `null` bırakılırsa ya da dosya bulunamazsa hero'da STOK GÖRSEL KULLANILMAZ;
- * yerine koyu marka plakası gösterilir.
- */
 export const heroPhoto: Photo | null = {
-  src: "/images/kansu-can-nakliye-arac.webp",
-  alt: "Kansu Can Nakliyat taşıma aracı, üzerinde firma logosu ve iletişim bilgileri",
+  src: "/images/tanitim-sinematik-kamyon.webp",
+  alt: "Tanıtım görseli: Kansu Can Nakliye kamyonu, Mersin sahil gün batımında",
 };
+
+export const locationScenePhotos: Record<string, string> = {
+  "mersin-nakliye": "/images/sahne-mersin-sahil.webp",
+  "mezitli-nakliye": "/images/sahne-mezitli-nakliye.webp",
+  "yenisehir-nakliye": "/images/sahne-yenisehir-nakliye.webp",
+  "erdemli-nakliye": "/images/sahne-erdemli-nakliye.webp",
+  "silifke-nakliye": "/images/sahne-silifke-nakliye.webp",
+  "tarsus-nakliye": "/images/sahne-tarsus-nakliye.webp",
+  "mersin-ucuz-nakliye": "/images/tanitim-tasinmanin-guvenli-adresi.webp",
+};
+
+export const serviceHeroPhotos: Record<string, string> = {
+  "evden-eve-nakliyat": "/images/tanitim-tasinmanin-guvenli-adresi.webp",
+  "sehirler-arasi-nakliyat": "/images/sahne-mersin-sahil.webp",
+  "ofis-tasima": "/images/sahne-ofis-tasima.webp",
+  "parca-esya-tasima": "/images/tanitim-yukleme.webp",
+  "esya-paketleme": "/images/tanitim-yukleme.webp",
+};
+
+export const featuredPromoPhotos: string[] = [
+  "/images/tanitim-sinematik-kamyon.webp",
+  "/images/tanitim-tasinmanin-guvenli-adresi.webp",
+  "/images/sahne-mersin-sahil.webp",
+  "/images/sahne-ofis-tasima.webp",
+];

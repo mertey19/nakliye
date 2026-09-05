@@ -73,7 +73,7 @@ export function MobileNav({ items }: { items: NavItem[] }) {
       <div
         id="mobil-menu"
         hidden={!open}
-        className="absolute inset-x-0 top-full border-b border-line bg-white shadow-[0_16px_32px_-20px_rgba(19,24,28,0.5)]"
+        className="absolute inset-x-0 top-full border-b border-line bg-card shadow-[0_16px_32px_-20px_rgba(19,24,28,0.5)]"
       >
         <nav aria-label="Mobil menü">
           <ul className="flex flex-col divide-y divide-line-soft px-4 pb-4 sm:px-6">
@@ -82,7 +82,7 @@ export function MobileNav({ items }: { items: NavItem[] }) {
                 <Link
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="flex min-h-[52px] items-center text-[15px] font-medium tracking-[-0.01em] text-ink-900"
+                  className="flex min-h-[52px] items-center text-[15px] font-medium tracking-[-0.01em] text-white"
                 >
                   {item.label}
                 </Link>
@@ -95,7 +95,7 @@ export function MobileNav({ items }: { items: NavItem[] }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setOpen(false)}
-                  className="flex min-h-[52px] items-center gap-2.5 text-[15px] font-medium tracking-[-0.01em] text-ink-900"
+                  className="flex min-h-[52px] items-center gap-2.5 text-[15px] font-medium tracking-[-0.01em] text-white"
                 >
                   <InstagramGlyph size={18} />
                   Instagram

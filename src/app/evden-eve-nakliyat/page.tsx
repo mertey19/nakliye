@@ -205,7 +205,7 @@ export default function EvdenEveNakliyatPage() {
         </div>
 
         <section aria-labelledby="surec" className="mt-14">
-          <h2 id="surec" className="text-2xl font-extrabold text-ink-900 sm:text-3xl">
+          <h2 id="surec" className="text-2xl font-extrabold text-white sm:text-3xl">
             Ev Taşıma Süreci Nasıl İlerliyor?
           </h2>
           <ProcessSteps steps={steps} />
@@ -219,7 +219,7 @@ export default function EvdenEveNakliyatPage() {
         </section>
 
         <section aria-labelledby="fiyat" className="mt-16">
-          <h2 id="fiyat" className="text-2xl font-extrabold text-ink-900 sm:text-3xl">
+          <h2 id="fiyat" className="text-2xl font-extrabold text-white sm:text-3xl">
             Evden Eve Nakliyat Fiyatı Neye Göre Belirlenir?
           </h2>
           <p className="mt-3 max-w-3xl text-[16px] leading-relaxed text-ink-700">
@@ -237,23 +237,23 @@ export default function EvdenEveNakliyatPage() {
         <Reviews />
 
         <section aria-labelledby="sss" className="mt-16">
-          <h2 id="sss" className="text-2xl font-extrabold text-ink-900 sm:text-3xl">
+          <h2 id="sss" className="text-2xl font-extrabold text-white sm:text-3xl">
             Evden Eve Nakliyat Hakkında Sık Sorulan Sorular
           </h2>
           <Faq items={faqItems} />
         </section>
 
         <section aria-labelledby="ilgili" className="mt-16">
-          <h2 id="ilgili" className="text-2xl font-extrabold text-ink-900 sm:text-3xl">
+          <h2 id="ilgili" className="text-2xl font-extrabold text-white sm:text-3xl">
             İlgili Sayfalar
           </h2>
           <ul className="mt-5 grid gap-3 sm:grid-cols-2">
             <li>
               <Link
                 href="/esya-paketleme"
-                className="block rounded-card border border-line-soft bg-white p-5 hover:border-ink-500"
+                className="block rounded-card border border-line-soft bg-card p-5 hover:border-ink-500"
               >
-                <span className="font-bold text-ink-900">
+                <span className="font-bold text-white">
                   {city} Eşya Paketleme
                 </span>
                 <span className="mt-1 block text-[15px] text-ink-500">
@@ -264,9 +264,9 @@ export default function EvdenEveNakliyatPage() {
             <li>
               <Link
                 href="/parca-esya-tasima"
-                className="block rounded-card border border-line-soft bg-white p-5 hover:border-ink-500"
+                className="block rounded-card border border-line-soft bg-card p-5 hover:border-ink-500"
               >
-                <span className="font-bold text-ink-900">
+                <span className="font-bold text-white">
                   {city} Parça Eşya Taşıma
                 </span>
                 <span className="mt-1 block text-[15px] text-ink-500">
@@ -277,9 +277,9 @@ export default function EvdenEveNakliyatPage() {
             <li>
               <Link
                 href="/rehber/ev-tasirken-yapilmasi-gerekenler"
-                className="block rounded-card border border-line-soft bg-white p-5 hover:border-ink-500"
+                className="block rounded-card border border-line-soft bg-card p-5 hover:border-ink-500"
               >
-                <span className="font-bold text-ink-900">
+                <span className="font-bold text-white">
                   Ev Taşırken Yapılması Gerekenler
                 </span>
                 <span className="mt-1 block text-[15px] text-ink-500">
@@ -290,9 +290,9 @@ export default function EvdenEveNakliyatPage() {
             <li>
               <Link
                 href="/rehber/asansorsuz-ev-nasil-tasinir"
-                className="block rounded-card border border-line-soft bg-white p-5 hover:border-ink-500"
+                className="block rounded-card border border-line-soft bg-card p-5 hover:border-ink-500"
               >
-                <span className="font-bold text-ink-900">
+                <span className="font-bold text-white">
                   Asansörsüz Ev Nasıl Taşınır?
                 </span>
                 <span className="mt-1 block text-[15px] text-ink-500">
@@ -303,9 +303,9 @@ export default function EvdenEveNakliyatPage() {
             <li>
               <Link
                 href="/rehber/nakliyat-fiyati-nasil-hesaplanir"
-                className="block rounded-card border border-line-soft bg-white p-5 hover:border-ink-500"
+                className="block rounded-card border border-line-soft bg-card p-5 hover:border-ink-500"
               >
-                <span className="font-bold text-ink-900">
+                <span className="font-bold text-white">
                   Nakliyat Fiyatı Neye Göre Belirlenir?
                 </span>
                 <span className="mt-1 block text-[15px] text-ink-500">
@@ -316,9 +316,9 @@ export default function EvdenEveNakliyatPage() {
             <li>
               <Link
                 href="/hizmet-bolgeleri"
-                className="block rounded-card border border-line-soft bg-white p-5 hover:border-ink-500"
+                className="block rounded-card border border-line-soft bg-card p-5 hover:border-ink-500"
               >
-                <span className="font-bold text-ink-900">Hizmet Bölgeleri</span>
+                <span className="font-bold text-white">Hizmet Bölgeleri</span>
                 <span className="mt-1 block text-[15px] text-ink-500">
                   {city} merkezde taşıma yaptığımız ilçeler.
                 </span>

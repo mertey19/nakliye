@@ -26,10 +26,10 @@ export function PricingFactors({
           </caption>
           <thead>
             <tr className="bg-surface">
-              <th scope="col" className="w-1/3 px-4 py-3 font-bold text-ink-900">
+              <th scope="col" className="w-1/3 px-4 py-3 font-bold text-white">
                 Etken
               </th>
-              <th scope="col" className="px-4 py-3 font-bold text-ink-900">
+              <th scope="col" className="px-4 py-3 font-bold text-white">
                 Fiyatı neden değiştirir?
               </th>
             </tr>
@@ -37,7 +37,7 @@ export function PricingFactors({
           <tbody>
             {factors.map((f) => (
               <tr key={f.title} className="border-t border-line align-top">
-                <th scope="row" className="px-4 py-3 font-semibold text-ink-900">
+                <th scope="row" className="px-4 py-3 font-semibold text-white">
                   {f.title}
                 </th>
                 <td className="px-4 py-3 text-ink-500">{f.text}</td>

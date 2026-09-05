@@ -10,19 +10,19 @@
 ================================================================== */
 @theme {
   /* --- Marka çekirdeği --- */
-  --color-ink-900: #0a0a0a; /* Black      — navbar, footer, koyu bölüm */
-  --color-ink-800: #141414; /* Charcoal   — koyu yüzey, ana metin */
+  --color-ink-900: #0a0a0a;
+  --color-ink-800: #ece8e6;
   --color-brand: #e10600;
   --color-brand-hover: #c10500;
-  --color-ink-700: #3c4247; /* Dark Gray  — gövde metni, hover yüzeyi */
-  --color-ink-600: #30353a; /* CTA hover  */
-  --color-ink-500: #51565a; /* Metal Gray — ikincil metin, ikon, kenarlık */
-  --color-ink-300: #d3d4d5; /* Light Gray — ayraç, koyu zeminde metin */
-
-  --color-line: #d3d4d5;
-  --color-line-soft: #e3e3e3;
-  --color-surface: #f4f4f3; /* Off White — sayfanın ana açık zemini */
-  --color-card-dark: #1c2226; /* Koyu bölümlerdeki kart */
+  --color-ink-700: #cfc8c4;
+  --color-ink-600: #30353a;
+  --color-ink-500: #a39c98;
+  --color-ink-300: #d3d4d5;
+  --color-card: #141414;
+  --color-line: #2a2a2a;
+  --color-line-soft: #1f1f1f;
+  --color-surface: #0a0a0a;
+  --color-card-dark: #141414;
 
   /* Sadece WhatsApp aksiyonu için. Başka hiçbir yerde kullanılmaz. */
   --color-wa-500: #25d366;
@@ -37,7 +37,7 @@
 }
 
 :root {
-  color-scheme: light;
+  color-scheme: dark;
   /* Ölçülen bar yüksekliği 69px; 2px pay bırakılır. */
   --dock-height: 71px;
   --header-height: 72px;
@@ -100,7 +100,7 @@ h3 {
    ODAK HALKASI — açık zeminde siyah, koyu zeminde beyaz
 ------------------------------------------------------------------ */
 :where(a, button, input, select, textarea, summary):focus-visible {
-  outline: 3px solid var(--color-ink-900);
+  outline: 3px solid #ffffff;
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -114,86 +114,50 @@ h3 {
    NAVBAR — açıkta başlar, scroll sonrası koyuya döner
 ------------------------------------------------------------------ */
 .site-header {
-  background: rgba(244, 244, 243, 0.9);
-  border-bottom: 1px solid var(--color-line);
-  transition:
-    background-color 0.25s ease,
-    border-color 0.25s ease;
+  background: #0b0b0bf5;
+  border-bottom: 1px solid #7a0400;
 }
-
 @supports (backdrop-filter: blur(8px)) {
   .site-header {
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
   }
 }
-
-.site-header .brand-name {
-  color: var(--color-ink-900);
+.site-header .brand-name,
+.site-header .nav-link,
+.site-header .header-phone-number,
+.site-header .icon-btn {
+  color: #ffffff;
 }
-.site-header .brand-sub {
-  color: var(--color-ink-500);
-}
-.site-header .nav-link {
-  color: var(--color-ink-700);
+.site-header .brand-sub,
+.site-header .header-phone-label {
+  color: #cfc8c4;
 }
 .site-header .nav-link:hover {
-  color: var(--color-ink-900);
-}
-.site-header .header-phone-label {
-  color: var(--color-ink-500);
-}
-.site-header .header-phone-number {
-  color: var(--color-ink-900);
+  color: #ffffff;
 }
 .site-header .icon-btn {
-  color: var(--color-ink-900);
-  border-color: var(--color-line);
-}
-/* Birincil ikon butonu (telefon): dolu yüzey, dönüşümde önde kalsın. */
-.site-header .icon-btn-primary {
-  background: var(--color-ink-900);
-  border-color: var(--color-ink-900);
-  color: #ffffff;
-}
-
-.site-header[data-scrolled="true"] {
-  background: rgba(19, 24, 28, 0.95);
-  border-bottom-color: rgba(255, 255, 255, 0.1);
-}
-.site-header[data-scrolled="true"] .brand-name {
-  color: #ffffff;
-}
-.site-header[data-scrolled="true"] .brand-sub {
-  color: var(--color-ink-300);
-}
-.site-header[data-scrolled="true"] .nav-link {
-  color: var(--color-ink-300);
-}
-.site-header[data-scrolled="true"] .nav-link:hover {
-  color: #ffffff;
-}
-.site-header[data-scrolled="true"] .header-phone-label {
-  color: var(--color-ink-300);
-}
-.site-header[data-scrolled="true"] .header-phone-number {
-  color: #ffffff;
-}
-.site-header[data-scrolled="true"] .icon-btn {
-  color: #ffffff;
   border-color: rgba(255, 255, 255, 0.22);
 }
-.site-header[data-scrolled="true"] .icon-btn-primary {
-  background: #ffffff;
-  border-color: #ffffff;
-  color: var(--color-ink-900);
+.site-header .icon-btn-primary {
+  background: var(--color-brand);
+  border-color: var(--color-brand);
+  color: #ffffff;
 }
-/* Scroll sonrası koyu navbar üzerinde birincil CTA ters çevrilir */
-.site-header[data-scrolled="true"] .header-cta {
+.site-header[data-scrolled="true"] {
+  background: #0b0b0bf8;
+  border-bottom-color: #e10600;
+}
+.site-header .header-cta {
   background: var(--color-brand);
   color: #ffffff;
 }
+.site-header .header-cta:hover,
 .site-header[data-scrolled="true"] .header-cta:hover {
   background: var(--color-brand-hover);
+}
+.site-header[data-scrolled="true"] .header-cta {
+  background: var(--color-brand);
+  color: #ffffff;
 }
 
 /* ------------------------------------------------------------------
@@ -218,7 +182,7 @@ h3 {
   margin-block: 1rem;
 }
 .prose-tr h2 {
-  color: var(--color-ink-900);
+  color: #ffffff;
   font-size: 1.6rem;
   font-weight: 800;
   line-height: 1.2;
@@ -227,7 +191,7 @@ h3 {
   scroll-margin-top: 96px;
 }
 .prose-tr h3 {
-  color: var(--color-ink-900);
+  color: #ffffff;
   font-size: 1.15rem;
   font-weight: 700;
   margin-top: 1.75rem;
@@ -251,17 +215,17 @@ h3 {
   color: var(--color-ink-500);
 }
 .prose-tr a {
-  color: var(--color-ink-900);
+  color: #ffffff;
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
   font-weight: 600;
 }
 .prose-tr a:hover {
-  color: var(--color-ink-500);
+  color: var(--color-brand);
 }
 .prose-tr strong {
-  color: var(--color-ink-900);
+  color: #ffffff;
 }
 
 .section-dark .prose-tr {

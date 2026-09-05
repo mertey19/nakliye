@@ -26,10 +26,10 @@ export default function NotFound() {
   return (
     <Container className="py-16 sm:py-24">
       <div className="max-w-2xl">
-        <p className="text-sm font-bold uppercase tracking-[0.16em] text-ink-900">
+        <p className="text-sm font-bold uppercase tracking-[0.16em] text-white">
           404
         </p>
-        <h1 className="mt-3 text-3xl font-extrabold leading-tight text-ink-900 sm:text-4xl">
+        <h1 className="mt-3 text-3xl font-extrabold leading-tight text-white sm:text-4xl">
           Aradığınız sayfayı bulamadık
         </h1>
         <p className="mt-4 text-[17px] leading-relaxed text-ink-700">
@@ -44,7 +44,7 @@ export default function NotFound() {
           <CallButton location="404" />
         </div>
 
-        <h2 className="mt-12 text-xl font-extrabold text-ink-900">
+        <h2 className="mt-12 text-xl font-extrabold text-white">
           {business.primaryCity} nakliyat hizmetlerimiz
         </h2>
         <ul className="mt-4 grid gap-3 sm:grid-cols-2">
@@ -52,7 +52,7 @@ export default function NotFound() {
             <li key={s.slug}>
               <Link
                 href={`/${s.slug}`}
-                className="block rounded-card border border-line bg-white p-4 font-semibold text-ink-900 hover:border-ink-500 hover:text-ink-500"
+                className="block rounded-card border border-line bg-card p-4 font-semibold text-white hover:border-ink-500 hover:text-ink-500"
               >
                 {business.primaryCity} {s.navLabel}
               </Link>
@@ -63,7 +63,7 @@ export default function NotFound() {
         <p className="mt-8">
           <Link
             href="/"
-            className="font-bold text-ink-900 underline decoration-1 underline-offset-4 transition-colors hover:text-ink-500"
+            className="font-bold text-white underline decoration-1 underline-offset-4 transition-colors hover:text-ink-500"
           >
             Ana sayfaya dön
           </Link>

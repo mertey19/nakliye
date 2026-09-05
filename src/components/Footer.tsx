@@ -39,7 +39,7 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="section-dark border-t border-white/10 bg-ink-900 text-ink-300">
+    <footer className="section-dark border-t-2 border-brand bg-ink-900 text-ink-300">
       <Container className="py-14">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>

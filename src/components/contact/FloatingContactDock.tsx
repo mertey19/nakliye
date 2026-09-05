@@ -74,7 +74,7 @@ export function FloatingContactDock() {
     >
       <nav
         aria-label="Hızlı iletişim"
-        className="flex w-[248px] flex-col gap-2 rounded-[14px] border border-line bg-white/95 p-2 shadow-[0_12px_32px_-12px_rgba(19,24,28,0.35)] backdrop-blur"
+        className="flex w-[248px] flex-col gap-2 rounded-[14px] border border-line bg-[#0b0b0b]/95 p-2 shadow-[0_12px_32px_-12px_rgba(0,0,0,0.55)] backdrop-blur"
       >
         <p className="eyebrow px-2 pb-0.5 pt-1 text-ink-500">Bize ulaşın</p>
 
